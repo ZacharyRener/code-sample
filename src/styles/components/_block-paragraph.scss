@@ -5,7 +5,7 @@ p {
 		&.has-drop-cap {
 			&:first-letter {
 				float: left;
-				color: var(--zach--post-content--drop-cap--color, var(--wp--preset--color--green));
+				color: var(--bswh--post-content--drop-cap--color, var(--wp--preset--color--green));
 				font-size: 96px;
 				font-style: normal;
 				font-weight: 500;
@@ -17,13 +17,7 @@ p {
 		}
 		&.has-large-font-size,
 		&.has-x-large-font-size {
-			--zach--block--paragraph--line-height: 1.6;
+			--bswh--block--paragraph--line-height: 1.6;
 		}
-	}
-	&.newsletter-issue-date {
-		position: absolute;
-		top: 0;
-		right: 0;
-		margin-top: 0;
 	}
 }

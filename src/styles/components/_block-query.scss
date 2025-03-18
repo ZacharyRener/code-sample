@@ -65,3 +65,7 @@
 		}
 	}
 }
+// for terms with low post counts this will hide the empty section caused by where pagination normally would be
+.wp-block-group:has(> .wp-block-query:only-child:empty) {
+	display: none;
+}

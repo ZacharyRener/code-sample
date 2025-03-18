@@ -5,13 +5,13 @@ body[class] {
 	--card--link--headline-color-hover: var(--wp--preset--color--blue);
 
 	// Spacing.
-	// Zach Synonyms for the WordPress presets.
-	--zach--spacing--gap: var(--zach--spacing--md);
-	--zach--spacing--xs: var(--wp--preset--spacing--20);
-	--zach--spacing--sm: var(--wp--preset--spacing--40);
-	--zach--spacing--md: var(--wp--preset--spacing--50);
-	--zach--spacing--lg: var(--wp--preset--spacing--60);
-	--zach--spacing--xl: var(--wp--preset--spacing--70);
+	// BSWH Synonyms for the WordPress presets.
+	--bswh--spacing--gap: var(--bswh--spacing--md);
+	--bswh--spacing--xs: var(--wp--preset--spacing--20);
+	--bswh--spacing--sm: var(--wp--preset--spacing--40);
+	--bswh--spacing--md: var(--wp--preset--spacing--50);
+	--bswh--spacing--lg: var(--wp--preset--spacing--60);
+	--bswh--spacing--xl: var(--wp--preset--spacing--70);
 	// WordPress Presets.
 	// Extra Small.
 	--wp--preset--spacing--20: 10px;

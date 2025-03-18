@@ -1,4 +1,4 @@
-.zach-table-of-contents-wrapper {
+.bswh-table-of-contents-wrapper {
 	display: none;
 	// Different breakpoints are shown at different screensizes.
 	&.breakpoint- {
@@ -13,7 +13,7 @@
 			}
 		}
 	}
-	.zach-table-of-contents {
+	.bswh-table-of-contents {
 		float: none;
 		padding: 20px;
 		border: 1px solid #ddd;
@@ -32,7 +32,7 @@
 			}
 			margin-block-end: var(--wp--custom--spacing--gap);
 		}
-		.zach-table-of-contents--heading {
+		.bswh-table-of-contents--heading {
 			color: var(--wp--preset--color--dark-gray, #364248);
 			font-size: 16px;
 			font-weight: 700;
@@ -42,7 +42,7 @@
 			margin: 0;
 			padding-bottom: 20px;
 		}
-		ul.zach-table-of-contents--list {
+		ul.bswh-table-of-contents--list {
 			list-style: none;
 			margin: 0;
 			padding: 0;

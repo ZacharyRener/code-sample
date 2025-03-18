@@ -1,0 +1,13 @@
+// These are the font-size slugs declared in theme.json
+$fontSizes: 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', 'huge', 'gigantic',
+	'colossal';
+
+// Button sizes based on font sizes.
+.wp-block-button[class] {
+	@each $size in $fontSizes {
+		&.has-#{$size}-font-size {
+			--block--button-font-size: var(--wp--preset--font-size--#{$size});
+			--block--button-padding: 0.5em 1em;
+		}
+	}
+}

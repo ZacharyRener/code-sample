@@ -84,10 +84,10 @@
 
 @keyframes bottom-horizontal-stripe-newsletter {
 	0% {
-		right: 500%;
+		left: var(--starting-left, 0);
 	}
 	100% {
-		right: -70px;
+		left: var(--ending-left, 0);
 	}
 }
 
@@ -101,13 +101,40 @@
 }
 
 @keyframes top-horizontal-stripe-newsletter {
+	from {
+		width: var(--starting-width, 0%);
+	}
+	to {
+		width: var(--ending-width, 100%);
+	}
 }
 
 @at-root {
 	body {
-		--zach--path--ribbon--animation--time: 0.2s;
-		--zach--path--ribbon--animation--delay: 1s;
+		--rkv--path--ribbon--animation--time: 0.2s;
+		--rkv--path--ribbon--animation--delay: 1s;
 		@include cool_1;
+	}
+}
+
+.ribbon_color_scheme_ {
+	&cool_1 {
+		@include cool_1;
+	}
+	&cool_2 {
+		@include cool_2;
+	}
+	&cool_3 {
+		@include cool_3;
+	}
+	&warm_1 {
+		@include warm_1;
+	}
+	&warm_2 {
+		@include warm_2;
+	}
+	&warm_3 {
+		@include warm_3;
 	}
 }
 
@@ -117,24 +144,6 @@
 	width: unset !important;
 	max-width: 100% !important;
 	padding: 0 !important;
-	&:has(.path-ribbon-container.cool_1) {
-		@include cool_1;
-	}
-	&:has(.path-ribbon-container.cool_2) {
-		@include cool_2;
-	}
-	&:has(.path-ribbon-container.cool_3) {
-		@include cool_3;
-	}
-	&:has(.path-ribbon-container.warm_1) {
-		@include warm_1;
-	}
-	&:has(.path-ribbon-container.warm_2) {
-		@include warm_2;
-	}
-	&:has(.path-ribbon-container.warm_3) {
-		@include warm_3;
-	}
 	.path-ribbon-container {
 		width: 100%;
 		max-width: unset;
@@ -144,8 +153,8 @@
 		display: flex;
 		align-items: flex-start;
 		animation-name: top-horizontal-stripe;
-		animation-delay: var(--zach--path--ribbon--animation--delay);
-		animation-duration: var(--zach--path--ribbon--animation--time);
+		animation-delay: var(--rkv--path--ribbon--animation--delay);
+		animation-duration: var(--rkv--path--ribbon--animation--time);
 		justify-content: flex-start;
 		width: 0;
 		animation-fill-mode: forwards;
@@ -172,7 +181,7 @@
 				height: 30px;
 				width: 100%;
 				position: absolute;
-				background-color: var(--zach--path--ribbon--color--1);
+				background-color: var(--rkv--path--ribbon--color--1);
 				top: 0px;
 				opacity: 1;
 				z-index: 2;
@@ -187,11 +196,11 @@
 				border-bottom: 15px solid #364248;
 				border-left: 15px solid #364248;
 				animation-name: top-corner;
-				animation-duration: var(--zach--path--ribbon--animation--time);
+				animation-duration: var(--rkv--path--ribbon--animation--time);
 				z-index: 1;
 				position: absolute;
 				opacity: 0;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
+				animation-delay: var(--rkv--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -228,15 +237,15 @@
 			position: absolute;
 			top: 30px;
 			width: 100%;
-			border-left: 30px solid var(--zach--path--ribbon--color--2);
+			border-left: 30px solid var(--rkv--path--ribbon--color--2);
 			z-index: 1;
 			left: calc(100% - 90px);
 			height: 100%;
 			animation-name: vertical-stripe-mobile;
-			animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
+			animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
 			height: 0;
 			width: 0;
-			animation-delay: var(--zach--path--ribbon--animation--delay);
+			animation-delay: var(--rkv--path--ribbon--animation--delay);
 			animation-fill-mode: forwards;
 			@include mq-reduced-motion() {
 				animation: none;
@@ -262,9 +271,9 @@
 				border-bottom: 15px solid transparent;
 				border-left: 15px solid transparent;
 				animation-name: bottom-corner;
-				animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
+				animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
 				opacity: 0;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
+				animation-delay: var(--rkv--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -275,7 +284,7 @@
 				// bottom horizontal stripe.
 				content: '';
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
-				background-color: var(--zach--path--ribbon--color--3);
+				background-color: var(--rkv--path--ribbon--color--3);
 				height: 30px;
 				position: absolute;
 				bottom: -30px;
@@ -283,9 +292,9 @@
 				width: 60px;
 				animation-name: bottom-horizontal-stripe-mobile;
 				max-width: 610px;
-				animation-duration: calc(var(--zach--path--ribbon--animation--time) * 3);
+				animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 3);
 				width: 0;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
+				animation-delay: var(--rkv--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -359,7 +368,7 @@
 				position: absolute;
 				left: 0;
 				top: -30px;
-				background: var(--zach--path--ribbon--color--1);
+				background: var(--rkv--path--ribbon--color--1);
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
 				display: none;
 				@include mq('xs') {
@@ -374,11 +383,11 @@
 					top: 0;
 					height: calc(100% + 30px);
 					width: 100%;
-					border-left: 30px solid var(--zach--path--ribbon--color--2);
+					border-left: 30px solid var(--rkv--path--ribbon--color--2);
 					z-index: 1;
 					left: -40px;
 					animation-name: vertical-stripe;
-					animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
+					animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
 					display: none;
 					@include mq('xs') {
 						display: block;
@@ -391,7 +400,7 @@
 					// bottom horizontal stripe.
 					content: '';
 					clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
-					background-color: var(--zach--path--ribbon--color--3);
+					background-color: var(--rkv--path--ribbon--color--3);
 					height: 30px;
 					position: absolute;
 					bottom: -45px;
@@ -400,7 +409,7 @@
 					max-width: 610px;
 					z-index: 1;
 					animation-name: bottom-horizontal-stripe;
-					animation-duration: calc(var(--zach--path--ribbon--animation--time) * 3);
+					animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 3);
 					display: none;
 					@include mq('xs') {
 						display: block;
@@ -427,24 +436,6 @@
 		padding-top: 30px !important;
 		@include mq-max('lg') {
 			padding-top: 20px !important;
-		}
-		&:has(.path-ribbon-container-outer.cool_1) {
-			@include cool_1;
-		}
-		&:has(.path-ribbon-container-outer.cool_2) {
-			@include cool_2;
-		}
-		&:has(.path-ribbon-container-outer.cool_3) {
-			@include cool_3;
-		}
-		&:has(.path-ribbon-container-outer.warm_1) {
-			@include warm_1;
-		}
-		&:has(.path-ribbon-container-outer.warm_2) {
-			@include warm_2;
-		}
-		&:has(.path-ribbon-container-outer.warm_3) {
-			@include warm_3;
 		}
 	}
 
@@ -479,7 +470,7 @@
 				width: 100%;
 				position: absolute;
 				left: calc(-100% + 60px);
-				background: var(--zach--path--ribbon--color--1);
+				background: var(--rkv--path--ribbon--color--1);
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
 				z-index: 1;
 			}
@@ -499,7 +490,7 @@
 		& + .wp-block-post-featured-image {
 			// figure.
 			position: relative;
-			border-left: 30px solid var(--zach--path--ribbon--color--2);
+			border-left: 30px solid var(--rkv--path--ribbon--color--2);
 			margin-bottom: 60px;
 			padding: 0 0 30px;
 			clip-path: polygon(
@@ -537,7 +528,7 @@
 				bottom: 0;
 				width: 200%;
 				height: 30px;
-				background: var(--zach--path--ribbon--color--3);
+				background: var(--rkv--path--ribbon--color--3);
 			}
 			img {
 				@include mq('lg') {
@@ -549,131 +540,143 @@
 }
 /* path ribbon on single newsletter headings */
 
-.single-zach-newsletter {
-	.compass-header {
-		overflow: hidden;
-		figure {
-			position: relative;
-			// triangle.
-			&::before {
-				content: '';
-				position: absolute;
-				border-top: 15px solid #364248;
-				border-right: 15px solid transparent;
-				border-bottom: 15px solid transparent;
-				border-left: 15px solid #364248;
-				z-index: 1;
-				right: -100px;
-				top: calc(100% + 20px);
-				opacity: 0;
-				animation-name: top-corner;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
-				animation-duration: var(--zach--path--ribbon--animation--time);
-				animation-fill-mode: forwards;
-				@include mq-reduced-motion() {
-					animation: none;
-					opacity: 1;
+.single-bswh-newsletter {
+	@media (min-width: 470px) {
+		.compass-header {
+			--horizontal-offset-past-image: calc((342px / 2) + var(--wp--preset--spacing--70, 80px));
+			container-type: inline-size;
+			container-name: compass-header;
+			overflow: hidden;
+			figure {
+				position: static;
+				// triangle.
+				&::before {
+					content: '';
+					position: absolute;
+					border-top: 15px solid #364248;
+					border-right: 15px solid transparent;
+					border-bottom: 15px solid transparent;
+					border-left: 15px solid #364248;
+					z-index: 1;
+					left: calc(50cqw + var(--horizontal-offset-past-image));
+					bottom: 10px;
+					opacity: 0;
+					animation-name: top-corner;
+					animation-delay: var(--rkv--path--ribbon--animation--delay);
+					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						opacity: 1;
+					}
+				}
+				// bottom stripe.
+				&::after {
+					--starting-left: -100cqw;
+					--ending-left: 0;
+					content: '';
+					position: absolute;
+					bottom: 10px;
+					left: var(--starting-left);
+					height: 30px;
+					width: calc(50cqw + var(--horizontal-offset-past-image));
+					background: var(--rkv--path--ribbon--color--1);
+					animation-name: bottom-horizontal-stripe-newsletter;
+					animation-delay: var(--rkv--path--ribbon--animation--delay);
+					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						left: 0;
+					}
 				}
 			}
-			// bottom stripe.
-			&::after {
-				content: '';
+			.path-ribbon-container-outer {
 				position: absolute;
-				top: calc(100% + 20px);
-				right: 500%;
-				height: 30px;
-				width: 500%;
-				background: var(--zach--path--ribbon--color--1);
-				animation-name: bottom-horizontal-stripe-newsletter;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
-				animation-duration: var(--zach--path--ribbon--animation--time);
-				animation-fill-mode: forwards;
-				@include mq-reduced-motion() {
-					animation: none;
-					right: -70px;
-				}
-			}
-		}
-		.path-ribbon-container-outer {
-			position: absolute;
-			height: 64px;
-			width: 100%;
-			top: calc(100% - 44px);
-			right: calc(-100% - 70px);
-			&.cool_1 {
-				@include cool_1;
-			}
-			&.cool_2 {
-				@include cool_2;
-			}
-			&.cool_3 {
-				@include cool_3;
-			}
-			&.warm_1 {
-				@include warm_1;
-			}
-			&.warm_2 {
-				@include warm_2;
-			}
-			&.warm_3 {
-				@include warm_3;
-			}
-		}
-		// vertical stripe.
-		.path-ribbon-vertical {
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 0;
-			width: 30px;
-			background: var(--zach--path--ribbon--color--2);
-			animation-name: vertical-stripe-newsletter;
-			animation-delay: var(--zach--path--ribbon--animation--delay);
-			animation-duration: var(--zach--path--ribbon--animation--time);
-			animation-fill-mode: forwards;
-			@include mq-reduced-motion() {
-				animation: none;
-				height: 100%;
-			}
-			// triangle.
-			&::before {
-				content: '';
-				position: absolute;
-				border-top: 15px solid transparent;
-				border-right: 15px solid #364248;
-				border-bottom: 15px solid #364248;
-				border-left: 15px solid transparent;
-				z-index: 1;
+				height: 64px;
+				top: 135px;
 				right: 0;
-				top: -30px;
-				opacity: 0;
-				animation-name: top-corner;
-				animation-delay: var(--zach--path--ribbon--animation--delay);
-				animation-duration: var(--zach--path--ribbon--animation--time);
+				width: calc(50cqw - var(--horizontal-offset-past-image));
+				&.cool_1 {
+					@include cool_1;
+				}
+				&.cool_2 {
+					@include cool_2;
+				}
+				&.cool_3 {
+					@include cool_3;
+				}
+				&.warm_1 {
+					@include warm_1;
+				}
+				&.warm_2 {
+					@include warm_2;
+				}
+				&.warm_3 {
+					@include warm_3;
+				}
+			}
+			// vertical stripe.
+			.path-ribbon-vertical {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 0;
+				width: 30px;
+				background: var(--rkv--path--ribbon--color--2);
+				animation-name: vertical-stripe-newsletter;
+				animation-delay: var(--rkv--path--ribbon--animation--delay);
+				animation-duration: var(--rkv--path--ribbon--animation--time);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
-					opacity: 1;
+					height: 100%;
+				}
+				// triangle.
+				&::before {
+					content: '';
+					position: absolute;
+					border-top: 15px solid transparent;
+					border-right: 15px solid #364248;
+					border-bottom: 15px solid #364248;
+					border-left: 15px solid transparent;
+					z-index: 1;
+					right: 0;
+					top: -30px;
+					opacity: 0;
+					animation-name: top-corner;
+					animation-delay: var(--rkv--path--ribbon--animation--delay);
+					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						opacity: 1;
+					}
 				}
 			}
-		}
-		// top horizontal stripe.
-		.path-ribbon-horizontal {
-			background: var(--zach--path--ribbon--color--3);
-			z-index: 1;
-			position: absolute;
-			top: -30px;
-			left: 30px;
-			height: 30px;
-			width: 0;
-			clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0% 100%);
-			animation-name: top-horizontal-stripe;
-			animation-delay: var(--zach--path--ribbon--animation--delay);
-			animation-duration: var(--zach--path--ribbon--animation--time);
-			animation-fill-mode: forwards;
-			@include mq-reduced-motion() {
-				animation: none;
-				width: calc(100% - 30px);
+			// top horizontal stripe.
+			.path-ribbon-horizontal {
+				--starting-width: 0px;
+				--ending-width: max(
+					90px,
+					calc(50cqw - var(--horizontal-offset-past-image) - (2 * var(--wp--preset--spacing--60)))
+				);
+				background: var(--rkv--path--ribbon--color--3);
+				z-index: 1;
+				position: absolute;
+				top: -30px;
+				left: 30px;
+				height: 30px;
+				width: 0;
+				clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0% 100%);
+				animation-name: top-horizontal-stripe-newsletter;
+				animation-delay: var(--rkv--path--ribbon--animation--delay);
+				animation-duration: var(--rkv--path--ribbon--animation--time);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					width: var(--ending-width);
+				}
 			}
 		}
 	}

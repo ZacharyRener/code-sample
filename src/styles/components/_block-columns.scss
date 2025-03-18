@@ -1,8 +1,8 @@
 .wp-block-columns[class] {
 	&.wp-block-columns-is-layout-flex {
-		--zach--block--columns--gap: 20px;
+		--bswh--block--columns--gap: 20px;
 		@include mq('lg') {
-			--zach--block--columns--gap: 32px;
+			--bswh--block--columns--gap: 32px;
 		}
 	}
 	.wp-block-column[class] {

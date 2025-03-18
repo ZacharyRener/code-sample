@@ -15,6 +15,12 @@ html {
 	}
 }
 
+// fixes an issue in the admin where tooltips cover their own content
+// https://app.asana.com/1/3796121588250/project/1209207667481977/task/1209000529769032
+body.block-editor-page.wp-admin {
+	container-type: initial;
+}
+
 @import './_mixins.scss';
 @import './_vars.scss';
 @import './global/icons.scss';

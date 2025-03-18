@@ -1,0 +1,25 @@
+figure.wp-block-table[class] {
+	table {
+		border-top: 0;
+		thead {
+			border-bottom: 1px solid var(--wp--preset--color--dark-gray);
+			tr {
+				th {
+					border-top: 0;
+					border-left: 0;
+					border-right: 0;
+				}
+			}
+		}
+		tbody {
+			border-color: #dddddd;
+			tr {
+				td {
+					border-color: #dddddd;
+					border-left: 0;
+					border-right: 0;
+				}
+			}
+		}
+	}
+}

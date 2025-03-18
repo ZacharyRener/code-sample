@@ -2,30 +2,30 @@
 @at-root {
 	body {
 		// Font.
-		--block--button-font-size: var(--zach--button--typography--font-size);
-		--block--button-font-weight: var(--zach--button--typography--font-weight, 500);
-		--block--button-font-family: var(--zach--button--typography--font-family);
-		--block--button-line-height: var(--zach--button--typography--line-height, 1);
+		--block--button-font-size: var(--bswh--button--typography--font-size);
+		--block--button-font-weight: var(--bswh--button--typography--font-weight, 500);
+		--block--button-font-family: var(--bswh--button--typography--font-family);
+		--block--button-line-height: var(--bswh--button--typography--line-height, 1);
 
 		// Spacing.
-		--block--button-padding: var(--zach--button--spacing--padding--top)
-			var(--zach--button--spacing--padding--right) var(--zach--button--spacing--padding--bottom)
-			var(--zach--button--spacing--padding--left);
+		--block--button-padding: var(--bswh--button--spacing--padding--top)
+			var(--bswh--button--spacing--padding--right) var(--bswh--button--spacing--padding--bottom)
+			var(--bswh--button--spacing--padding--left);
 
 		// Colors.
-		--block--button-background-color: var(--zach--button--color--background);
-		--block--button-color: var(--zach--button--color--text);
+		--block--button-background-color: var(--bswh--button--color--background);
+		--block--button-color: var(--bswh--button--color--text);
 		--block--button-shadow: unset;
 
 		// Button Border.
-		--block--button--border--width: var(--zach--button--border--width);
-		--block--button--border--color: var(--zach--button--border--color);
+		--block--button--border--width: var(--bswh--button--border--width);
+		--block--button--border--color: var(--bswh--button--border--color);
 		--block--button--border--style: solid;
-		--block--button--border-radius: var(--zach--button--border--radius);
+		--block--button--border-radius: var(--bswh--button--border--radius);
 
 		// Hover.
-		--block--button-hover-background-color: var(--zach--button--hover--color--background);
-		--block--button-hover-color: var(--zach--button--hover--color--text);
+		--block--button-hover-background-color: var(--bswh--button--hover--color--background);
+		--block--button-hover-color: var(--bswh--button--hover--color--text);
 		--block--button-hover-shadow: unset;
 
 		// Disabled.

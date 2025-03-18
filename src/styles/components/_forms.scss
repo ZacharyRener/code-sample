@@ -67,7 +67,7 @@ form,
 		appearance: none;
 		cursor: pointer;
 		// Custom dropdown image.
-		background-image: var(--zach--icon--chevron-down);
+		background-image: var(--bswh--icon--chevron-down);
 		background-position: calc(100% - var(--wp--preset--spacing--40)) center;
 		background-repeat: no-repeat;
 
@@ -84,7 +84,7 @@ form,
 		cursor: pointer;
 		line-height: 1.6;
 		--border-width: 2px;
-		--block--button--border-width: var(--zach--button--border--width);
+		--block--button--border-width: var(--bswh--button--border--width);
 		--block--button--border-color: var(--wp--preset--color--yellow);
 		--block--button-font-weight: var(--form--element--font-weight);
 		--block--button-background-color: var(--wp--preset--color--yellow);

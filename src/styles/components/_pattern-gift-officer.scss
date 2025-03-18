@@ -1,7 +1,39 @@
-.wp-block-group.zach-gift-officer[class] {
+.wp-block-group.bswh-gift-officer[class] {
+	container-name: gift-officer;
+	container-type: inline-size;
 	> .wp-block-group.is-layout-flex {
 		margin-top: var(--wp--preset--spacing--40, 20px);
-		.person-image {
+		@container gift-officer (max-width: 690px) {
+			display: grid;
+			align-items: start;
+			grid-template-areas:
+				'image nameAndTitle'
+				'image contactInfo';
+			grid-template-columns: 64px 1fr;
+			column-gap: 10px;
+		}
+		@container gift-officer (max-width: 430px) {
+			grid-template-areas:
+				'image nameAndTitle'
+				'contactInfo contactInfo';
+			row-gap: 20px;
+		}
+		@container gift-officer (max-width: 380px) {
+			grid-template-areas:
+				'image'
+				'nameAndTitle'
+				'contactInfo';
+			grid-template-columns: 1fr;
+			row-gap: 10px;
+		}
+
+		figure.wp-block-image.person-image {
+			grid-area: image;
+
+			> img {
+				aspect-ratio: 1/1;
+				min-width: 64px;
+			}
 		}
 		> .person-name-and-title,
 		> .person-contact-info {
@@ -9,14 +41,21 @@
 			flex-direction: column;
 			padding: 0;
 			gap: 0;
+			a {
+				text-wrap: nowrap;
+			}
 			> * {
 				line-height: 1.6;
 				padding: 0;
 				margin: 0;
 			}
 		}
+		> .person-name-and-title {
+			grid-area: nameAndTitle;
+		}
 
 		> .person-contact-info {
+			grid-area: contactInfo;
 			> .wp-block-group {
 				gap: 8px;
 			}

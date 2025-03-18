@@ -1,0 +1,13 @@
+.wp-block-comments[class] {
+	.wp-block-column {
+		&:has(img) {
+			margin-right: var(--wp--preset--spacing--150);
+		}
+	}
+}
+
+.wp-block-comment-edit-link {
+	a {
+		margin-left: var(--wp--preset--spacing--150);
+	}
+}

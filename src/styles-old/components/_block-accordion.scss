@@ -1,0 +1,29 @@
+.wp-block-zach-accordion[class] {
+	// Accordion.
+	--zach--accordion--border-bottom: 1px solid #dddddd;
+	--zach--accordion--background-color: #fff;
+	--zach--accordion--box-shadow: var(--wp--preset--shadow--elevation-1);
+
+	// Accordion Question.
+	--zach--accordion--question--font-size: var(--wp--preset--font-size--md);
+
+	// Accordion Button.
+	--zach--accordion--button--padding: var(--wp--preset--spacing--40);
+	--zach--accordion--button--font-size: var(--wp--preset--font-size--medium, 16px);
+	--zach--accordion--button--font-family: var(--wp--preset--font-family--sharp-sans);
+	--zach--accordion--button--focus-background: var(--wp--preset--color--light-yellow);
+	--zach--accordion--button--focus-border: 1px solid var(--wp--preset--color--light-yellow);
+
+	--zach--accordion--button--icon--size: var(--zach--accordion--button--font-size, 16px);
+	--zach--accordion--button--icon--background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>');
+
+	// Accordion Content.
+	--zach--accordion--content--border-top: 0px;
+	--zach--accordion--content--padding: var(--wp--preset--spacing--40);
+	.zach-accordion__button {
+		border: 1px solid white;
+		&:hover {
+			border: 1px solid var(--wp--preset--color--yellow);
+		}
+	}
+}

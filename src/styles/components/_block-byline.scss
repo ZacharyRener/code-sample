@@ -1,4 +1,4 @@
-.wp-block-zach-byline {
+.wp-block-rkv-byline {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -8,7 +8,7 @@
 	color: var(--wp--preset--color--dark-gray);
 	padding: 12px;
 
-	.zach-byline-avatars {
+	.rkv-byline-avatars {
 		display: flex;
 		gap: 0;
 		margin-right: 4px; // overlapping avatars.
@@ -30,12 +30,12 @@
 		}
 	}
 
-	.zach-byline-preposition {
+	.rkv-byline-preposition {
 		padding-bottom: 4px;
 		white-space: nowrap;
 	}
 
-	.zach-byline-names {
+	.rkv-byline-names {
 		> * {
 			display: inline-block;
 			padding-bottom: 4px;

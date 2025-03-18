@@ -1,0 +1,60 @@
+/* Newsletter template */
+.bswh-newsletter-template-default {
+	// Outside of the post content.
+	*:not(.wp-block-post-content) {
+		.wp-block-group.compass-header {
+			@media (min-width: 450px) {
+				height: 238.5px;
+			}
+			padding: var(--wp--preset--spacing--70);
+			width: 100%;
+			position: relative;
+			display: grid;
+			grid-template-areas: 'content';
+			> * {
+				grid-area: content;
+				margin: 0;
+				padding: 0;
+			}
+
+			p {
+				position: relative;
+				display: inline-block;
+				place-self: start end;
+				padding: 16px;
+				font-size: 16px;
+				text-transform: uppercase;
+				font-weight: 600;
+			}
+			.wp-block-image {
+				place-self: center center;
+				max-width: calc(100% - (2 * var(--wp--preset--spacing--70)));
+				img {
+					max-width: 100%;
+					width: 342px;
+					aspect-ratio: 260/89.9;
+					height: auto;
+				}
+			}
+			@media (max-width: 315px) {
+				grid-template-areas:
+					'date'
+					'logo';
+				grid-template-rows: auto auto;
+				grid-template-columns: auto;
+				> p {
+					grid-area: date;
+					place-self: auto;
+					display: block;
+					width: 100%;
+				}
+				> .wp-block-image {
+					grid-area: logo;
+					place-self: auto;
+					margin: 16px;
+					max-width: calc(100% - 32px);
+				}
+			}
+		}
+	}
+}

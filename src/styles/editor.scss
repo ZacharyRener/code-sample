@@ -5,8 +5,6 @@
 
 .editor-styles-wrapper[class] {
 	.block-editor-block-list__layout.is-root-container[class] {
-		@import './components/';
-		@import './global/header.scss';
 		background: white;
 		--wp--custom--spacing--gap: var(--wp--preset--spacing--50);
 	}
@@ -17,6 +15,83 @@
 }
 .cta-sizes-post-status-info {
 	padding-block: 6px;
+}
+
+.block-editor-inserter__menu.show-panel .block-editor-block-patterns-list__item {
+	height: unset !important;
+}
+
+// scale the preview window
+body.wp-admin {
+	// default values
+	--rkv-thumb-scale: 0.3;
+	--rkv-thumb-left: -115%;
+	--rkv-thumb-width: auto;
+	--rkv-thumb-max-w: 330%;
+
+	// some minor differences for the block hover preview window
+	.block-editor-inserter__preview {
+		--rkv-thumb-scale: 1;
+		--rkv-thumb-left: 0;
+		--rkv-thumb-width: 100%;
+		--rkv-thumb-max-w: 100%;
+		.components-disabled {
+			min-height: 240px !important;
+			background: white;
+		}
+	}
+	// main styling for controlling the preview window scale
+	.block-editor-block-preview__container .block-editor-block-preview__content {
+		transform: scale(1) !important;
+		.block-editor-iframe__container {
+			height: 210%;
+			iframe {
+				scale: var(--rkv-thumb-scale);
+				transform-origin: top;
+				max-width: var(--rkv-thumb-max-w);
+				left: var(--rkv-thumb-left);
+				width: var(--rkv-thumb-width);
+			}
+		}
+	}
+	.dataviews-view-grid .dataviews-view-grid__card {
+		max-width: 322px;
+	}
+	.block-editor-block-patterns-list__list-item {
+		max-width: 361px;
+	}
+}
+
+// Adjust the link control in the sidebar so it isn't too wide.
+.rkv-featured-post-control {
+	.block-editor-link-control[class] {
+		min-width: unset;
+		.block-editor-url-input[class] {
+			min-width: unset;
+			margin-inline: 0;
+		}
+		.block-editor-link-control__search-item.is-current {
+			padding: 0;
+		}
+
+		.block-editor-link-control__field {
+			margin-inline: 0;
+		}
+	}
+	.block-editor-link-control__search-item-top {
+		row-gap: 8px;
+		flex-wrap: wrap;
+		.block-editor-link-control__search-item-header {
+			// Have the link fill the width of the space, forcing the buttons to the next line.
+			min-width: 100%;
+		}
+		.components-button {
+			// We do not want folks editing the link and possibly breaking functionality.
+			&[aria-label='Edit link'] {
+				display: none;
+			}
+		}
+	}
 }
 
 .milestone-time-picker {

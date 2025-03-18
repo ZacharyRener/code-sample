@@ -1,0 +1,114 @@
+.wp-block-zach-layouts[class],
+.card__wrapper[class] {
+	// Vertical Stretched Column.
+	.is-vertically-aligned-stretch & {
+		&.card__wrapper {
+			height: 100%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: stretch;
+
+			> .card[class] {
+				flex: 1;
+			}
+		}
+	}
+
+	// This class is useful when added to the Layout's block when it is a Carousel so that it may extend past the parent's padding.
+	&.extend-past-end:has(.zach-slider[class]) {
+		gap: 0;
+		margin-right: calc(-1 * var(--wp--preset--spacing--50));
+	}
+	@for $i from 2 through 4 {
+		&.has-col-count-#{$i} {
+			display: grid;
+			grid-template-columns: repeat(#{$i}, 1fr);
+			grid-auto-rows: auto;
+		}
+	}
+	.zach-slider[class] {
+		// Variables.
+		--zach--slider--scrollbar--track-height: 0; // Hide the trackbar because we are going to implement dots.
+		--zach--slider--gap: var(--wp--preset--spacing--40);
+		--zach--slider--slide--width: calc(100vw - var(--wp--preset--spacing--40));
+		@include mq('lg') {
+			--zach--slider--slide--width: 630px;
+		}
+		> .card[class].is-style-vertical {
+			--zach--card--aspect-ratio: 630/400;
+			--zach--card--featured-media--aspect-ratio: 630/221;
+			// The content height goes from 184px to 275px. or 46% to 68%.
+			&:not(.remove-focus-styling):has(.card__link:hover, .card__link:focus) {
+				> .card__inner {
+					--zach--card--inner-grid-row: 68%;
+				}
+			}
+		}
+
+		// Rules.
+		padding-inline: 6px;
+		padding-block-start: 6px;
+		scroll-padding-inline: var(--zach--slider--gap);
+
+		> * {
+			margin-bottom: 0;
+		}
+	}
+	// Dot navigation
+	.zach-slider-dots-container {
+		display: flex;
+		justify-content: start;
+		gap: 0; // No spacing between the dots because we want the click target to be larger enough.
+
+		// Individual dot.
+		.dot {
+			--dot-color: var(--wp--preset--color--light-gray);
+			width: 20px; // Wide touch target.
+			height: 16px;
+			padding: 0;
+			border: none;
+			cursor: pointer;
+			background: none;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			// The pseudo element is the actual circle.
+			&:after {
+				display: block;
+				content: '';
+				width: 8px;
+				height: 8px;
+				background: var(--dot-color);
+				border-radius: 50%;
+				transition:
+					background 0.3s,
+					box-shadow 0.3s;
+			}
+
+			// Active.
+			&.active {
+				--dot-color: var(--wp--preset--color--yellow);
+			}
+
+			// Hover and Focus.
+			&:hover,
+			&:focus {
+				--dot-color: var(--wp--preset--color--gray);
+			}
+
+			// Focus.
+			&:focus {
+				// Remove the button's natural outline.
+				outline: none;
+				&:after {
+					// Outline around the circular pseudo element.
+					outline: 2px solid var(--wp--preset--color--blue);
+					outline-offset: 2px;
+				}
+			}
+		}
+	}
+}

@@ -1,11 +1,11 @@
 footer.wp-block-template-part {
 	// Variables.
-	--zach--footer--padding: 20px;
+	--bswh--footer--padding: 20px;
 	@include mq('sm') {
-		--zach--footer--padding: 30px;
+		--bswh--footer--padding: 30px;
 	}
 	@include mq('lg') {
-		--zach--footer--padding: 40px;
+		--bswh--footer--padding: 40px;
 	}
 	// Rules.
 	// All links that aren't in the social link block.
@@ -14,7 +14,7 @@ footer.wp-block-template-part {
 	}
 
 	> .wp-block-group.has-dark-gray-background-color {
-		padding: var(--zach--footer--padding);
+		padding: var(--bswh--footer--padding);
 		> .wp-block-columns:first-of-type {
 			justify-content: space-between;
 			> .wp-block-column {
@@ -113,7 +113,7 @@ footer.wp-block-template-part {
 					&:after {
 						--mask-width: 11px;
 						--mask-height: 9px;
-						--mask-image: var(--zach--icon--chevron-down);
+						--mask-image: var(--bswh--icon--chevron-down);
 						--mask-repeat: no-repeat;
 						--mask-size: var(--mask-width) var(--mask-height);
 						--mask-position: center center;

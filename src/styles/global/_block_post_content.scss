@@ -15,7 +15,7 @@
 		}
 	}
 
-	> * {
+	> *:not(.wp-block-gallery) {
 		background: var(--wp--preset--color--white);
 		body.post-template-default & {
 			background: transparent;
@@ -27,7 +27,7 @@
 			--wp--custom--spacing--gap: 16px;
 		}
 		.wp-block-media-text + * {
-			--wp--custom--spacing--gap: var(--zach--spacing--md);
+			--wp--custom--spacing--gap: var(--bswh--spacing--md);
 		}
 	}
 }
