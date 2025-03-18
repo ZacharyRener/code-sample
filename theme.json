@@ -726,7 +726,7 @@
 				}
 			},
 			"core/columns": {
-				"spacing": { "blockGap": "var(--zach--block--columns--gap)" }
+				"spacing": { "blockGap": "var(--bswh--block--columns--gap)" }
 			},
 			"core/comment-author-name": {
 				"color": {
@@ -875,7 +875,7 @@
 			},
 			"core/paragraph": {
 				"typography": {
-					"lineHeight": "var(--zach--block--paragraph--line-height, var(--wp--custom--line-height--body))"
+					"lineHeight": "var(--bswh--block--paragraph--line-height, var(--wp--custom--line-height--body))"
 				}
 			},
 			"core/post-author": {
@@ -1106,7 +1106,7 @@
 							}
 						},
 						"typography": {
-							"lineHeight": "var(--zach--block--paragraph--line-height, var(--wp--custom--line-height--body))",
+							"lineHeight": "var(--bswh--block--paragraph--line-height, var(--wp--custom--line-height--body))",
 							"fontSize": "16px",
 							"fontWeight": "500"
 						},

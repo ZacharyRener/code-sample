@@ -1,31 +1,31 @@
 @at-root {
 	body {
 		// Slider.
-		--zach--slider--gap: var(--wp--preset--spacing--60, 24px);
-		--zach--slider--margin-bottom: 0;
-		--zach--slider--padding-top: var(--wp--preset--spacing--10);
+		--bswh--slider--gap: var(--wp--preset--spacing--60, 24px);
+		--bswh--slider--margin-bottom: 0;
+		--bswh--slider--padding-top: var(--wp--preset--spacing--10);
 		// Slider scrollbars.
-		--zach--slider--scrollbar--thumb-color: #000;
-		--zach--slider--scrollbar--track-color: #e7e7e7;
-		--zach--slider--scrollbar--track-height: 6px;
-		--zach--slider--scrollbar--border-radius: 4px;
-		--zach--slider--scrollbar--vertical-offset: 15px;
+		--bswh--slider--scrollbar--thumb-color: #000;
+		--bswh--slider--scrollbar--track-color: #e7e7e7;
+		--bswh--slider--scrollbar--track-height: 6px;
+		--bswh--slider--scrollbar--border-radius: 4px;
+		--bswh--slider--scrollbar--vertical-offset: 15px;
 		// Slider slides.
-		--zach--slider--slide--width: 300px;
-		--zach--slider--slide--aspect-ratio: 16/9;
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 16/9;
 	}
 }
 
 #{if(&, '&','.zach-slider')} {
 	// Variables.
 	&.vertical {
-		--zach--slider--slide--width: 300px;
-		--zach--slider--slide--aspect-ratio: 9/16;
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 9/16;
 	}
 
 	&.horizontal {
-		--zach--slider--slide--width: 300px;
-		--zach--slider--slide--aspect-ratio: 16/9;
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 16/9;
 	}
 
 	// Rules.
@@ -34,10 +34,10 @@
 	overflow: auto;
 	align-items: stretch;
 	flex-wrap: nowrap;
-	gap: var(--zach--slider--gap);
-	margin-bottom: var(--zach--slider--margin-bottom);
+	gap: var(--bswh--slider--gap);
+	margin-bottom: var(--bswh--slider--margin-bottom);
 	padding-left: 0;
-	padding-top: var(--zach--slider--padding-top);
+	padding-top: var(--bswh--slider--padding-top);
 
 	&:not(.scrolling) {
 		scroll-snap-type: x mandatory;
@@ -48,26 +48,26 @@
 
 	// For Firefox.
 	scrollbar-width: thin;
-	scrollbar-color: var(--zach--slider--scrollbar--thumb-color)
-		var(--zach--slider--scrollbar--track-color);
+	scrollbar-color: var(--bswh--slider--scrollbar--thumb-color)
+		var(--bswh--slider--scrollbar--track-color);
 
 	&::-webkit-scrollbar {
-		height: var(--zach--slider--scrollbar--track-height) !important;
-		border-radius: var(--zach--slider--scrollbar--border-radius);
+		height: var(--bswh--slider--scrollbar--track-height) !important;
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
 		background-color: transparent; /* or add it to the track */
 		margin-inline: 0;
 		-webkit-overflow-scrolling: auto;
 	}
 
 	&::-webkit-scrollbar-track {
-		background-color: var(--zach--slider--scrollbar--track-color);
-		border-radius: var(--zach--slider--scrollbar--border-radius);
+		background-color: var(--bswh--slider--scrollbar--track-color);
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
 		margin-inline: 0;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: var(--zach--slider--scrollbar--thumb-color);
-		border-radius: var(--zach--slider--scrollbar--border-radius);
+		background: var(--bswh--slider--scrollbar--thumb-color);
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
 	}
 
 	&::-webkit-scrollbar-track-piece:end {
@@ -99,15 +99,15 @@
 		flex-shrink: 0;
 		margin-bottom: var(--wp--preset--spacing--40);
 		// todo: set the max-width using space vars.
-		max-width: var(--zach--slider--slide--max-width, calc(100vw - var(--wp--preset--spacing--40)));
-		width: var(--zach--slider--slide--width);
+		max-width: var(--bswh--slider--slide--max-width, calc(100vw - var(--wp--preset--spacing--40)));
+		width: var(--bswh--slider--slide--width);
 
 		.wp-block-embed__wrapper::before {
 			display: none;
 		}
 
 		.wp-block-embed iframe {
-			aspect-ratio: var(--zach--slider--slide--aspect-ratio);
+			aspect-ratio: var(--bswh--slider--slide--aspect-ratio);
 			position: relative;
 			width: 100%;
 			height: auto;

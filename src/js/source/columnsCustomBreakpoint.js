@@ -102,7 +102,7 @@ const addCustomBreakpointToSaveProps = (props, blockType, attributes) => {
 	) {
 		return {
 			...props,
-			style: { ...props.style, '--zach-custom-breakpoint': attributes.customBreakpoint },
+			style: { ...props.style, '--bswh-custom-breakpoint': attributes.customBreakpoint },
 			className:
 				props.className +
 				` has-custom-breakpoint has-custom-breakpoint-${attributes.customBreakpoint}`,
@@ -128,7 +128,7 @@ const withCustomBreakpoint = createHigherOrderComponent((BlockListBlock) => {
 			return (
 				<BlockListBlock
 					{...props}
-					wrapperProps={{ style: { '--zach-custom-breakpoint': customBreakpoint } }}
+					wrapperProps={{ style: { '--bswh-custom-breakpoint': customBreakpoint } }}
 					className={`has-custom-breakpoint has-custom-breakpoint-${customBreakpoint}`}
 				/>
 			);

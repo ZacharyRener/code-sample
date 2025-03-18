@@ -17,7 +17,7 @@
 
 	.card.newsletter-card[class] {
 		// When the card is in a slider, it needs some help forming a shape.
-		--zach--card--newsletter--aspect-ratio: 440/634;
+		--bswh--card--newsletter--aspect-ratio: 440/634;
 		max-width: 440px;
 	}
 
@@ -37,26 +37,26 @@
 		row-gap: 10px; // 20px minus the 10px bottom padding of the slider interior.
 		.zach-slider[class] {
 			// Variables.
-			--zach--slider--scrollbar--track-height: 0; // Hide the trackbar because we are going to implement dots.
-			--zach--slider--gap: var(--wp--preset--spacing--40);
-			--zach--slider--slide--width: calc(100vw - var(--wp--preset--spacing--40));
+			--bswh--slider--scrollbar--track-height: 0; // Hide the trackbar because we are going to implement dots.
+			--bswh--slider--gap: var(--wp--preset--spacing--40);
+			--bswh--slider--slide--width: calc(100vw - var(--wp--preset--spacing--40));
 			@include mq('lg') {
-				--zach--slider--slide--width: 630px;
+				--bswh--slider--slide--width: 630px;
 			}
 			padding: 10px; //To accommodate the card's box-shadow.
 			> .card.newsletter-card[class] {
 				// When the card is in a slider, it needs some help forming a shape.
-				--zach--card--newsletter--aspect-ratio: 440/634;
+				--bswh--card--newsletter--aspect-ratio: 440/634;
 				max-width: 440px;
 			}
 			> .card[class].is-style-vertical {
-				--zach--card--aspect-ratio: 630/400;
-				--zach--card--featured-media--aspect-ratio: 630/221;
+				--bswh--card--aspect-ratio: 630/400;
+				--bswh--card--featured-media--aspect-ratio: 630/221;
 				max-width: 630px;
 				// The content height goes from 184px to 275px. or 46% to 68%.
 				&:not(.remove-focus-styling):has(.card__link:hover, .card__link:focus) {
 					> .card__inner {
-						--zach--card--inner-grid-row: 68%;
+						--bswh--card--inner-grid-row: 68%;
 					}
 				}
 			}
@@ -64,7 +64,7 @@
 			// Rules.
 			padding-inline: 8px;
 			padding-block-start: 8px;
-			scroll-padding-inline: var(--zach--slider--gap);
+			scroll-padding-inline: var(--bswh--slider--gap);
 
 			> * {
 				margin-bottom: 0;

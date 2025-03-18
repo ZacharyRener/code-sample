@@ -43,22 +43,22 @@
 	}
 
 	.scroller-container {
-		margin-top: var(--zach--slider--scrollbar--vertical-offset);
+		margin-top: var(--bswh--slider--scrollbar--vertical-offset);
 		position: relative;
-		height: var(--zach--slider--scrollbar--track-height, 6px);
+		height: var(--bswh--slider--scrollbar--track-height, 6px);
 		width: s 100%;
 		overflow: hidden;
-		border-radius: var(--zach--slider--scrollbar--border-radius, 4px);
-		background: var(--zach--slider--scrollbar--track-color, #e4e5e7);
+		border-radius: var(--bswh--slider--scrollbar--border-radius, 4px);
+		background: var(--bswh--slider--scrollbar--track-color, #e4e5e7);
 	}
 
 	.scroller {
-		background: var(--zach--slider--scrollbar--thumb-color, #0a0a0a);
+		background: var(--bswh--slider--scrollbar--thumb-color, #0a0a0a);
 		cursor: pointer;
 		position: absolute;
 		width: 10px;
-		height: var(--zach--slider--scrollbar--track-height, 6px);
-		border-radius: var(--zach--slider--scrollbar--border-radius, 4px);
+		height: var(--bswh--slider--scrollbar--track-height, 6px);
+		border-radius: var(--bswh--slider--scrollbar--border-radius, 4px);
 		top: 0px;
 		left: 3px;
 		transition: left 0.08s;

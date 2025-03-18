@@ -12,10 +12,10 @@ body:not(.wp-admin) {
 
 	.zach-lightbox {
 		// Variables
-		--zach-lightbox--navigation--button--size: 40px;
-		--zach-lightbox--frame--padding: var(--wp--preset--spacing--60, 60px);
-		--zach-lightbox--frame--width-ideal: 1440px;
-		--zach-lightbox--frame--height-ideal: 683px;
+		--bswh-lightbox--navigation--button--size: 40px;
+		--bswh-lightbox--frame--padding: var(--wp--preset--spacing--60, 60px);
+		--bswh-lightbox--frame--width-ideal: 1440px;
+		--bswh-lightbox--frame--height-ideal: 683px;
 		// Rules.
 		// Button.
 		button:not(.dot) {
@@ -41,9 +41,9 @@ body:not(.wp-admin) {
 				'content';
 			grid-template-columns: 1fr;
 			grid-template-rows: auto auto;
-			grid-gap: calc(var(--zach-lightbox--frame--padding) / 2) 0;
+			grid-gap: calc(var(--bswh-lightbox--frame--padding) / 2) 0;
 			align-items: start;
-			max-height: calc(100% - var(--zach-lightbox--frame--padding));
+			max-height: calc(100% - var(--bswh-lightbox--frame--padding));
 			@include break-medium() {
 				max-height: 100%;
 				grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); /* Prevent row stretching */
@@ -52,7 +52,7 @@ body:not(.wp-admin) {
 				max-height: 100%;
 			}
 			@include break-medium() {
-				gap: 0 calc(var(--zach-lightbox--frame--padding) / 2);
+				gap: 0 calc(var(--bswh-lightbox--frame--padding) / 2);
 				grid-template-columns: 1fr clamp(8.75rem, 6.0714rem + 13.3929vw, 18.125rem); // Clamp to nicely size the content column. It could simply be 22.8%, but that gets too small.
 				align-items: center;
 				grid-template-areas: 'media content';
@@ -128,7 +128,7 @@ body:not(.wp-admin) {
 			height: 100%;
 			grid-area: content;
 			display: grid;
-			grid-gap: calc(var(--zach-lightbox--frame--padding) / 2);
+			grid-gap: calc(var(--bswh-lightbox--frame--padding) / 2);
 			grid-template-areas:
 				'navigation'
 				'caption';
@@ -138,7 +138,7 @@ body:not(.wp-admin) {
 					'navigation';
 			}
 			grid-template-columns: 1fr;
-			grid-template-rows: 1fr var(--zach-lightbox--navigation--button--size);
+			grid-template-rows: 1fr var(--bswh-lightbox--navigation--button--size);
 			// Caption
 			.caption {
 				color: #000;
@@ -151,9 +151,9 @@ body:not(.wp-admin) {
 				grid-area: navigation;
 				display: flex;
 				justify-content: space-between;
-				height: var(--zach-lightbox--navigation--button--size);
+				height: var(--bswh-lightbox--navigation--button--size);
 				button {
-					height: var(--zach-lightbox--navigation--button--size);
+					height: var(--bswh-lightbox--navigation--button--size);
 					appearance: none;
 					aspect-ratio: 1;
 					border-radius: 20px;
@@ -254,10 +254,10 @@ body:not(.wp-admin) {
 			@include break-medium() {
 				border-radius: 0;
 				margin: auto;
-				width: var(--zach-lightbox--frame--width-ideal);
+				width: var(--bswh-lightbox--frame--width-ideal);
 				min-width: 350px;
-				max-width: min(var(--zach-lightbox--frame--width-ideal, 1440px), calc(100% - 80px));
-				max-height: min(var(--zach-lightbox--frame--height-ideal, 683px), calc(100% - 80px));
+				max-width: min(var(--bswh-lightbox--frame--width-ideal, 1440px), calc(100% - 80px));
+				max-height: min(var(--bswh-lightbox--frame--height-ideal, 683px), calc(100% - 80px));
 			}
 			// On browser windows, such as a laptop.
 			@media (max-height: 875px) {
@@ -327,7 +327,7 @@ body:not(.wp-admin) {
 				appearance: none;
 				margin: min(
 					10px,
-					calc(var(--zach-lightbox--frame--padding) / 6)
+					calc(var(--bswh-lightbox--frame--padding) / 6)
 				); // Whatever is smaller - 10px or the frame padding divided by six (which should be 10px or less).
 				background-color: white;
 				border-radius: 50%;
@@ -368,16 +368,16 @@ body:not(.wp-admin) {
 		.components-modal__content {
 			flex: 1;
 			margin-top: calc(
-				min(10px, var(--zach-lightbox--frame--padding) / 6) + 8px + 24px
+				min(10px, var(--bswh-lightbox--frame--padding) / 6) + 8px + 24px
 			); // Avoid clashing with the closing button.
 			@include break-medium() {
 				margin-top: max(
 					42px,
-					var(--zach-lightbox--frame--padding)
+					var(--bswh-lightbox--frame--padding)
 				); // Avoid clashing with the closing button.
 			}
 			// Small top padding required to avoid cutting off the visible outline when the first child element is focusable.
-			padding: 0 var(--zach-lightbox--frame--padding) var(--zach-lightbox--frame--padding);
+			padding: 0 var(--bswh-lightbox--frame--padding) var(--bswh-lightbox--frame--padding);
 			overflow: auto;
 
 			&.hide-header {

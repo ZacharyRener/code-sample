@@ -49,7 +49,7 @@ function zach_register_additional_color_css_from_theme_json() {
 			$color_styles[] = [
 				'selector'     => ':root',
 				'declarations' => [
-					'--zach--post-content--drop-cap--color' => $zach_dropcap_color,
+					'--bswh--post-content--drop-cap--color' => $zach_dropcap_color,
 				],
 			];
 		}
@@ -71,8 +71,8 @@ function zach_register_additional_color_css_from_theme_json() {
 			$color_styles[] = [
 				'selector'     => 'body',
 				'declarations' => [
-					'--zach--mission-events--scheme--color' => $mission_event_scheme_color,
-					'--zach--mission-events--scheme--preferable-text-color' => zach_get_contrast_color( $mission_event_scheme_color ),
+					'--bswh--mission-events--scheme--color' => $mission_event_scheme_color,
+					'--bswh--mission-events--scheme--preferable-text-color' => zach_get_contrast_color( $mission_event_scheme_color ),
 				],
 			];
 		}

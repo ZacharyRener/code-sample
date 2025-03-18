@@ -85,7 +85,7 @@ function zach_flatten_element_rules( string $element, array $rules ) {
 		if ( is_array( $value ) ) {
 			$result = array_merge( $result, zach_flatten_element_rules( $new_key, $value ) );
 		} elseif ( ! is_null( $value ) ) {
-				$result[ '--zach--' . $new_key ] = (string) $value;
+				$result[ '--bswh--' . $new_key ] = (string) $value;
 		}
 	}
 

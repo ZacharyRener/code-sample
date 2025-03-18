@@ -52,9 +52,9 @@
 		}
 
 		.zach-slider {
-			--zach--slider--scrollbar--vertical-offset: 0;
-			--zach--slider--gap: 20px;
-			--zach--slider--margin-bottom: 0;
+			--bswh--slider--scrollbar--vertical-offset: 0;
+			--bswh--slider--gap: 20px;
+			--bswh--slider--margin-bottom: 0;
 			align-items: stretch;
 			padding-inline: var(--wp--preset--spacing--70);
 			scroll-padding-inline: var(--wp--preset--spacing--70);
@@ -63,7 +63,7 @@
 		// Above small, break the slider.
 		@include mq('md') {
 			.zach-slider {
-				--zach--slider--gap: var(--wp--preset--spacing--40);
+				--bswh--slider--gap: var(--wp--preset--spacing--40);
 				columns: 2;
 				column-fill: revert-layer;
 				row-gap: 0;
@@ -71,12 +71,12 @@
 				margin: 0;
 				padding: 0;
 				> * {
-					--zach--slider--slide--width: calc(50% - var(--zach--slider--gap) / 2);
-					flex-basis: var(--zach--slider--slide--width);
+					--bswh--slider--slide--width: calc(50% - var(--bswh--slider--gap) / 2);
+					flex-basis: var(--bswh--slider--slide--width);
 					margin: 0;
 					width: 100%;
 					display: inline-grid;
-					margin-bottom: var(--zach--slider--gap);
+					margin-bottom: var(--bswh--slider--gap);
 				}
 			}
 		}

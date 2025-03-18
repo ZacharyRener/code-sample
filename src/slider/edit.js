@@ -30,7 +30,7 @@ const Edit = ({ attributes, setAttributes }) => {
 	const { layout, slideWidth, hasScrollbar } = attributes;
 
 	const style = {
-		'--zach--slider--slide--width': slideWidth,
+		'--bswh--slider--slide--width': slideWidth,
 	};
 
 	const classes = clsx('wp-block-zach-slider', { 'display-scrollbar': hasScrollbar });
