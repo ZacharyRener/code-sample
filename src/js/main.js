@@ -8,3 +8,4 @@ import './source/listenersForPrint';
 import './source/mobileFooterMenu';
 import './source/zachSiteSearch';
 import './source/statisticsCardCounter';
+import './source/animateOnScroll';

@@ -57,6 +57,7 @@
 	},
 	"dependencies": {
 		"@wordpress/dataviews": "4.16.0",
+		"aos": "2.3.4",
 		"classnames": "^2.3.2",
 		"countup.js": "^2.8.0",
 		"glob": "^10.3.10",

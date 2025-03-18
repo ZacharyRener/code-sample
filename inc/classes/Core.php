@@ -30,6 +30,7 @@ class Core {
 		'\Zach\Blocks\Blocks\Gallery',
 		'\Zach\Blocks\Blocks\Layouts',
 		'\Zach\Blocks\Blocks\Mega_Menu',
+		'\Zach\Blocks\Blocks\Animation',
 	];
 
 	/**

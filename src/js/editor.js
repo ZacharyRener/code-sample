@@ -14,3 +14,4 @@ import './source/mediaTextSidebarEditor';
 import './source/postSidebarEditor';
 import './source/unregisterBlocks';
 import './source/useParentNavigation';
+import './source/animationSidebarEditor';

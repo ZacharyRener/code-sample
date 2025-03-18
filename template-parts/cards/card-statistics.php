@@ -90,8 +90,7 @@ $svg_allowed_tags = [
 			echo $args['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			?>
 			</div>
-			<div class="card__content-bottom">
-				<?php
+			<div class="card__content-bottom"><?php				
 				if ( $args['link'] && $args['continue_reading'] ) :
 					// Determine the tag for the continue reading element.
 					if ( $args['card-is-link'] ) {
@@ -104,8 +103,7 @@ $svg_allowed_tags = [
 						<?php
 					}
 					endif;
-				?>
-			</div>
+				?></div>
 
 		</div>
 	</div>

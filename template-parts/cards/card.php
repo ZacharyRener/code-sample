@@ -77,7 +77,7 @@ $card_figure = card_image(
 			</figure>
 		<?php endif; ?>
 		<div class="card__content">
-			<div class="card__content-top">
+			<div class="card__content-top has-animation-zach-fade-in has-delay-0">
 				<?php if ( $args['category'] ) : ?>
 					<?php get_template_part( 'template-parts/cards/terms', '', $args ); ?>
 				<?php endif; ?>
@@ -110,7 +110,7 @@ $card_figure = card_image(
 				<?php endif; ?>
 			</div>
 			<?php if ( ( $args['continue_reading'] ) || $args['author'] ) : ?>
-				<div class="card__content-bottom">
+				<div class="card__content-bottom has-animation-zach-fade-in has-delay-100">
 					<?php if ( $args['continue_reading'] ) : ?>
 						<span class="card__continue-reading">
 						<?php

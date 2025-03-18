@@ -69,7 +69,7 @@ const withSidebarSelect = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody title={ __( 'Path Ribbon' ) }>
+					<PanelBody title={ __( 'Path Ribbon' ) } className="panel-body-with-zr-logo">
 						<PathRibbonComponent />
 					</PanelBody>
 				</InspectorControls>

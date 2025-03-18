@@ -158,3 +158,37 @@ function zach_the_password_form() {
 	return ob_get_clean();
 }
 add_filter( 'the_password_form', 'zach_the_password_form', 9999 );
+
+
+// add a style tag that sets body to display: none
+// then, add a script that adds a class to the body when the page is loaded: page-is-loaded
+// in the original style tag, add a rule that sets body.page-is-loaded to display: block
+// add a noscript tag that sets body to display: block
+function zach_add_noscript() {
+	?>
+	<style>
+		body {
+			display: none;
+		}
+		body.page-is-loaded {
+			display: block;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// document.body.classList.add('page-is-loaded');
+		});
+		window.addEventListener('load', function() {
+			document.body.classList.add('page-is-loaded');
+		});
+	</script>
+	<noscript>
+		<style>
+			body {
+				display: block;
+			}
+		</style>
+	</noscript>
+	<?php
+}
+add_action( 'wp_head', 'zach_add_noscript' );

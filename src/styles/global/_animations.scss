@@ -1,0 +1,23 @@
+[data-aos="zach-fade-in"] {
+	opacity: 0;
+	transition-property: transform, opacity;
+  
+	&.aos-animate {
+	  opacity: 1;
+	}
+  
+	@media screen and (min-width: 768px) {
+	  transform: translateY(25px);
+  
+	  &.aos-animate {
+		transform: translateX(0);
+	  }
+	}
+}
+
+[data-aos] {
+	body[data-aos="zach-fade-in"] &,
+	&[data-aos][data-aos="zach-fade-in"] {
+	  transition-timing-function: cubic-bezier(.2,1,.3,1)
+	}
+}

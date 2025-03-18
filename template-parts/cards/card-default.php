@@ -41,7 +41,7 @@ $classes = [
 ];
 
 ?>
-<article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+<article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" >
 	<?php if ( $args['link'] && $args['card-is-link'] ) : ?>
 	<a href="<?php echo esc_url( $args['link']['url'] ); ?>" class="card__link" aria-label=" <?php echo esc_attr( $args['link']['title'] ?? '' ); ?>"></a>
 	<?php endif; ?>

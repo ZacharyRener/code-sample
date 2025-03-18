@@ -3,7 +3,8 @@
 		--zach--card--aspect-ratio: auto;
 		--zach--card--background-color: white;
 		--zach--card--gap: 20px;
-		--zach--card--transition--speed: 500ms;
+		--zach--card--pb: 20px;
+		--zach--card--transition--speed: 400ms;
 		--zach--card--inner-grid-row: 1fr;
 		--zach--card--box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.05);
 
@@ -33,6 +34,7 @@ $minimun: 344px;
 .card[class] {
 	@include mq('sm') {
 		--zach--card--gap: 40px;
+		--zach--card--pb: 60px;
 	}
 	> .card__inner {
 		// Variables.
@@ -91,7 +93,7 @@ $minimun: 344px;
 
 	transition-property: box-shadow;
 	transition-duration: var(--zach--card--transition--speed);
-	transition-timing-function: ease-in-out;
+	transition-timing-function: cubic-bezier(.2,1,.3,1);
 
 	> * {
 		// Cover the entire card.
@@ -258,7 +260,7 @@ $minimun: 344px;
 		border-radius: 8px;
 		transition-property: box-shadow, border-radius, border, background;
 		transition-duration: var(--zach--card--transition--speed);
-		transition-timing-function: ease-in-out;
+		transition-timing-function: cubic-bezier(.2,1,.3,1);
 		&:has(.card__link) {
 			--zach--card--statistics-title--padding-top: 12px;
 		}
@@ -288,13 +290,13 @@ $minimun: 344px;
 					padding-block: 0 var(--zach--card--statistics--padding-bottom, 0) !important;
 					transition-property: all;
 					transition-duration: var(--zach--card--transition--speed);
-					transition-timing-function: ease-in-out;
+					transition-timing-function: cubic-bezier(.2,1,.3,1);
 					.wp-block-group {
 						> .wp-block-group {
 							--wp--custom--spacing--gap: 20px;
 							transition-property: all;
 							transition-duration: var(--zach--card--transition--speed);
-							transition-timing-function: ease-in-out;
+							transition-timing-function: cubic-bezier(.2,1,.3,1);
 							padding-top: var(--zach--card--statistics-title--padding-top) !important;
 
 							svg {
@@ -389,7 +391,7 @@ $minimun: 344px;
 		// Transition properties.
 		transition-property: grid-template-rows, grid-template-columns, aspect-ratio;
 		transition-duration: var(--zach--card--transition--speed);
-		transition-timing-function: ease-in-out;
+		transition-timing-function: cubic-bezier(.2,1,.3,1);
 
 		// Grid Layout for Default (Vertical) card.
 		> * {
@@ -413,34 +415,35 @@ $minimun: 344px;
 			grid-template-rows:
 				min-content var(--zach--card--element-reveal--row-height, 0fr)
 				max-content;
-			transition: var(--zach--card--transition--speed) all ease-in-out;
+			transition: var(--zach--card--transition--speed) all cubic-bezier(.2,1,.3,1);
 			align-content: var(--zach--card--content-align-content, space-between);
 			padding-top: var(--zach--card--gap, 20px);
-			padding-bottom: var(--zach--card--gap, 20px);
+			padding-bottom: var(--zach--card--pb, 20px);
 
 			> .card__content-top {
 				position: relative;
 				grid-row: 1 / 2;
 				padding-bottom: var(--zach--card--content--block-spacing, 12px);
-				transition: var(--zach--card--transition--speed) all ease-in-out;
-				min-height: var(--zach--card--title--row-height);
+				transition: var(--zach--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+				// min-height: var(--zach--card--title--row-height);
 				height: auto;
 			}
 
-			> .card__content-middle {
+			> .card__content-middle {	
 				grid-row: 2 / 3;
 				min-height: 0;
-				transition: var(--zach--card--transition--speed) all ease-in-out;
+				transition: var(--zach--card--transition--speed) all cubic-bezier(.2,1,.3,1);
 				padding-block-end: var(--zach--card--element-reveal--padding-block, 0);
 				// The inner elements of the middle area take care of their own opacity because there is a situation where it needs to be changed.
 				> * {
-					transition: var(--zach--card--transition--speed) all ease-in-out;
+					transition: none;
 					opacity: var(--zach--card--element-reveal--opacity, 0);
 				}
 			}
 
 			> .card__content-bottom {
 				grid-row: 3 / 4;
+				position: relative;
 			}
 		}
 
@@ -511,10 +514,10 @@ $minimun: 344px;
 				.card__continue-reading {
 					color: var(--zach--card--content--continue-reading--color);
 					font-size: var(--wp--preset--font-size--medium);
-					font-weight: 600;
+					font-weight: 700;
 					line-height: 1.6;
 					display: inline-flex;
-					transition: var(--zach--card--transition--speed) all ease-in-out;
+					transition: var(--zach--card--transition--speed) all cubic-bezier(.2,1,.3,1);
 					gap: var(--zach--card--content--continue-reading--gap);
 					align-content: center;
 					align-items: center;
@@ -523,7 +526,7 @@ $minimun: 344px;
 					border-radius: 12px;
 
 					&:after {
-						transition: var(--zach--card--transition--speed) all ease-in-out;
+						transition: var(--zach--card--transition--speed) all cubic-bezier(.2,1,.3,1);
 						content: '';
 						display: block;
 						width: 24px;
