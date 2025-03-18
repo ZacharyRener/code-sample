@@ -1,0 +1,79 @@
+// Unordered lists.
+ul.wp-block-list[class]:not(.is-style-arrow-links, .is-style-inline) {
+	// Default style for unordered lists.
+	list-style-type: none;
+	li {
+		position: relative;
+		--top: 10px;
+		@include mq-max('sm') {
+			--top: 8px;
+		}
+		--list-style-type--size: 3px;
+		--list-style-type--background-color: currentColor;
+		ul li {
+			--list-style-type--background-color: transparent;
+			--list-style-type--size: 4px;
+		}
+		&::before {
+			content: '';
+			height: var(--list-style-type--size);
+			width: var(--list-style-type--size);
+			position: absolute;
+			left: -15px;
+			top: var(--top);
+			background: var(--list-style-type--background-color);
+			border: 1px solid currentColor;
+			border-radius: 999px;
+		}
+	}
+}
+
+// All lists
+.wp-block-list[class] {
+	&:not(.is-style-inline, .is-style-arrow-links) li:not(:first-of-type),
+	li > .wp-block-list {
+		margin-top: 16px;
+	}
+
+	// "Arrow Links" Block Style.
+	&.is-style-arrow-links {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		margin-left: 0;
+		a {
+			--block--button--border-radius: 0;
+			@extend .wp-block-button__link;
+			@include button('arrow');
+			justify-content: space-between;
+			padding: 12px;
+			text-decoration: none;
+			border-bottom: 1px solid #ddd;
+			font-weight: 700;
+			&:hover {
+				padding-inline-end: 0;
+			}
+		}
+	}
+
+	// Inline style.
+	&.is-style-inline {
+		display: flex;
+		list-style: none;
+		column-gap: 8px;
+		margin-left: 0;
+		padding-left: 0;
+		> li {
+			display: flex;
+			column-gap: 8px;
+			&:not(:first-child):before {
+				display: block;
+				content: '';
+				width: 1px;
+				height: 100%;
+				background: #fff;
+				opacity: 0.6;
+			}
+		}
+	}
+}

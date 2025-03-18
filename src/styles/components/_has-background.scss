@@ -1,0 +1,12 @@
+:root {
+	--block--has-background--padding: var(--wp--preset--spacing--70);
+	@include mq('sm') {
+		--block--has-background--padding: var(--wp--preset--spacing--70);
+	}
+}
+
+.wp-block-columns .wp-block-column.has-background,
+.wp-block-group.has-background,
+.wp-block-paragraph.has-background {
+	padding: var(--block--has-background--padding);
+}

@@ -1,0 +1,174 @@
+footer.wp-block-template-part {
+	// Variables.
+	--zach--footer--padding: 20px;
+	@include mq('sm') {
+		--zach--footer--padding: 30px;
+	}
+	@include mq('lg') {
+		--zach--footer--padding: 40px;
+	}
+	// Rules.
+	// All links that aren't in the social link block.
+	a:not(:has(svg)) {
+		@include laser-underline;
+	}
+
+	> .wp-block-group.has-dark-gray-background-color {
+		padding: var(--zach--footer--padding);
+		> .wp-block-columns:first-of-type {
+			justify-content: space-between;
+			> .wp-block-column {
+				min-height: 40px;
+				flex: 1 1 0px;
+				gap: 0;
+				> .wp-block-heading:first-child {
+					padding-bottom: 8px;
+					height: 38px;
+					display: flex;
+					align-content: center;
+					align-items: center;
+				}
+				> .wp-block-navigation.is-vertical[class] {
+					gap: 0;
+					> .wp-block-navigation__container {
+						gap: 0;
+						li {
+							padding-block: 6px;
+						}
+					}
+				}
+			}
+		}
+
+		// Last child is the colophon and social links.
+		> .wp-block-columns:last-child {
+			justify-content: space-between;
+			flex-direction: column;
+			row-gap: 16px;
+			@include mq('xl') {
+				flex-direction: row;
+			}
+			@include mq('xl') {
+				> *:first-child {
+					flex-direction: row;
+					align-items: center;
+					min-height: 40px;
+					flex: 0 0 fit-content; /* Prevent growing and shrinking, retain intrinsic size */
+				}
+			}
+			> * {
+				flex-basis: 100%;
+			}
+			@include mq-max('xl') {
+				.wp-block-group {
+					align-items: start;
+					flex-direction: column;
+					gap: 16px;
+				}
+			}
+		}
+
+		.wp-block-column {
+			// The h2's are smaller in the column headers.
+			.wp-block-heading {
+				font-size: var(--wp--preset--font-size--x-small);
+				padding-block: 8px;
+			}
+		}
+	}
+
+	// Mobile footer.
+	// Class is added in javascript.
+	body.has-mobile-footer-menus & {
+		.wp-block-site-logo {
+			margin-bottom: 20px;
+		}
+		// First child are the menus.
+		.wp-block-columns:first-child {
+			row-gap: 0;
+			.wp-block-column:has(.wp-block-navigation) {
+				border-bottom: 1px solid white;
+				&:not(.expanded) {
+					gap: 0;
+				}
+				> .wp-block-heading:first-child {
+					appearance: none;
+					width: 100%;
+					cursor: pointer;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					font-family: var(--wp--preset--font-family--sharp-sans);
+					font-weight: 700;
+					color: white;
+					border: none;
+					background-color: transparent;
+					padding: 0;
+					padding-inline-start: 20px;
+					height: 56px;
+					&:hover,
+					&:focus {
+						background: rgba(0, 0, 0, 0.2);
+					}
+					&:after {
+						--mask-width: 11px;
+						--mask-height: 9px;
+						--mask-image: var(--zach--icon--chevron-down);
+						--mask-repeat: no-repeat;
+						--mask-size: var(--mask-width) var(--mask-height);
+						--mask-position: center center;
+
+						@include transition;
+
+						display: block;
+						content: '';
+						width: 56px;
+						height: 56px;
+						background-color: white;
+						mask-image: var(--mask-image);
+						mask-repeat: var(--mask-repeat);
+						mask-size: var(--mask-size);
+						mask-position: var(--mask-position);
+						-webkit-mask-image: var(--mask-image);
+						-webkit-mask-repeat: var(--mask-repeat);
+						-webkit-mask-size: var(--mask-size);
+						-webkit-mask-position: var(--mask-position);
+					}
+				}
+				> .wp-block-navigation[class] {
+					margin: 0;
+					max-height: 0;
+					overflow: hidden;
+					transition: max-height 300ms ease-in-out;
+
+					> ul.wp-block-navigation__container[class] {
+						width: 100%;
+						> li {
+							width: 100%;
+							padding-inline: 20px;
+							padding-block: 8px;
+							min-height: 48px;
+							> a {
+								outline-offset: -2px;
+								line-height: 1.6;
+								@include laser-underline();
+							}
+						}
+					}
+				}
+				&.expanded {
+					padding-bottom: 16px;
+					> .wp-block-heading {
+						&:after {
+							transform: rotateZ(180deg);
+						}
+					}
+					> .wp-block-navigation {
+						max-height: 100vh;
+						transition: max-height 300ms ease-in-out;
+					}
+				}
+			}
+		}
+	}
+}

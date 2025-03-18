@@ -1,0 +1,25 @@
+@at-root {
+	body {
+		// refs
+		--wp--custom--layout--column-padding: clamp(1.5rem, 1.0588rem + 1.1765vw, 2rem);
+		--wp--custom--layout--gap--horizontal: var(--wp--preset--spacing--300);
+		--block--columns-gap: var(--wp--preset--spacing--600);
+
+		// Carousel/Slider.
+		--card--slider--overflow-visible: visible;
+		--card--slider--nav-button-font-size: var(--font-size-800);
+		--card--slider--nav-button-size: var(--wp--preset--spacing--400);
+		@media (min-width: 600px) {
+			--card--slider--nav-button-size: 42px;
+			--card--slider--nav-button-font-size: var(--font-size-1000);
+		}
+		--card--slider--nav-button-inline-offset: calc(
+			-1 * ((100vw - 100%) / 2) + var(--scrollbar-width)
+		);
+		@media (min-width: 960px) {
+			--card--slider--nav-button-inline-offset: -52px;
+		}
+		--card--slider--slide-inline-spacing: calc(var(--block--columns-gap) / 2);
+		--card--content-padding: var(--wp--preset--spacing--400);
+	}
+}

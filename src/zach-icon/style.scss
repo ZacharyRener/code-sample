@@ -1,0 +1,19 @@
+.zach-icon {
+	&.use-preferable-color[class] {
+		[stroke='#364248'] {
+			// Commenting these out as they may become useful in the future.
+			//stroke: var(--preferable-path-color, #364248);
+		}
+		[fill='#364248'] {
+			//fill: var(--preferable-path-color, #364248);
+		}
+	}
+	// When inserted as a top-level block (which it shouldn't be), it won't break the flow of the blocks.
+	.wp-block-post-content > & {
+		display: block;
+	}
+	&[style*='padding'] {
+		width: auto;
+		height: auto;
+	}
+}

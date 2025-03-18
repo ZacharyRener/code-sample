@@ -1,0 +1,19 @@
+.wp-block-quote[class] {
+	display: grid;
+	grid-auto-flow: row;
+	// Variables.
+	--marks--offset-top: 40px;
+	// Rules.
+	padding-top: var(--marks--offset-top);
+	&:before {
+		display: block;
+		content: '';
+		background-image: var(--zach--icon--blockquote-marks);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 30px;
+		height: 22.5px;
+		margin-top: calc(-1 * var(--marks--offset-top));
+	}
+}

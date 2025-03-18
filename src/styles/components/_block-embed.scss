@@ -1,0 +1,18 @@
+.is-style-vertical-embed[class][class] {
+	max-width: 450px;
+	width: 100%;
+
+	iframe.wp-block-embed__wrapper {
+		position: relative;
+		aspect-ratio: 9/16;
+		max-height: none !important;
+
+		&:before {
+			padding-top: 0;
+		}
+	}
+}
+
+iframe {
+	max-width: 100%;
+}

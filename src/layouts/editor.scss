@@ -1,0 +1,18 @@
+.card__slider-wrapper[class] {
+	&:before,
+	&:after {
+		// Do not display the fades.
+		display: none !important;
+	}
+	a {
+		pointer-events: none;
+	}
+}
+
+.zach-layouts-preview .zach-slider {
+	@import '../slider/slider.scss';
+}
+
+.card[class] a {
+	pointer-events: none;
+}

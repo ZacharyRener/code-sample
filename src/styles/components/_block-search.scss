@@ -1,0 +1,79 @@
+form.wp-block-search {
+	&.wp-block-search__button-inside.wp-block-search__icon-button {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		max-width: 876px;
+
+		.wp-block-search__inside-wrapper {
+			border-radius: 20px;
+			border: 1px solid var(--wp--preset--color--gray, #959593);
+			background: var(--White, #fff);
+			padding: 0;
+			display: grid;
+			grid-template-areas: 'content';
+			align-content: center;
+			align-items: center;
+			> * {
+				grid-area: content;
+				position: relative;
+			}
+			input[type='search'] {
+				padding-block: 12px;
+				padding-inline-start: 20px;
+				border: 0;
+				line-height: 1;
+				z-index: 0;
+				font-size: var(--wp--preset--font-size--x-small, 14px);
+				height: 40px;
+				// Attempt to hide the cancel button
+				appearance: none;
+				&::-ms-clear {
+					display: none;
+				}
+				&::-webkit-search-cancel-button {
+					display: none;
+				}
+			}
+			.wp-block-search__button.has-icon.wp-element-button {
+				--block--button-padding: 0;
+				--block--button-background-color: transparent;
+				--block--button--border-width: 0;
+				margin: 0;
+				justify-self: end;
+				z-index: 1;
+				border-radius: 50%;
+				border: 1px transparent solid;
+				background: white;
+				aspect-ratio: 1;
+				display: flex;
+				align-items: center;
+				justify-items: center;
+				align-content: center;
+				justify-content: center;
+				height: 40px;
+				svg {
+					transform: scaleX(-1);
+				}
+				&:hover {
+					border-radius: var(--Small-Gap, 20px);
+					border: 1px solid var(--wp--preset--color--yellow, #ffb71b);
+					background: var(--wp--preset--color--light-yellow, #fff8e6);
+				}
+			}
+		}
+
+		// Search form radio options.
+		.zach-site-search-post-types {
+			display: flex;
+			align-items: flex-start;
+			gap: var(--Small, 16px);
+			flex-shrink: 0;
+			align-self: stretch;
+			flex-wrap: wrap;
+			> label {
+				text-wrap: nowrap;
+			}
+		}
+	}
+}

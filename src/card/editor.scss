@@ -1,0 +1,22 @@
+.wp-block-zach-card[class].card[class].is-style-statistics {
+	.wp-block-group[class] {
+		.wp-block-zach-zach-icon {
+			min-width: 48px;
+			width: 48px;
+			max-width: 48px;
+		}
+	}
+}
+
+// Adjust the link control in the sidebar so it isn't too wide.
+.zach-card-link-control-row[class] {
+	.block-editor-link-control[class] {
+		min-width: unset;
+		.block-editor-url-input[class] {
+			min-width: unset;
+		}
+		.block-editor-link-control__search-item.is-current {
+			padding: 0;
+		}
+	}
+}

@@ -1,0 +1,40 @@
+.wp-block-site-logo {
+	&[style*='--color-fill'] {
+		position: relative;
+		// When we have replaced the image with SVG code.
+		svg {
+			max-width: 100%;
+			* {
+				fill: var(--color-fill);
+			}
+		}
+
+		// Fallback to when we cannot replace the img tag with svg code.
+		&[style*='--image-src']:not(:has(svg)) {
+			img {
+				opacity: 0;
+			}
+			&:before {
+				--mask-image: var(--image-src);
+				--mask-repeat: no-repeat;
+				--mask-position: center center;
+				--mask-size: cover;
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: var(--color-fill);
+				mask-image: var(--mask-image);
+				mask-repeat: var(--mask-repeat);
+				mask-size: var(--mask-size);
+				mask-position: var(--mask-position);
+				-webkit-mask-image: var(--mask-image);
+				-webkit-mask-repeat: var(--mask-repeat);
+				-webkit-mask-size: var(--mask-size);
+				-webkit-mask-position: var(--mask-position);
+			}
+		}
+	}
+}

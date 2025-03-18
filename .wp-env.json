@@ -1,0 +1,11 @@
+{
+	"core": "WordPress/WordPress#6.7.2",
+	"phpVersion": "8.3",
+	"themes": [
+		"."
+	],
+	"plugins": [],
+	"options": {
+		"WP_DEFAULT_THEME": "code-sample-2025"
+	}
+}

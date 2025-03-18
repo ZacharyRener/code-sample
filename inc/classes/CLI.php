@@ -1,0 +1,128 @@
+<?php
+/**
+ * CLI script to insert posts with Gutenberg blocks
+ *
+ * @package CountryCard
+ */
+
+namespace Zach\Blocks;
+
+
+/**
+ * CLI module
+ */
+class CLI {
+
+	/**
+	 * Calls the classes callbacks and initializes the objects.
+	 */
+	public function __construct() {
+		$this->register();
+	}
+
+	/**
+	 * Register hooks
+	 *
+	 * @return void
+	 */
+	public function register(): void {
+		if ( class_exists( '\WP_CLI' ) ) {
+			\WP_CLI::add_command( 'zach-insert-posts', [ __CLASS__, 'handle_cli_request' ] );
+		}
+	}
+
+	/**
+	 * Insert posts with Gutenberg blocks
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     # Insert posts.
+	 *     $ wp Zach-country-card insert-posts
+	 *
+	 * @throws \Exception Exception thrown if getting cities data fails.
+	 *
+	 * @return void
+	 */
+	public function handle_cli_request(): void {
+		/** @var null|array<array{countryCode?: string, countryName?: string, cities?: array<array{name?: string, population?: int}>}> $data */
+		$data = wp_json_file_decode( MAIN_DIR . '/assets/posts.json', [ 'associative' => true ] );
+
+		if ( null === $data ) {
+			\WP_CLI::error( 'Couldn\'t parse posts.json file.' );
+			return;
+		}
+
+
+		/** @var array{countryCode?: string, countryName?: string, cities?: array<array{name?: string, population?: int}>} $country */
+		foreach ( $data as $post_object ) {
+			if ( ! isset( $post_object['title'] ) || empty( $post_object['content'] ) || empty( $post_object['excerpt'] ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				continue;
+			}
+
+			\WP_CLI::log(
+				sprintf( 'Inserting post: %s', $post_object['title'] ) // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			);
+
+			$post_id = wp_insert_post(
+				[
+					'post_title'    => $post_object['title'],
+					'post_status'   => 'publish',
+					'post_excerpt'  => $post_object['excerpt'],
+					'post_content'  => sprintf(
+						'<p>%s</p>',
+						$post_object['content'],
+					),
+				]
+			);
+
+			if ( ! empty( $post_object['featured_image_url'] ) ) {
+				$attachment_id = $this->download_and_attach_image( $post_object['featured_image_url'], $post_id );
+
+				if ( $attachment_id ) {
+					set_post_thumbnail( $post_id, $attachment_id );
+				} else {
+					\WP_CLI::warning( sprintf( 'Could not set featured image for city: %s', $city['name'] ) );
+				}
+			}
+		}
+	}
+
+		/**
+	 * Download an image from a URL and attach it to a post as the featured image.
+	 *
+	 * @param string $image_url The URL of the image.
+	 * @param int    $post_id   The post ID to attach the image to.
+	 *
+	 * @return int|false Attachment ID on success, false on failure.
+	 */
+	private function download_and_attach_image( string $image_url, int $post_id ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		// Download the file into the WP temp directory.
+		$tmp = download_url( $image_url );
+
+		if ( is_wp_error( $tmp ) ) {
+			\WP_CLI::warning( sprintf( 'Could not download image: %s', $image_url ) );
+			return false;
+		}
+
+		$file_array = [
+			'name'     => basename( $image_url ),
+			'tmp_name' => $tmp,
+		];
+
+		// Upload the file.
+		$attachment_id = media_handle_sideload( $file_array, $post_id );
+
+		// Check for errors.
+		if ( is_wp_error( $attachment_id ) ) {
+			\WP_CLI::warning( sprintf( 'Could not attach image: %s', $attachment_id->get_error_message() ) );
+			@unlink( $file_array['tmp_name'] ); // Clean up the temp file.
+			return false;
+		}
+
+		return $attachment_id;
+	}
+}
