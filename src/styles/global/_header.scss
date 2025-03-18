@@ -58,7 +58,7 @@
 			}
 			> .wp-block-group.header-action-buttons {
 				grid-area: search;
-				> *:not(.wp-block-rkv-search-widget) {
+				> *:not(.wp-block-zach-search-widget) {
 					display: none;
 				}
 			}
@@ -79,7 +79,7 @@
 			}
 			> .wp-block-group.header-action-buttons {
 				grid-area: search;
-				> *:not(.wp-block-rkv-search-widget) {
+				> *:not(.wp-block-zach-search-widget) {
 					display: none;
 				}
 			}
@@ -100,7 +100,7 @@
 		.wp-block-group.header-action-buttons {
 			// On desktop and above.
 			@include mq('lg') {
-				.rkv-mega-menu-close-button {
+				.zach-mega-menu-close-button {
 					display: none;
 					cursor: pointer;
 					border: 1px solid #ddd;
@@ -123,15 +123,15 @@
 					}
 				}
 			}
-			&:has(.rkv-mega-menu-close-button.active:not(.is-mobile)) {
-				> *:not(*:has(.rkv-mega-menu-close-button)) {
+			&:has(.zach-mega-menu-close-button.active:not(.is-mobile)) {
+				> *:not(*:has(.zach-mega-menu-close-button)) {
 					display: none;
 				}
 			}
 		}
 
 		// Search Widget.
-		.wp-block-rkv-search-widget {
+		.wp-block-zach-search-widget {
 			@include mq-max('lg') {
 				order: 3;
 			}
@@ -141,13 +141,13 @@
 
 // Desktop Mega Menu location.
 // The panels are moved out of the menu so they can be properly sized according to the browser width.
-.location-header_end.wp-block-rkv-template-action {
+.location-header_end.wp-block-zach-template-action {
 	position: relative;
 	// The styles for the Desktop panels are in the mega menu block.
 	@include mq-max('lg') {
-		.rkv-mega-menu-panels:not(.mobile-menu-is-open) {
+		.zach-mega-menu-panels:not(.mobile-menu-is-open) {
 			// On mobile, if the menu is not open, do not show the panels.
-			.rkv-mega-menu-panel[aria-hidden='false'] {
+			.zach-mega-menu-panel[aria-hidden='false'] {
 				opacity: 0 !important;
 			}
 		}

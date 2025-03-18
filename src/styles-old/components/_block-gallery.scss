@@ -1,8 +1,0 @@
-.wp-block-gallery {
-	// When a gallery has clickable lightbox images, hide the figcaption.
-	.wp-block-image.zach-lightbox-clickable {
-		> figcaption.wp-element-caption {
-			display: none;
-		}
-	}
-}

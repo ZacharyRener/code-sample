@@ -72,7 +72,7 @@ $breakpoints: (
 	}
 }
 
-.rkv-content-truncated {
+.zach-content-truncated {
 	overflow: hidden;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -315,32 +315,32 @@ $breakpoints: (
 
 // Path ribbon color mixins.
 @mixin cool_1 {
-	--rkv--path--ribbon--color--1: #007eb4;
-	--rkv--path--ribbon--color--2: #3f9f90;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #007eb4;
+	--zach--path--ribbon--color--2: #3f9f90;
+	--zach--path--ribbon--color--3: #ffb71b;
 }
 @mixin cool_2 {
-	--rkv--path--ribbon--color--1: #8f659c;
-	--rkv--path--ribbon--color--2: #3f9f90;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #8f659c;
+	--zach--path--ribbon--color--2: #3f9f90;
+	--zach--path--ribbon--color--3: #ffb71b;
 }
 @mixin cool_3 {
-	--rkv--path--ribbon--color--1: #007eb4;
-	--rkv--path--ribbon--color--2: #8f659c;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #007eb4;
+	--zach--path--ribbon--color--2: #8f659c;
+	--zach--path--ribbon--color--3: #ffb71b;
 }
 @mixin warm_1 {
-	--rkv--path--ribbon--color--1: #d5647a;
-	--rkv--path--ribbon--color--2: #ff9527;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #d5647a;
+	--zach--path--ribbon--color--2: #ff9527;
+	--zach--path--ribbon--color--3: #ffb71b;
 }
 @mixin warm_2 {
-	--rkv--path--ribbon--color--1: #8f659c;
-	--rkv--path--ribbon--color--2: #d5647a;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #8f659c;
+	--zach--path--ribbon--color--2: #d5647a;
+	--zach--path--ribbon--color--3: #ffb71b;
 }
 @mixin warm_3 {
-	--rkv--path--ribbon--color--1: #8f659c;
-	--rkv--path--ribbon--color--2: #ff9527;
-	--rkv--path--ribbon--color--3: #ffb71b;
+	--zach--path--ribbon--color--1: #8f659c;
+	--zach--path--ribbon--color--2: #ff9527;
+	--zach--path--ribbon--color--3: #ffb71b;
 }

@@ -19,7 +19,7 @@
 	&.desktop-menu {
 		height: 70px;
 
-		.rkv-mega-menu-panel-mobile {
+		.zach-mega-menu-panel-mobile {
 			// Important rule that the mobile panels do not show up on desktop.
 			display: none !important;
 		}
@@ -178,13 +178,13 @@
 						}
 					}
 				}
-				> li.wp-block-rkv-mega-menu {
+				> li.wp-block-zach-mega-menu {
 					display: block;
 					height: auto;
 
 					> button {
 					}
-					> .rkv-mega-menu-panel-mobile {
+					> .zach-mega-menu-panel-mobile {
 						grid-area: panel;
 						position: absolute;
 						left: var(--panel-left, 100%);
@@ -206,7 +206,7 @@
 						grid-template-areas:
 							'title'
 							'panel';
-						> .rkv-mega-menu-panel-mobile-header {
+						> .zach-mega-menu-panel-mobile-header {
 							place-self: start start;
 							z-index: 1;
 							position: relative;
@@ -217,7 +217,7 @@
 							align-items: center;
 							width: 100%;
 							grid-template-areas: 'title';
-							> .rkv-mega-menu-panel-mobile-header-close-button {
+							> .zach-mega-menu-panel-mobile-header-close-button {
 								grid-area: title;
 								place-self: start;
 								transform: rotate(90deg);
@@ -243,7 +243,7 @@
 								}
 								*/
 							}
-							> .rkv-mega-menu-panel-mobile-header-title {
+							> .zach-mega-menu-panel-mobile-header-title {
 								font-weight: 600;
 								text-align: center;
 								place-self: center;

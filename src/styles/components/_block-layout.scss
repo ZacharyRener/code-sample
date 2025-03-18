@@ -1,4 +1,4 @@
-.wp-block-rkv-layouts[class],
+.wp-block-zach-layouts[class],
 .card__wrapper[class] {
 	// Vertical Stretched Column.
 	.is-vertically-aligned-stretch & {
@@ -17,12 +17,12 @@
 
 	.card.newsletter-card[class] {
 		// When the card is in a slider, it needs some help forming a shape.
-		--rkv--card--newsletter--aspect-ratio: 440/634;
+		--zach--card--newsletter--aspect-ratio: 440/634;
 		max-width: 440px;
 	}
 
 	// This class is useful when added to the Layout's block when it is a Carousel so that it may extend past the parent's padding.
-	&.extend-past-end:has(.rkv-slider[class]) {
+	&.extend-past-end:has(.zach-slider[class]) {
 		column-gap: 0;
 		margin-right: calc(-1 * var(--wp--preset--spacing--50)) !important;
 	}
@@ -33,30 +33,30 @@
 			grid-auto-rows: auto;
 		}
 	}
-	&.wp-block-rkv-slider {
+	&.wp-block-zach-slider {
 		row-gap: 10px; // 20px minus the 10px bottom padding of the slider interior.
-		.rkv-slider[class] {
+		.zach-slider[class] {
 			// Variables.
-			--rkv--slider--scrollbar--track-height: 0; // Hide the trackbar because we are going to implement dots.
-			--rkv--slider--gap: var(--wp--preset--spacing--40);
-			--rkv--slider--slide--width: calc(100vw - var(--wp--preset--spacing--40));
+			--zach--slider--scrollbar--track-height: 0; // Hide the trackbar because we are going to implement dots.
+			--zach--slider--gap: var(--wp--preset--spacing--40);
+			--zach--slider--slide--width: calc(100vw - var(--wp--preset--spacing--40));
 			@include mq('lg') {
-				--rkv--slider--slide--width: 630px;
+				--zach--slider--slide--width: 630px;
 			}
 			padding: 10px; //To accommodate the card's box-shadow.
 			> .card.newsletter-card[class] {
 				// When the card is in a slider, it needs some help forming a shape.
-				--rkv--card--newsletter--aspect-ratio: 440/634;
+				--zach--card--newsletter--aspect-ratio: 440/634;
 				max-width: 440px;
 			}
 			> .card[class].is-style-vertical {
-				--rkv--card--aspect-ratio: 630/400;
-				--rkv--card--featured-media--aspect-ratio: 630/221;
+				--zach--card--aspect-ratio: 630/400;
+				--zach--card--featured-media--aspect-ratio: 630/221;
 				max-width: 630px;
 				// The content height goes from 184px to 275px. or 46% to 68%.
 				&:not(.remove-focus-styling):has(.card__link:hover, .card__link:focus) {
 					> .card__inner {
-						--rkv--card--inner-grid-row: 68%;
+						--zach--card--inner-grid-row: 68%;
 					}
 				}
 			}
@@ -64,14 +64,14 @@
 			// Rules.
 			padding-inline: 8px;
 			padding-block-start: 8px;
-			scroll-padding-inline: var(--rkv--slider--gap);
+			scroll-padding-inline: var(--zach--slider--gap);
 
 			> * {
 				margin-bottom: 0;
 			}
 		}
 		// Dot navigation
-		.rkv-slider-dots-container {
+		.zach-slider-dots-container {
 			display: flex;
 			justify-content: start;
 			gap: 0; // No spacing between the dots because we want the click target to be larger enough.

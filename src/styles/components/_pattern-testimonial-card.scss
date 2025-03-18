@@ -42,7 +42,7 @@
 		}
 	}
 
-	.wp-block-rkv-slider[class][class]:has(&) {
+	.wp-block-zach-slider[class][class]:has(&) {
 		@include mq-max('md') {
 			margin-inline: calc(-1 * var(--wp--preset--spacing--70));
 		}
@@ -51,10 +51,10 @@
 			display: none;
 		}
 
-		.rkv-slider {
-			--rkv--slider--scrollbar--vertical-offset: 0;
-			--rkv--slider--gap: 20px;
-			--rkv--slider--margin-bottom: 0;
+		.zach-slider {
+			--zach--slider--scrollbar--vertical-offset: 0;
+			--zach--slider--gap: 20px;
+			--zach--slider--margin-bottom: 0;
 			align-items: stretch;
 			padding-inline: var(--wp--preset--spacing--70);
 			scroll-padding-inline: var(--wp--preset--spacing--70);
@@ -62,8 +62,8 @@
 
 		// Above small, break the slider.
 		@include mq('md') {
-			.rkv-slider {
-				--rkv--slider--gap: var(--wp--preset--spacing--40);
+			.zach-slider {
+				--zach--slider--gap: var(--wp--preset--spacing--40);
 				columns: 2;
 				column-fill: revert-layer;
 				row-gap: 0;
@@ -71,12 +71,12 @@
 				margin: 0;
 				padding: 0;
 				> * {
-					--rkv--slider--slide--width: calc(50% - var(--rkv--slider--gap) / 2);
-					flex-basis: var(--rkv--slider--slide--width);
+					--zach--slider--slide--width: calc(50% - var(--zach--slider--gap) / 2);
+					flex-basis: var(--zach--slider--slide--width);
 					margin: 0;
 					width: 100%;
 					display: inline-grid;
-					margin-bottom: var(--rkv--slider--gap);
+					margin-bottom: var(--zach--slider--gap);
 				}
 			}
 		}

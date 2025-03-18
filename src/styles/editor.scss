@@ -24,17 +24,17 @@
 // scale the preview window
 body.wp-admin {
 	// default values
-	--rkv-thumb-scale: 0.3;
-	--rkv-thumb-left: -115%;
-	--rkv-thumb-width: auto;
-	--rkv-thumb-max-w: 330%;
+	--zach-thumb-scale: 0.3;
+	--zach-thumb-left: -115%;
+	--zach-thumb-width: auto;
+	--zach-thumb-max-w: 330%;
 
 	// some minor differences for the block hover preview window
 	.block-editor-inserter__preview {
-		--rkv-thumb-scale: 1;
-		--rkv-thumb-left: 0;
-		--rkv-thumb-width: 100%;
-		--rkv-thumb-max-w: 100%;
+		--zach-thumb-scale: 1;
+		--zach-thumb-left: 0;
+		--zach-thumb-width: 100%;
+		--zach-thumb-max-w: 100%;
 		.components-disabled {
 			min-height: 240px !important;
 			background: white;
@@ -46,11 +46,11 @@ body.wp-admin {
 		.block-editor-iframe__container {
 			height: 210%;
 			iframe {
-				scale: var(--rkv-thumb-scale);
+				scale: var(--zach-thumb-scale);
 				transform-origin: top;
-				max-width: var(--rkv-thumb-max-w);
-				left: var(--rkv-thumb-left);
-				width: var(--rkv-thumb-width);
+				max-width: var(--zach-thumb-max-w);
+				left: var(--zach-thumb-left);
+				width: var(--zach-thumb-width);
 			}
 		}
 	}
@@ -63,7 +63,7 @@ body.wp-admin {
 }
 
 // Adjust the link control in the sidebar so it isn't too wide.
-.rkv-featured-post-control {
+.zach-featured-post-control {
 	.block-editor-link-control[class] {
 		min-width: unset;
 		.block-editor-url-input[class] {

@@ -90,14 +90,14 @@ body.page-template-default {
 		}
 	}
 
-	.wp-block-rkv-template-action.location-before_footer {
+	.wp-block-zach-template-action.location-before_footer {
 		margin-inline: auto;
 		max-width: var(--wp--style--global--wide-size, 1440px);
 	}
 
 	&.post-template-default:not(:has(.wp-block-post-featured-image)) {
 		.entry-header {
-			border-left: 30px solid var(--rkv--path--ribbon--color--2);
+			border-left: 30px solid var(--zach--path--ribbon--color--2);
 			position: relative;
 			margin-bottom: 30px;
 			top: 0;
@@ -128,7 +128,7 @@ body.page-template-default {
 				bottom: -30px;
 				height: 30px;
 				width: 200%;
-				background: var(--rkv--path--ribbon--color--3);
+				background: var(--zach--path--ribbon--color--3);
 				left: 0;
 			}
 		}

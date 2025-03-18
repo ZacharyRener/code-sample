@@ -111,8 +111,8 @@
 
 @at-root {
 	body {
-		--rkv--path--ribbon--animation--time: 0.2s;
-		--rkv--path--ribbon--animation--delay: 1s;
+		--zach--path--ribbon--animation--time: 0.2s;
+		--zach--path--ribbon--animation--delay: 1s;
 		@include cool_1;
 	}
 }
@@ -153,8 +153,8 @@
 		display: flex;
 		align-items: flex-start;
 		animation-name: top-horizontal-stripe;
-		animation-delay: var(--rkv--path--ribbon--animation--delay);
-		animation-duration: var(--rkv--path--ribbon--animation--time);
+		animation-delay: var(--zach--path--ribbon--animation--delay);
+		animation-duration: var(--zach--path--ribbon--animation--time);
 		justify-content: flex-start;
 		width: 0;
 		animation-fill-mode: forwards;
@@ -181,7 +181,7 @@
 				height: 30px;
 				width: 100%;
 				position: absolute;
-				background-color: var(--rkv--path--ribbon--color--1);
+				background-color: var(--zach--path--ribbon--color--1);
 				top: 0px;
 				opacity: 1;
 				z-index: 2;
@@ -196,11 +196,11 @@
 				border-bottom: 15px solid #364248;
 				border-left: 15px solid #364248;
 				animation-name: top-corner;
-				animation-duration: var(--rkv--path--ribbon--animation--time);
+				animation-duration: var(--zach--path--ribbon--animation--time);
 				z-index: 1;
 				position: absolute;
 				opacity: 0;
-				animation-delay: var(--rkv--path--ribbon--animation--delay);
+				animation-delay: var(--zach--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -237,15 +237,15 @@
 			position: absolute;
 			top: 30px;
 			width: 100%;
-			border-left: 30px solid var(--rkv--path--ribbon--color--2);
+			border-left: 30px solid var(--zach--path--ribbon--color--2);
 			z-index: 1;
 			left: calc(100% - 90px);
 			height: 100%;
 			animation-name: vertical-stripe-mobile;
-			animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
+			animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
 			height: 0;
 			width: 0;
-			animation-delay: var(--rkv--path--ribbon--animation--delay);
+			animation-delay: var(--zach--path--ribbon--animation--delay);
 			animation-fill-mode: forwards;
 			@include mq-reduced-motion() {
 				animation: none;
@@ -271,9 +271,9 @@
 				border-bottom: 15px solid transparent;
 				border-left: 15px solid transparent;
 				animation-name: bottom-corner;
-				animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
+				animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
 				opacity: 0;
-				animation-delay: var(--rkv--path--ribbon--animation--delay);
+				animation-delay: var(--zach--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -284,7 +284,7 @@
 				// bottom horizontal stripe.
 				content: '';
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
-				background-color: var(--rkv--path--ribbon--color--3);
+				background-color: var(--zach--path--ribbon--color--3);
 				height: 30px;
 				position: absolute;
 				bottom: -30px;
@@ -292,9 +292,9 @@
 				width: 60px;
 				animation-name: bottom-horizontal-stripe-mobile;
 				max-width: 610px;
-				animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 3);
+				animation-duration: calc(var(--zach--path--ribbon--animation--time) * 3);
 				width: 0;
-				animation-delay: var(--rkv--path--ribbon--animation--delay);
+				animation-delay: var(--zach--path--ribbon--animation--delay);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -368,7 +368,7 @@
 				position: absolute;
 				left: 0;
 				top: -30px;
-				background: var(--rkv--path--ribbon--color--1);
+				background: var(--zach--path--ribbon--color--1);
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
 				display: none;
 				@include mq('xs') {
@@ -383,11 +383,11 @@
 					top: 0;
 					height: calc(100% + 30px);
 					width: 100%;
-					border-left: 30px solid var(--rkv--path--ribbon--color--2);
+					border-left: 30px solid var(--zach--path--ribbon--color--2);
 					z-index: 1;
 					left: -40px;
 					animation-name: vertical-stripe;
-					animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 2);
+					animation-duration: calc(var(--zach--path--ribbon--animation--time) * 2);
 					display: none;
 					@include mq('xs') {
 						display: block;
@@ -400,7 +400,7 @@
 					// bottom horizontal stripe.
 					content: '';
 					clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
-					background-color: var(--rkv--path--ribbon--color--3);
+					background-color: var(--zach--path--ribbon--color--3);
 					height: 30px;
 					position: absolute;
 					bottom: -45px;
@@ -409,7 +409,7 @@
 					max-width: 610px;
 					z-index: 1;
 					animation-name: bottom-horizontal-stripe;
-					animation-duration: calc(var(--rkv--path--ribbon--animation--time) * 3);
+					animation-duration: calc(var(--zach--path--ribbon--animation--time) * 3);
 					display: none;
 					@include mq('xs') {
 						display: block;
@@ -470,7 +470,7 @@
 				width: 100%;
 				position: absolute;
 				left: calc(-100% + 60px);
-				background: var(--rkv--path--ribbon--color--1);
+				background: var(--zach--path--ribbon--color--1);
 				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
 				z-index: 1;
 			}
@@ -490,7 +490,7 @@
 		& + .wp-block-post-featured-image {
 			// figure.
 			position: relative;
-			border-left: 30px solid var(--rkv--path--ribbon--color--2);
+			border-left: 30px solid var(--zach--path--ribbon--color--2);
 			margin-bottom: 60px;
 			padding: 0 0 30px;
 			clip-path: polygon(
@@ -528,7 +528,7 @@
 				bottom: 0;
 				width: 200%;
 				height: 30px;
-				background: var(--rkv--path--ribbon--color--3);
+				background: var(--zach--path--ribbon--color--3);
 			}
 			img {
 				@include mq('lg') {
@@ -562,8 +562,8 @@
 					bottom: 10px;
 					opacity: 0;
 					animation-name: top-corner;
-					animation-delay: var(--rkv--path--ribbon--animation--delay);
-					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-delay: var(--zach--path--ribbon--animation--delay);
+					animation-duration: var(--zach--path--ribbon--animation--time);
 					animation-fill-mode: forwards;
 					@include mq-reduced-motion() {
 						animation: none;
@@ -580,10 +580,10 @@
 					left: var(--starting-left);
 					height: 30px;
 					width: calc(50cqw + var(--horizontal-offset-past-image));
-					background: var(--rkv--path--ribbon--color--1);
+					background: var(--zach--path--ribbon--color--1);
 					animation-name: bottom-horizontal-stripe-newsletter;
-					animation-delay: var(--rkv--path--ribbon--animation--delay);
-					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-delay: var(--zach--path--ribbon--animation--delay);
+					animation-duration: var(--zach--path--ribbon--animation--time);
 					animation-fill-mode: forwards;
 					@include mq-reduced-motion() {
 						animation: none;
@@ -623,10 +623,10 @@
 				left: 0;
 				height: 0;
 				width: 30px;
-				background: var(--rkv--path--ribbon--color--2);
+				background: var(--zach--path--ribbon--color--2);
 				animation-name: vertical-stripe-newsletter;
-				animation-delay: var(--rkv--path--ribbon--animation--delay);
-				animation-duration: var(--rkv--path--ribbon--animation--time);
+				animation-delay: var(--zach--path--ribbon--animation--delay);
+				animation-duration: var(--zach--path--ribbon--animation--time);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
@@ -645,8 +645,8 @@
 					top: -30px;
 					opacity: 0;
 					animation-name: top-corner;
-					animation-delay: var(--rkv--path--ribbon--animation--delay);
-					animation-duration: var(--rkv--path--ribbon--animation--time);
+					animation-delay: var(--zach--path--ribbon--animation--delay);
+					animation-duration: var(--zach--path--ribbon--animation--time);
 					animation-fill-mode: forwards;
 					@include mq-reduced-motion() {
 						animation: none;
@@ -661,7 +661,7 @@
 					90px,
 					calc(50cqw - var(--horizontal-offset-past-image) - (2 * var(--wp--preset--spacing--60)))
 				);
-				background: var(--rkv--path--ribbon--color--3);
+				background: var(--zach--path--ribbon--color--3);
 				z-index: 1;
 				position: absolute;
 				top: -30px;
@@ -670,8 +670,8 @@
 				width: 0;
 				clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0% 100%);
 				animation-name: top-horizontal-stripe-newsletter;
-				animation-delay: var(--rkv--path--ribbon--animation--delay);
-				animation-duration: var(--rkv--path--ribbon--animation--time);
+				animation-delay: var(--zach--path--ribbon--animation--delay);
+				animation-duration: var(--zach--path--ribbon--animation--time);
 				animation-fill-mode: forwards;
 				@include mq-reduced-motion() {
 					animation: none;
