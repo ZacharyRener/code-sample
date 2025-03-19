@@ -11,6 +11,8 @@ The remote site can be accessed at https://zachcodesample.wpenginepowered.com/
 
 Your login is: `Username: 10up` `Password: 2025-10up-zach`
 
+Review the homepage. Feel free to edit.
+
 # Local environment
 This repository is set up to be easily tested locally with `wp-env`. 
 
@@ -24,7 +26,7 @@ This repository is set up to be easily tested locally with `wp-env`.
 
 ## Installation
 
-Since you need a WordPress environment to run the theme, the quickest way to get up and running is to use the bundled `wp-env` environment.
+Since you need a WordPress environment to run the plugin, the quickest way to get up and running is to use the bundled `wp-env` environment.
 
 Clone this repository to your local computer, `cd` to this directory, and install the required version of Node along with NPM and Composer dependencies:
 
@@ -81,6 +83,8 @@ Choose the homepage pattern. Then, give the page a name, and publish it. That's 
 You should also have access to these new blocks:
 
 <img width="400px" src="https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-9.21.51 PM.png" />
+
+Review the new page you've created. It should be the same as the homepage of the remote site.
 
 # Recommended files to review
 
