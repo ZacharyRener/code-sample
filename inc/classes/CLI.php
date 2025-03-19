@@ -57,10 +57,6 @@ class CLI {
 		$homepage_content = ob_get_clean();
 
 		\WP_CLI::log(
-			$homepage_content
-		);
-
-		\WP_CLI::log(
 			sprintf( 'Inserting homepage' ) // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		);
 

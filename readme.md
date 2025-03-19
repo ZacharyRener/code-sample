@@ -41,20 +41,21 @@ Then, start the local environment:
 ```sh
 npm run env start
 ```
-
-Next, run the CLI script to fill your local database with some test posts and the homepage:
-
-```sh
-npm run cli:insert-content
-```
-And activate the theme:
+Then activate the theme:
 
 ```sh
 npm run cli:activate-theme
 ```
+Then, run the CLI script to fill your local database with some test posts and the homepage:
+
+```sh
+npm run cli:insert-content
+```
 
 
-Next, run the build process in a watch mode:
+
+
+Then, run the build process in a watch mode:
 
 ```sh
 npm start
