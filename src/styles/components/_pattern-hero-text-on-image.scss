@@ -1,6 +1,0 @@
-// Hero/Banner -- Text on Image.
-.wp-block-cover.call-to-action-full-image {
-	@include mq-max('md') {
-		padding-top: calc(318px + var(--wp--preset--spacing--70)) !important;
-	}
-}

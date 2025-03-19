@@ -1,0 +1,43 @@
+name: Deploy to WP Engine
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Restore Timestamps
+              uses: chetan/git-restore-mtime-action@v1
+
+            - uses: actions/setup-node@v3
+              with:
+                node-version: "18.3.0"
+                cache: "npm"
+                cache-dependency-path: "**/package-lock.json"
+
+            - name: Install dependencies - nvm
+              working-directory: ./wp-content/themes/code-sample-2025/
+              run: nvm install
+
+            - name: Install dependencies - npm
+              working-directory: ./wp-content/themes/code-sample-2025/
+              run: npm install
+
+            - name: Install composer dependencies
+              working-directory: ./wp-content/themes/code-sample-2025/
+              run: composer install
+
+            - name: Build
+              working-directory: ./wp-content/themes/code-sample-2025/
+              run: npm run build
+
+            - name: GitHub Action Deploy to WP Engine
+              uses: wpengine/github-action-wpe-site-deploy@v3
+              with:
+                  WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+                  WPE_ENV: zachrenerstg
+                  REMOTE_PATH: "wp-content/themes/code-samples-2025/"
+                  CACHE_CLEAR: true
