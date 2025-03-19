@@ -32,7 +32,7 @@ class Animation {
 	 * @return void
 	 */
 	public function load_scripts_and_styles(): void {
-		wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/node_modules/aos/dist/aos.css');
+		wp_enqueue_style( 'aos', get_stylesheet_directory_uri() . '/assets/aos.css' );
 	}
 
 }
