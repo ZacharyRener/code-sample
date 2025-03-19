@@ -106,7 +106,7 @@ class CLI {
 		}
 	}
 
-		/**
+	/**
 	 * Download an image from a URL and attach it to a post as the featured image.
 	 *
 	 * @param string $image_url The URL of the image.
