@@ -30,3 +30,5 @@ vendor/
 
 # dotenv environment variables file
 .env
+
+package-lock.json

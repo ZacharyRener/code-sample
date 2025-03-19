@@ -4,8 +4,5 @@
 	"themes": [
 		"."
 	],
-	"plugins": [],
-	"options": {
-		"WP_DEFAULT_THEME": "code-sample-2025"
-	}
+	"plugins": []
 }
