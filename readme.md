@@ -9,7 +9,7 @@ There are two options for testing: local (recommended), and remote.
 # Remote environment
 The remote site can be accessed at https://zachcodesample.wpenginepowered.com/
 
-Your login is: `Username: 10up` `Password: 2025-10up-zach`
+Your login is: `Username: code-sample` `Password: 2025-code-sample`
 
 Review the homepage. Feel free to edit.
 
@@ -96,7 +96,7 @@ If you ran the CLI commands, the homepage should be setup and accessible locally
 
 And it should be identical to the remote site:
 
-https://zachcodesample.wpenginepowered.com/ (Username: `10up`, Password: `2025-10up-zach`)
+https://zachcodesample.wpenginepowered.com/ (Username: `code-sample`, Password: `2025-code-sample`)
 
 Otherwise, Login to WordPress, ensure the "Zach FSE Theme" is active, and create a new page. You should be prompted with a Pattern selector:
 
