@@ -82,7 +82,13 @@ npm run env clean all
 
 ### How to view the sample?
 
-Login to WordPress, ensure the "Zach FSE Theme" is active, and create a new page. You should be prompted with a Pattern selector:
+If you ran the CLI commands, the homepage should be setup and accessible locally:
+[http://localhost:8888/](http://localhost:8888/) (Username: `admin`, Password: `password`)
+
+And it should be identical to the remote site:
+https://zachcodesample.wpenginepowered.com/ (Username: `10up`, Password: `2025-10up-zach`)
+
+Otherwise, Login to WordPress, ensure the "Zach FSE Theme" is active, and create a new page. You should be prompted with a Pattern selector:
 
 <img width="400px" src="https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-9.31.12 PM.png" />
 
@@ -94,7 +100,7 @@ You should also have access to these new blocks:
 
 <img width="400px" src="https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-9.21.51 PM.png" />
 
-Review the new page you've created. It should be the same as the homepage of the remote site.
+Review the new page you've created, or the homepage if it was created for you. It should be the same as the homepage of the remote site.
 
 # Recommended files to review
 
