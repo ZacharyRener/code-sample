@@ -39,5 +39,5 @@ jobs:
               with:
                   WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
                   WPE_ENV: zachrenerstg
-                  REMOTE_PATH: "wp-content/themes/code-samples-2025/"
+                  REMOTE_PATH: "wp-content/themes/code-sample/"
                   CACHE_CLEAR: true
