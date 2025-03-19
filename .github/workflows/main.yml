@@ -19,19 +19,19 @@ jobs:
                 cache-dependency-path: "**/package-lock.json"
 
             - name: Install dependencies - nvm
-              working-directory: ./wp-content/themes/code-sample-2025/
+              working-directory: wp-content/themes/code-sample-2025/
               run: nvm install
 
             - name: Install dependencies - npm
-              working-directory: ./wp-content/themes/code-sample-2025/
+              working-directory: wp-content/themes/code-sample-2025/
               run: npm install
 
             - name: Install composer dependencies
-              working-directory: ./wp-content/themes/code-sample-2025/
+              working-directory: wp-content/themes/code-sample-2025/
               run: composer install
 
             - name: Build
-              working-directory: ./wp-content/themes/code-sample-2025/
+              working-directory: wp-content/themes/code-sample-2025/
               run: npm run build
 
             - name: GitHub Action Deploy to WP Engine
