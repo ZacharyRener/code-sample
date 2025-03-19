@@ -26,7 +26,7 @@ This repository is set up to be easily tested locally with `wp-env`.
 
 ## Installation
 
-Since you need a WordPress environment to run the plugin, the quickest way to get up and running is to use the bundled `wp-env` environment.
+Since you need a WordPress environment to run the theme, the quickest way to get up and running is to use the bundled `wp-env` environment.
 
 Clone this repository to your local computer, `cd` to this directory, and install the required version of Node along with NPM and Composer dependencies:
 
