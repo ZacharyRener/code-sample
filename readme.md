@@ -35,12 +35,18 @@ nvm install
 npm install
 composer install
 ```
+Then, run the build process:
+
+```sh
+npm run build
+```
 
 Then, start the local environment:
 
 ```sh
 npm run env start
 ```
+
 Then activate the theme:
 
 ```sh
@@ -55,11 +61,8 @@ npm run cli:insert-content
 
 
 
-Then, run the build process:
 
-```sh
-npm run build
-```
+
 
 Now, you can access the site with the `code-sample` FSE theme installed and activated:
 
