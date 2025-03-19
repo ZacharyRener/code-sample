@@ -8,6 +8,7 @@ The sample is a single page that I originally built for Baylor Scott and White. 
 There are two options for testing: local (recommended), and remote.
 # Remote environment
 The remote site can be accessed at https://zachcodesample.wpenginepowered.com/
+
 Your login is: `Username: 10up` `Password: 2025-10up-zach`
 
 # Local environment
