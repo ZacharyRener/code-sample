@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"build": "wp-scripts build",
-		"cli:insert-posts": "wp-env run cli wp zach-insert-posts",
+		"cli:insert-content": "wp-env run cli wp zach-insert-posts",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
@@ -21,7 +21,8 @@
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start",
-		"env": "wp-env"
+		"env": "wp-env",
+		"cli:activate-theme": "wp-env run cli wp theme activate code-sample"
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "14.15.0",

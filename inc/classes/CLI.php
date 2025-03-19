@@ -52,6 +52,29 @@ class CLI {
 			return;
 		}
 
+		ob_start();
+		include( __DIR__ . '/../../patterns/page-pattern-hompage-variant-1.php' );
+		$homepage_content = ob_get_clean();
+
+		\WP_CLI::log(
+			$homepage_content
+		);
+
+		\WP_CLI::log(
+			sprintf( 'Inserting homepage' ) // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		);
+
+		$home_page_id = wp_insert_post(
+			[
+				'post_title'   => 'Homepage',
+				'post_content' => $homepage_content,
+				'post_type'    => 'page',
+				'post_status'  => 'publish',
+			]
+		);
+
+		update_option( 'show_on_front', 'page' );
+		update_option( 'page_on_front', $home_page_id );
 
 		/** @var array{countryCode?: string, countryName?: string, cities?: array<array{name?: string, population?: int}>} $country */
 		foreach ( $data as $post_object ) {
