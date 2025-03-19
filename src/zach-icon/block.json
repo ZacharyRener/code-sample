@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "zach/zach-icon",
 	"version": "0.1.0",
-	"title": "Zach Icon",
+	"title": "Icon",
 	"textdomain": "zach",
 	"category": "zach-blocks",
 	"icon": "art",
