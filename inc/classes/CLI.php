@@ -81,7 +81,7 @@ class CLI {
 				if ( $attachment_id ) {
 					set_post_thumbnail( $post_id, $attachment_id );
 				} else {
-					\WP_CLI::warning( sprintf( 'Could not set featured image for city: %s', $city['name'] ) );
+					\WP_CLI::warning( sprintf( 'Could not set featured image for post: %s', $post_object['title'] ) );
 				}
 			}
 		}
