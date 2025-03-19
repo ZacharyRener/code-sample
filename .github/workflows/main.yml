@@ -16,9 +16,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      - name: Run nvm install
-        run: nvm install
-
       - name: Install npm dependencies
         run: npm install
 
