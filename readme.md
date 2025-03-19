@@ -64,6 +64,7 @@ npm start
 Now, you can access the site with the `code-sample` FSE theme installed and activated:
 
 [http://localhost:8888/](http://localhost:8888/) (The homepage should be setup) 
+
 [http://localhost:8888/wp-admin](http://localhost:8888/wp-admin) (Username: `admin`, Password: `password`)
 
 In order to stop the Docker containers, run:
