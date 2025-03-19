@@ -6,5 +6,3 @@ wp-content/themes/code-sample/vendor/
 wp-content/wp-defender-secrets.php
 node_modules/
 node_modules
-vendor
-vendor/
