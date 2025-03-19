@@ -42,7 +42,19 @@ Then, start the local environment:
 npm run env start
 ```
 
-Finally, run the build process in a watch mode:
+Next, run the CLI script to fill your local database with some test posts and the homepage:
+
+```sh
+npm run cli:insert-content
+```
+And activate the theme:
+
+```sh
+npm run cli:activate-theme
+```
+
+
+Next, run the build process in a watch mode:
 
 ```sh
 npm start
@@ -50,6 +62,7 @@ npm start
 
 Now, you can access the site with the `code-sample` FSE theme installed and activated:
 
+[http://localhost:8888/](http://localhost:8888/) (The homepage should be setup) 
 [http://localhost:8888/wp-admin](http://localhost:8888/wp-admin) (Username: `admin`, Password: `password`)
 
 In order to stop the Docker containers, run:
@@ -64,21 +77,16 @@ If you want to clean up the database of your local WordPress instance, run:
 npm run env clean all
 ```
 
-### Test data insertion
-
-You can run the CLI script included in this repository to fill your local WordPress database with some posts.
-
-```sh
-npm run cli:insert-posts
-```
 
 ### How to view the sample?
 
-Login to WordPress, and create a new page. You should be prompted with a Pattern selector:
+Login to WordPress, ensure the "Zach FSE Theme" is active, and create a new page. You should be prompted with a Pattern selector:
 
 <img width="400px" src="https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-9.31.12 PM.png" />
 
-Choose the homepage pattern. Then, give the page a name, and publish it. That's all! If you've already inserted test data with the CLI, you should be able to view the page with no issues.
+Choose the homepage pattern. Then, give the page a name, and publish it. That's all! 
+
+This page displays recent posts throughout, so make sure to have a few dummy posts made with featured images. If you ran the CLI command you'll already have plenty.
 
 You should also have access to these new blocks:
 
@@ -96,6 +104,13 @@ Review the new page you've created. It should be the same as the homepage of the
  6. Slider Block ( src/slider )
  7. Icon Block ( src/zach-icon )
  8. Styles Setup ( src/styles )
+
+
+# What should I be seeing?
+
+![enter image description here](https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-10.56.46%E2%80%AFPM.png)
+
+![enter image description here](https://wp.zacharyrener.com/wp-content/uploads/2025/03/Screenshot-2025-03-18-at-10.59.42%E2%80%AFPM.png)
 
 ---
 
