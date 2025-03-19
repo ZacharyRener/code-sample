@@ -55,10 +55,10 @@ npm run cli:insert-content
 
 
 
-Then, run the build process in a watch mode:
+Then, run the build process:
 
 ```sh
-npm start
+npm run build
 ```
 
 Now, you can access the site with the `code-sample` FSE theme installed and activated:
@@ -79,6 +79,11 @@ If you want to clean up the database of your local WordPress instance, run:
 npm run env clean all
 ```
 
+If you want to run the build process in watch mode, run:
+
+```sh
+npm start
+```
 
 ### How to view the sample?
 
