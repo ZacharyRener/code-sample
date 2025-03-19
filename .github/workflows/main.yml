@@ -30,6 +30,6 @@ jobs:
         with:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
           WPE_ENV: zachrenerstg
-          FLAGS: -azv --exclude-from=.deployignore-be
+          FLAGS: -azv --exclude-from=.deployignore
           REMOTE_PATH: "wp-content/themes/code-sample/"
           CACHE_CLEAR: true
