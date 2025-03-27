@@ -1,0 +1,76 @@
+.wp-block-columns[class] {
+	&.wp-block-columns-is-layout-flex {
+		--bswh--block--columns--gap: 20px;
+		@include mq('lg') {
+			--bswh--block--columns--gap: 32px;
+		}
+	}
+	.wp-block-column[class] {
+		// When in a column with layout flow...
+		&.is-layout-flow.wp-block-column-is-layout-flow {
+			display: flex;
+			flex-direction: column;
+			row-gap: var(--wp--custom--spacing--gap, var(--wp--preset--spacing--40));
+			> * {
+				// Because flex is taking care of the spacing, we don't want these top level blocks having their own spacing.
+				margin-block: unset;
+			}
+		}
+		// Column separator decoration.
+		@include mq('lg') {
+			&.has-layout-separator {
+				position: relative;
+
+				// If it is not the last of the type, then we know we can display the after separator
+				&:not(.wp-block-column:last-of-type) {
+					--after--display: block;
+					--after--right: 0;
+					--after--top: 0;
+				}
+				// If it is not the first of type, then we know we can display the before separator.
+				&:not(.wp-block-column:first-of-type) {
+					--before--display: block;
+					--before--left: 0;
+					--before--top: 0;
+				}
+				&:before,
+				&:after {
+					background: #ddd;
+					content: '';
+					width: 1px;
+					height: calc(100% - var(--padding-top, 0) - var(--padding-bottom, 0));
+					margin-block: var(--padding-top, 0) var(--padding-bottom, 0);
+					position: absolute;
+				}
+				&:before {
+					display: var(--before--display, none);
+					right: var(--before--right, auto);
+					left: var(--before--left, auto);
+					top: var(--before--top, auto);
+					bottom: var(--before--bottom, auto);
+				}
+				&:after {
+					display: var(--after--display, none);
+					right: var(--after--right, auto);
+					left: var(--after--left, auto);
+					top: var(--after--top, auto);
+					bottom: var(--after--bottom, auto);
+				}
+			}
+		}
+	}
+	// Custom breakpoints.
+	&.has-custom-breakpoint {
+		flex-wrap: nowrap !important;
+		@each $breakpoint in 1024, 600 {
+			&-#{$breakpoint} {
+				@media (max-width: #{$breakpoint}px) {
+					flex-wrap: wrap !important;
+					> .wp-block-column {
+						flex-basis: 100% !important;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,346 @@
+$breakpoints: (
+	xxxs: 280,
+	xxs: 480,
+	xs: 600,
+	sm: 782,
+	md: 960,
+	lg: 1024,
+	xl: 1440,
+	xxl: 1600,
+);
+
+@mixin mq($bp) {
+	@if ($bp == 'motion' or $bp == 'reduced-motion') {
+		@include mq-reduced-motion() {
+			@content;
+		}
+	} @else if ($bp == 'dark') {
+		@include mq-dark() {
+			@content;
+		}
+	} @else if ($bp == 'light') {
+		@include mq-light() {
+			@content;
+		}
+	} @else {
+		@include mq-min($bp) {
+			@content;
+		}
+	}
+}
+
+@mixin mq-min($bp) {
+	$breakpoint: map-get($breakpoints, $bp);
+
+	@media (min-width: #{$breakpoint}px) {
+		@content;
+	}
+}
+
+@mixin mq-max($bp) {
+	$breakpoint: map-get($breakpoints, $bp) - 1;
+
+	@media (max-width: #{$breakpoint}px) {
+		@content;
+	}
+}
+
+@mixin mq-between($bp1, $bp2) {
+	$breakpoint1: map-get($breakpoints, $bp1);
+	$breakpoint2: map-get($breakpoints, $bp2);
+
+	@media (min-width: #{$breakpoint1}px) and (max-width: #{$breakpoint2}px) {
+		@content;
+	}
+}
+
+@mixin mq-reduced-motion() {
+	@media (prefers-reduced-motion) {
+		@content;
+	}
+}
+
+@mixin mq-dark() {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin mq-light() {
+	@media (prefers-color-scheme: light) {
+		@content;
+	}
+}
+
+.zach-content-truncated {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+
+	//data-max-lines="3"
+	@for $i from 1 through 10 {
+		&[data-max-lines='#{$i}'] {
+			-webkit-line-clamp: $i;
+			line-clamp: $i;
+		}
+	}
+}
+
+@mixin transition($property: all, $duration: 0.3s, $timing-function: ease-in-out) {
+	transition: $property $duration $timing-function;
+}
+
+@mixin button($style: primary) {
+	font-size: var(--block--button-font-size);
+	font-family: var(--block--button-font-family, inherit);
+	padding: var(--block--button-padding);
+	background-color: var(--block--button-background-color);
+	color: var(--block--button-color);
+	border-radius: var(--block--button--border-radius);
+	box-shadow: var(--block--button-shadow);
+	line-height: var(--block--button-line-height);
+	font-weight: var(--block--button-font-weight, 500);
+	text-wrap: var(--block--button-text-wrap, nowrap); // No Text Wrapping by Default.
+
+	border-width: var(--block--button--border--width);
+	border-color: var(--block--button--border--color);
+	border-style: var(--block--button--border--style);
+
+	@include transition;
+	&::before {
+		display: none;
+	}
+	&:hover,
+	&:focus {
+		--block--button-shadow: var(--block--button-hover-shadow);
+		--block--button-background-color: var(--block--button-hover-background-color);
+		--block--button-color: var(--block--button-hover-color) !important;
+	}
+	&:is(a):not([href]),
+	&:disabled {
+		cursor: not-allowed;
+		--block--button-background-color: var(--block--button-disabled-background-color);
+		--block--button-color: var(--block--button-disabled-color);
+		--block--button-shadow: var(--block--button-disabled-shadow);
+	}
+	@if ($style == 'outline' or $style == 'secondary') {
+		--block--button-background-color: transparent;
+		--block--button-color: var(--wp--preset--color--yellow);
+		--block--button-shadow: inset 0 0 0 2px var(--block--button-color);
+		&:hover,
+		&:focus {
+			--block--button-background-color: var(--wp--preset--color--custom-green-dark);
+			--block--button-color: var(--wp--preset--color--white);
+			--block--button-shadow: inset 0 0 0 2px var(--block--button-background-color);
+		}
+		&:is(a):not([href]),
+		&:disabled {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--yellow);
+			--block--button-shadow: inset 0 0 0 2px var(--block--button-color);
+		}
+	} @else if ($style == 'arrow') {
+		// Variables.
+		--block--button-background-color: transparent;
+		--block--button-color: var(--wp--preset--color--blue);
+		--block--button-shadow: none;
+		--block--button-padding: 0;
+		--block--button-gap: 4px;
+		--block--button--border-width: 0px;
+		// Rules.
+		border: none;
+		// Arrow button displays flex because the arrow psuedo element aligns.
+		display: flex;
+		gap: var(--block--button-gap);
+		align-items: center;
+		&:hover,
+		&:focus {
+			--block--button-gap: 7.5px;
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--dark-gray);
+		}
+		&:is(a):not([href]),
+		&:disabled {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--black);
+		}
+		// The arrow pseudo element.
+		&:after {
+			--mask-width: 0.875em;
+			--mask-height: 0.6875em;
+			--mask-image: var(--bswh--icon--arrow-right);
+			--mask-repeat: no-repeat;
+			--mask-size: var(--mask-width) var(--mask-height);
+			--mask-position: center center;
+
+			@include transition;
+			background-color: currentColor;
+			display: block;
+			padding: 0.40625em 0.3125em;
+			content: '';
+			width: var(--mask-width);
+			height: var(--mask-height);
+			mask-image: var(--mask-image);
+			mask-repeat: var(--mask-repeat);
+			mask-size: var(--mask-size);
+			mask-position: var(--mask-position);
+			-webkit-mask-image: var(--mask-image);
+			-webkit-mask-repeat: var(--mask-repeat);
+			-webkit-mask-size: var(--mask-size);
+			-webkit-mask-position: var(--mask-position);
+		}
+	} @else if ($style == 'link') {
+		// Variables.
+		--block--button-background-color: transparent;
+		--block--button-color: var(--wp--preset--color--dark-gray);
+		--block--button-shadow: none;
+		--block--button-padding: 0;
+		--block--button-gap: 4px;
+		--block--button--border-width: 0px;
+		--block--button-font-size: var(--wp--preset--font-size--x-small);
+		// Rules.
+		border: none;
+		display: flex;
+		gap: var(--block--button-gap);
+		align-items: center;
+		&:hover,
+		&:focus {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--dark-gray);
+		}
+		&:is(a):not([href]),
+		&:disabled {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--black);
+		}
+	}
+	// Custom background colors.
+	&.has-background[class] {
+		--block--button--border--color: var(--current-background-color);
+		&:hover {
+			// Override the rule set by the background color.
+			background-color: var(--block--button-background-color) !important;
+		}
+		&.has-dark-red-background-color {
+			--block--button-color: var(--wp--preset--color--white);
+			--block--button-hover-color: var(--wp--preset--color--dark-gray);
+			--block--button-hover-background-color: var(--wp--preset--color--light-red);
+		}
+		&.has-white-background-color {
+			--block--button--border--color: var(--wp--preset--color--dark-gray);
+			&:hover {
+				--block--button--border--color: var(--wp--preset--color--yellow);
+			}
+		}
+		&.has-blue-background-color {
+			--block--button--border--color: var(--wp--preset--color--dark-gray);
+			--block--button-color: var(--wp--preset--color--white);
+			&:hover {
+				--block--button--border--color: var(--current-background-color);
+				--block--button-hover-background-color: var(--wp--preset--color--light-blue);
+			}
+		}
+	}
+}
+
+@mixin button-on-dark($style: primary) {
+	--block--button-color: var(--wp--preset--color--black);
+	&:hover,
+	&:focus {
+		--block--button-background-color: var(--wp--preset--color--white);
+		--block--button-color: var(--wp--preset--color--dark-green);
+	}
+	&:is(a):not([href]),
+	&:disabled {
+		--block--button-background-color: var(--wp--preset--color--purple);
+		--block--button-color: var(--wp--preset--color--black);
+	}
+	@if ($style == 'outline' or $style == 'secondary') {
+		--block--button-color: var(--wp--preset--color--white);
+		--block--button-shadow: inset 0 0 0 2px var(--block--button-color);
+		&:hover,
+		&:focus {
+			--block--button-background-color: var(--wp--preset--color--white);
+			--block--button-color: var(--wp--preset--color--blue);
+			--block--button-shadow: inset 0 0 0 2px var(--block--button-background-color);
+		}
+		&:is(a):not([href]),
+		&:disabled {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--white);
+			--block--button-shadow: inset 0 0 0 2px var(--block--button-color);
+		}
+	} @else if ($style == 'tertiary') {
+		--block--button-background-color: transparent;
+		--block--button-color: var(--wp--preset--color--white);
+		&:hover,
+		&:focus {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--purple);
+		}
+		&:is(a):not([href]),
+		&:disabled {
+			--block--button-background-color: transparent;
+			--block--button-color: var(--wp--preset--color--white);
+		}
+	}
+}
+
+// Provides base layout for an entry content element.
+@mixin laser-underline($color1: currentcolor, $color2: currentcolor, $underlineSize: 2px) {
+	background-image: linear-gradient(
+		var(--laser-underline--color-1, #{$color1}),
+		var(--laser-underline--color-2, #{$color2})
+	) !important;
+	background-size: 0 $underlineSize !important;
+	background-repeat: no-repeat !important;
+	background-position-y: calc(100%) !important;
+	background-position-x: 0% !important;
+	transition: all var(--laser-underline--transition-speed, 0.3s) ease-in-out !important;
+	text-decoration: none !important;
+	border-bottom: none !important;
+
+	@include mq-reduced-motion() {
+		transition: none;
+	}
+
+	&:hover,
+	&:focus {
+		background-size: 100% $underlineSize !important;
+		background-position-x: 0% !important;
+		text-decoration: none !important;
+		border-bottom: none !important;
+	}
+}
+
+// Path ribbon color mixins.
+@mixin cool_1 {
+	--bswh--path--ribbon--color--1: #007eb4;
+	--bswh--path--ribbon--color--2: #3f9f90;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}
+@mixin cool_2 {
+	--bswh--path--ribbon--color--1: #8f659c;
+	--bswh--path--ribbon--color--2: #3f9f90;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}
+@mixin cool_3 {
+	--bswh--path--ribbon--color--1: #007eb4;
+	--bswh--path--ribbon--color--2: #8f659c;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}
+@mixin warm_1 {
+	--bswh--path--ribbon--color--1: #d5647a;
+	--bswh--path--ribbon--color--2: #ff9527;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}
+@mixin warm_2 {
+	--bswh--path--ribbon--color--1: #8f659c;
+	--bswh--path--ribbon--color--2: #d5647a;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}
+@mixin warm_3 {
+	--bswh--path--ribbon--color--1: #8f659c;
+	--bswh--path--ribbon--color--2: #ff9527;
+	--bswh--path--ribbon--color--3: #ffb71b;
+}

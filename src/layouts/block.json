@@ -1,0 +1,166 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"textdomain": "zach",
+	"name": "zach/layouts",
+	"version": "0.1.0",
+	"title": "Post Layouts",
+	"category": "zach-blocks",
+	"icon": "layout",
+	"description": "Display posts using selected layouts with customizable curation options.",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		}
+	},
+	"attributes": {
+		"posts": {
+			"type": "array",
+			"default": []
+		},
+		"postType": {
+			"type": "string",
+			"default": "post"
+		},
+		"curationType": {
+			"type": "string",
+			"default": "automatic"
+		},
+		"curation": {
+			"type": "string",
+			"default": "default"
+		},
+		"layout": {
+			"type": "string",
+			"default": "vertical"
+		},
+		"context": {
+			"type": "string",
+			"default": "frontend"
+		},
+		"term_id": {
+			"type": "integer",
+			"default": 0
+		},
+		"excludeType": {
+			"type": "string",
+			"default": ""
+		},
+		"excludePosts": {
+			"type": "array",
+			"default": []
+		},
+		"exclude_term_id": {
+			"type": "integer",
+			"default": 0
+		},
+		"selectValue": {
+			"type": "object"
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"displayLevel": {
+			"type": "string",
+			"default": ""
+		},
+		"numberPosts": {
+			"type": "integer",
+			"default": 5
+		},
+		"numberColumns": {
+			"type": "integer",
+			"default": 1
+		},
+		"showAsCarousel": {
+			"type": "boolean",
+			"default": false
+		},
+		"skipDuplicatePosts": {
+			"type": "boolean",
+			"default": false
+		},
+		"loadMore": {
+			"type": "boolean",
+			"default": false
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"paginationStyle": {
+			"type": "string",
+			"default": "numbered"
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
+		"showCategory": {
+			"type": "boolean",
+			"default": false
+		},
+		"showExcerpt": {
+			"type": "string",
+			"enum": ["show", "hide", "hover"],
+			"default": "hover"
+		},
+		"showDate": {
+			"type": "string",
+			"enum": ["show", "hide", "hover"],
+			"default": "hover"
+		},
+		"showAuthor": {
+			"type": "boolean",
+			"default": false
+		},
+		"showContinueReading": {
+			"type": "boolean",
+			"default": true
+		},
+		"readMoreMessage": {
+			"type": "string",
+			"default": "Learn More"
+		},
+		"fontSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"headingLineLimit": {
+			"type": "integer",
+			"default": 3
+		},
+		"excerptLineLimit": {
+			"type": "integer",
+			"default": 3
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"hoverStyle": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"example": {},
+	"editorScript": "file:./index.js",
+	"viewScript": ["file:./scripts/load-more/index.js", "file:./scripts/sliderDotNav.js"],
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

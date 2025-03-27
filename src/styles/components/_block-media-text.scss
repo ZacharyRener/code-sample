@@ -1,0 +1,100 @@
+.wp-block-media-text {
+	padding-bottom: var(--wp--preset--spacing--800);
+	&.is-style-hero {
+		position: relative;
+		@media (max-width: 600px) {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		@media (min-width: 601px) {
+			grid-template-columns: 67% auto;
+		}
+		@media (min-width: 1280px) {
+			grid-template-columns: 81.25% auto;
+		}
+		.wp-block-media-text__media {
+			img {
+				width: 100%;
+				min-height: 600px;
+				object-fit: cover;
+				@media (min-width: 601px) {
+					// xs
+					aspect-ratio: 1/1;
+					min-height: unset;
+				}
+				@media (min-width: 1280px) {
+					// xl
+					aspect-ratio: auto 13/6;
+				}
+			}
+		}
+		.wp-block-media-text__content {
+			grid-column: unset;
+			padding: 0;
+			@media (min-width: 601px) {
+				padding-right: var(--wp--preset--spacing--800);
+			}
+
+			& > .wp-block-group {
+				padding: var(--wp--preset--spacing--600);
+				box-sizing: border-box;
+				margin-left: var(--wp--preset--spacing--300);
+				margin-right: var(--wp--preset--spacing--300);
+				margin-top: -96px;
+				@media (min-width: 601px) {
+					margin-left: 0;
+					margin-right: 0;
+					margin-top: 0;
+				}
+			}
+			@media (min-width: 601px) {
+				width: 67%;
+				position: absolute;
+				right: 0;
+				&:not(.editor-styles-wrapper *) {
+					top: 50%;
+					transform: translateY(calc(-50% - calc(var(--wp--preset--spacing--600) / 2)));
+				}
+			}
+			@media (min-width: 1280px) {
+				width: 37.5%;
+			}
+		}
+	}
+
+	&:not(.is-style-hero) {
+		column-gap: var(--bswh--spacing--md);
+		&:not(.has-media-on-the-right) {
+			.wp-block-media-text__media {
+				margin-right: var(--wp--preset--spacing--300);
+			}
+
+			.wp-block-media-text__content {
+				padding-right: 0;
+				padding-left: var(--wp--preset--spacing--300);
+			}
+		}
+
+		&.has-media-on-the-right {
+			.wp-block-media-text__media {
+				margin-left: var(--wp--preset--spacing--300);
+			}
+			.wp-block-media-text__content {
+				padding-left: 0;
+				padding-right: var(--wp--preset--spacing--300);
+			}
+		}
+
+		@media (max-width: 600px) {
+			.wp-block-media-text__media {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.wp-block-media-text__content {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+body {
+	> *:not(.wp-site-blocks) {
+		display: none;
+	}
+
+	.wp-site-blocks {
+		> header.wp-block-template-part,
+		> .wp-block-zach-template-action,
+		> footer.wp-block-template-part,
+		.path-ribbon-container-outer,
+		.bswh-table-of-contents,
+		.entry-meta-footer,
+		.path-ribbon-container-outer:has(.path-ribbon-container)
+			+ .wp-block-post-featured-image::before,
+		.path-ribbon-container-outer:has(.path-ribbon-container)
+			+ .wp-block-post-featured-image::after {
+			display: none;
+		}
+
+		.wp-block-group:has(.path-ribbon-container-outer),
+		.path-ribbon-container-outer:has(.path-ribbon-container) + .wp-block-post-featured-image {
+			padding: 0;
+		}
+
+		.path-ribbon-container-outer:has(.path-ribbon-container) + .wp-block-post-featured-image {
+			border: 0;
+		}
+	}
+}

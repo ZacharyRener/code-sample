@@ -1,0 +1,8 @@
+.github
+.gitignore
+readme.md
+wp-content/themes/code-sample/node_modules/
+wp-content/themes/code-sample/vendor/
+wp-content/wp-defender-secrets.php
+node_modules/
+node_modules

@@ -1,0 +1,35 @@
+name: Deploy Theme to WP Engine
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.3.0'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Install composer dependencies
+        run: composer install
+
+      - name: Build theme
+        run: npm run build
+
+      - name: Deploy to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: zachcodesample
+          FLAGS: -azv --exclude-from=.deployignore
+          REMOTE_PATH: "wp-content/themes/code-sample/"
+          CACHE_CLEAR: true

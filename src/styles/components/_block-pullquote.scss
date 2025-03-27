@@ -1,0 +1,7 @@
+.wp-block-pullquote[class] {
+	> blockquote {
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

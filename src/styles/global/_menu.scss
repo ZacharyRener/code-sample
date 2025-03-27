@@ -1,0 +1,289 @@
+// WP Navigation
+.wp-block-navigation {
+	&.mobile-menu {
+		display: flex;
+	}
+	&.desktop-menu {
+		display: none;
+	}
+	@include mq('lg') {
+		&.mobile-menu:not(.always-mobile-menu) {
+			display: none;
+		}
+		&.desktop-menu {
+			display: flex;
+		}
+	}
+
+	// Desktop Menu Mega.
+	&.desktop-menu {
+		height: 70px;
+
+		.zach-mega-menu-panel-mobile {
+			// Important rule that the mobile panels do not show up on desktop.
+			display: none !important;
+		}
+		.wp-block-navigation__responsive-container {
+			height: 100%;
+			.wp-block-navigation__responsive-container-content {
+				.wp-block-navigation__container {
+					> * {
+						// top level menu items will be 70px high.
+						height: 70px;
+						> button,
+						> a {
+							@include laser-underline($underlineSize: 3px);
+							padding: 0;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							&:hover {
+								color: var(--wp--preset--color--blue);
+							}
+							// Show the mega menu when aria-expanded is true.
+							&[aria-expanded='true'] {
+								--laser-underline--color-1: var(--wp--preset--color--yellow);
+								--laser-underline--color-2: var(--wp--preset--color--yellow);
+								background-size: 100% 3px !important;
+								background-position-x: 0% !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Mobile Menu Mega.
+	&.mobile-menu {
+		// Mobile menu open button.
+		button.wp-block-navigation__responsive-container-open {
+			// Hide the stock svg.
+			svg {
+				display: none;
+			}
+			background-image: var(--bswh--icon--menu);
+			background-size: 14px 12px;
+			background-repeat: no-repeat;
+			background-position: var(--wp--preset--spacing--40) center;
+			width: 48px; // Easy for finger tapping.
+			height: 50px; // The size of the header
+			// Simulate the left gutter, but still allow for the 48px wide tap target.
+			margin-left: calc(-1 * var(--wp--preset--spacing--40));
+			@include mq('lg') {
+				margin-left: 0;
+			}
+		}
+
+		// Close button within the container.
+		.wp-block-navigation__responsive-container-close {
+			position: relative;
+			width: 48px;
+			height: 50px; // The size of the header
+			// Hide the stock svg.
+			svg {
+				display: none;
+			}
+			background-image: var(--bswh--icon--mobile-close);
+			background-size: 14px 13px;
+			background-repeat: no-repeat;
+			background-position: 16px center;
+		}
+
+		.wp-block-navigation__responsive-container {
+			justify-content: stretch;
+			min-height: calc(
+				100vh - var(--wp-admin--admin-bar--height, 0px) - var(--bswh--alert-bar--height, 50px)
+			);
+			overflow: hidden;
+			padding: 0;
+			top: 0;
+			margin-left: calc(-1 * var(--wp--preset--spacing--40));
+			@include mq('lg') {
+				margin-left: 0;
+			}
+			width: calc(100% + 2 * var(--wp--preset--spacing--40));
+			max-width: 1024px;
+			background: white;
+			.wp-block-navigation__responsive-close {
+				.wp-block-navigation__responsive-dialog {
+					margin-top: 0;
+				}
+			}
+
+			.wp-block-navigation__responsive-container-content {
+				height: calc(var(--mega-menu-panel--mobile-height) - var(--bswh--spacing--sm));
+				padding-top: 0;
+				margin-top: var(--bswh--spacing--sm);
+				overflow-y: auto;
+				@include mq('lg') {
+					margin-top: 0;
+				}
+			}
+
+			// The top level list of links
+			ul.wp-block-navigation__container {
+				width: 100%;
+				transition: all 0.3s ease-in-out;
+				height: 100%;
+				overflow: hidden;
+				row-gap: 0;
+				position: relative;
+				contain: layout;
+				padding-top: 2px; // A teeny padding to allow the top button's focus outline top to be visible.
+				// When any child expanded.
+				&:has(button[aria-expanded='true']) {
+					// Move the menu all the way to the left to make room for the panel.
+					// Move all the top level items.
+					> li {
+						margin-left: calc(-1 * (100% + var(--mega-menu-panel--padding-inline)));
+						--panel-left: 0%;
+					}
+				}
+				> li {
+					margin-inline: var(--mega-menu-panel--padding-inline);
+					transition: all 0.3s ease-in-out;
+					font-size: 15px;
+					border-bottom: 1px solid #ddd;
+					position: static;
+					max-width: calc(100% - (2 * var(--mega-menu-panel--padding-inline)));
+
+					&:hover {
+						color: var(--wp--preset--color--blue);
+					}
+
+					> a,
+					> button {
+						padding-block: var(--wp--preset--spacing--50);
+						width: calc(100vw - (var(--bswh--spacing--md)));
+						max-width: 100%;
+						height: 100%;
+						text-align: left;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+
+						&:after {
+							--mask-image: var(--bswh--icon--chevron-down);
+							--mask-size: 100% 100%;
+							--mask-position: center;
+							background-color: currentColor;
+							display: block;
+							width: 10px;
+							height: 7px;
+							content: '';
+							transform: rotate(-90deg);
+							mask: var(--mask-image) var(--mask-position) / var(--mask-size);
+							-webkit-mask: var(--mask-image) var(--mask-position) / var(--mask-size);
+						}
+					}
+				}
+				> li.wp-block-zach-mega-menu {
+					display: block;
+					height: auto;
+
+					> button {
+					}
+					> .zach-mega-menu-panel-mobile {
+						grid-area: panel;
+						position: absolute;
+						left: var(--panel-left, 100%);
+						top: 0;
+						width: 100vw;
+						max-width: 100%;
+						overflow-y: auto;
+						max-height: 100%;
+						background-color: white;
+						padding-inline: var(--mega-menu-panel--padding-inline);
+						opacity: 1;
+						pointer-events: all;
+						transition: all 0.3s ease-in-out;
+						&[aria-hidden='true'] {
+							opacity: 0;
+							pointer-events: none;
+						}
+						display: grid;
+						grid-template-areas:
+							'title'
+							'panel';
+						> .zach-mega-menu-panel-mobile-header {
+							place-self: start start;
+							z-index: 1;
+							position: relative;
+							border-bottom: 1px solid #dddddd;
+							padding-block: 10px;
+							margin-bottom: var(--bswh--spacing--sm);
+							display: grid;
+							align-items: center;
+							width: 100%;
+							grid-template-areas: 'title';
+							> .zach-mega-menu-panel-mobile-header-close-button {
+								grid-area: title;
+								place-self: start;
+								transform: rotate(90deg);
+								background-image: var(--bswh--icon--chevron-down);
+								background-color: var(--wp--preset--color--white, #fff);
+								background-position: 50%;
+								background-repeat: no-repeat;
+								background-size: 11px 118px;
+								cursor: pointer;
+								height: 38px;
+								margin: 0;
+								min-width: 38px;
+								padding: 0;
+								width: 38px;
+								z-index: 2;
+							}
+							> .zach-mega-menu-panel-mobile-header-title {
+								font-weight: 600;
+								text-align: center;
+								place-self: center;
+								grid-area: title;
+								color: rgb(54, 66, 72);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Fix to change breakpoint to 1024px.
+@media (min-width: 600px) {
+	.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+
+	.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open)
+		.wp-block-navigation__responsive-container-close {
+		display: none;
+	}
+
+	.wp-block-navigation__responsive-container.is-menu-open
+		.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+		left: 0;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+	.wp-block-navigation__responsive-container-open[class]:not(.always-shown) {
+		display: flex;
+	}
+}
+
+@media (min-width: 1024px) {
+	.wp-block-navigation__responsive-container:not(.hidden-by-default)[class]:not(.is-menu-open) {
+		display: block;
+	}
+
+	.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open)
+		.wp-block-navigation__responsive-container-close {
+		display: none;
+	}
+
+	.wp-block-navigation__responsive-container.is-menu-open
+		.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+		left: 0;
+	}
+}

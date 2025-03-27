@@ -1,0 +1,709 @@
+@at-root {
+	body {
+		--bswh--card--aspect-ratio: auto;
+		--bswh--card--background-color: white;
+		--bswh--card--gap: 20px;
+		--bswh--card--pb: 20px;
+		--bswh--card--transition--speed: 400ms;
+		--bswh--card--inner-grid-row: 1fr;
+		--bswh--card--box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.05);
+
+		// Card Featured Media.
+		--bswh--card--featured-media--aspect-ratio: 2/1;
+		--bswh--card--featured-media--height: 100%;
+
+		// Card Content.
+		--bswh--card--content--color--link: blue;
+		--bswh--card--content--block-spacing: 12px;
+		--bswh--card--title--row-height: calc(
+			(
+				3 * var(--wp--preset--font-size--large) +
+					(var(--wp--preset--font-size--large) * var(--wp--custom--line-height--heading))
+			)
+		);
+
+		// Continue Reading.
+		--bswh--card--content--continue-reading--color: var(--wp--preset--color--blue);
+		--bswh--card--content--continue-reading--gap: 9px;
+	}
+}
+
+// Define container sizes.
+$minimun: 344px;
+
+.card[class] {
+	@include mq('sm') {
+		--bswh--card--gap: 40px;
+		--bswh--card--pb: 60px;
+	}
+	> .card__inner {
+		// Variables.
+		--bswh--card--aspect-ratio: unset;
+		--bswh--card--inner-grid-row: 100%;
+		--bswh--card--row-gap: 0;
+		// Mobile & Tablet Layout.
+		@container card (min-width: #{$minimun}) {
+			// Size=Default, Viewport=Tablet
+			--bswh--card--aspect-ratio: 304/283;
+			--bswh--card--inner--grid-template-rows: auto min-content;
+			--bswh--card--content-align-content: end;
+			--bswh--card--featured-media--height: calc(
+				100cqh - var(--wp--preset--font-size--medium) - (2 * var(--bswh--card--gap)) -
+					(
+						3 * var(--wp--preset--font-size--large) +
+							(var(--wp--preset--font-size--large) * var(--wp--custom--line-height--heading))
+					)
+			);
+		}
+		@container card (min-width: 680px) {
+			// Size=Default, Viewport=Mobile
+			--bswh--card--aspect-ratio: 600/420;
+		}
+		// Above mobile...
+		@include mq('sm') {
+			--bswh--card--gap: 40px;
+
+			@container card (max-width: 500px) {
+				--bswh--card--gap: 20px;
+			}
+
+			@container card (min-width: 426px) {
+				// Size=Default, Viewport=Default
+				--bswh--card--aspect-ratio: 427/420;
+			}
+			@container card (min-width: 600px) {
+				// Size=Large, Viewport=Default
+				--bswh--card--aspect-ratio: 630/459;
+			}
+		}
+	}
+
+	// Rules.
+	min-width: unset;
+	margin-top: 0;
+	padding: 0;
+	background-color: var(--bswh--card--background-color);
+	container-type: inline-size;
+	container-name: card;
+	display: grid;
+	border-radius: 4px;
+	box-shadow: var(--bswh--card--box-shadow);
+	grid-template-areas: 'card-content';
+	width: 100%;
+
+	transition-property: box-shadow;
+	transition-duration: var(--bswh--card--transition--speed);
+	transition-timing-function: cubic-bezier(.2,1,.3,1);
+
+	> * {
+		// Cover the entire card.
+		grid-area: card-content;
+		display: block;
+		position: relative;
+	}
+
+	// When the date is set to always been shown and not excerpt show...
+	&.card__has-date-show:not(.card__has-excerpt-show) {
+		--bswh--card--date--opacity: 1;
+	}
+
+	// When there are no revealing elements, we don't need to accommodate them and can size the content area differently.
+	&.card__has-excerpt-hide.card__has-date-hide {
+		@container card (min-width: #{$minimun}) {
+			> .card__inner {
+				--bswh--card--inner-grid-row: max-content;
+				.card__content {
+					--bswh--card--row-gap: 14px;
+					row-gap: 14px;
+				}
+			}
+		}
+	}
+
+	// If the entire card is a link, we can target the hover state of the card to then use on the inner content elements.
+	&:not(.remove-focus-styling):has(.card__link:hover, .card__link:focus) {
+		--bswh--card--box-shadow: 6px 8px 6px 0px rgba(0, 0, 0, 0.1);
+		// If there are no revealing elements.
+		&:not(:has(.card__content-middle > .card__date):has(.card__content-middle > .card__excerpt)) {
+			--bswh--card--element-reveal--row-height: 0fr;
+			--bswh--card--element-reveal--padding-block: 0;
+		}
+		// If there are revealing elements.
+		&:not(.card__has-excerpt-hide.card__has-date-hide) {
+			> .card__inner {
+				--bswh--card--content--continue-reading--color: var(--wp--preset--color--dark-gray);
+				--bswh--card--content--continue-reading--gap: 14px;
+				--bswh--card--content--row-gap: 12px;
+				--bswh--card--content--continue-reading--padding: 12px 24px 12px;
+
+				@include mq('sm') {
+					// Only reveal elements on sizes larger than tablet.
+					@container card (min-width: #{$minimun}) {
+						--bswh--card--element-reveal--opacity: 1;
+						--bswh--card--element-reveal--max-height: auto;
+						--bswh--card--element-reveal--padding-block: 20px;
+						--bswh--card--element-reveal--visibility: visible;
+						--bswh--card--element-reveal--row-height: 1fr;
+						--bswh--card--title--row-height: 0;
+					}
+				}
+			}
+		}
+		&.has-hover-style-yellow {
+			--bswh--card--background-color: var(--wp--preset--color--light-yellow);
+			.card__continue-reading {
+				background-color: var(--wp--preset--color--yellow);
+				&:after {
+					mask-size: 10px 7.857px;
+				}
+			}
+		}
+	}
+
+	&:has(.card__link:focus) {
+		outline-color: var(--bswh--button--focus--outline--color, blue);
+		outline-offset: 3px;
+		outline-style: solid;
+		outline-width: 2px;
+	}
+
+	// Card Style - Default is vertical, so we need to adjust for horizontal.
+	&.is-style-horizontal[class][class] {
+		// Only when the screen is wider than 601px...
+		@media (min-width: 601px) {
+			// And the card is at least 410px wide.
+			@container card (min-width: 410px) {
+				--bswh--card--featured-media--aspect-ratio: unset;
+
+				// On hover, with no revealing elements.
+
+				&:not(
+						:has(.card__content-middle > .card__date):has(.card__content-middle > .card__excerpt)
+					) {
+					&:has(.card__link:hover, .card__link:focus) {
+						> .card__inner[class] {
+							--bswh--card--inner-grid-columns: auto 50%;
+							--bswh--card--element-reveal--row-height: 0;
+							--bswh--card--element-reveal--padding-block: 0;
+						}
+					}
+				}
+				// Has revealing elements.
+				&.card__has-excerpt-hover,
+				&.card__has-date-hover {
+					&:has(.card__link:hover, .card__link:focus) {
+						> .card__inner {
+							--bswh--card--inner-grid-columns: auto 68%;
+							> .card__content {
+								> .card__content-middle {
+									// Turning off the transform because it doesn't appear to go well with the row changing height.
+									// transform: translateY(0);
+								}
+							}
+						}
+					}
+				}
+				// Non-hover state.
+				> .card__inner {
+					// Variables.
+					--bswh--card--aspect-ratio: 627/326;
+					--bswh--card--featured-media--aspect-ratio: 313.5/326;
+					--bswh--card--featured-media--height: 100%;
+					// Rules.
+					grid-template-rows: 1fr;
+					background-color: var(--bswh--card--content--background-color);
+
+					> .card__figure {
+						grid-column-start: 1;
+						grid-column-end: 2;
+						grid-row: 1 / -1;
+						max-width: auto;
+						width: auto;
+						height: 100%;
+					}
+					> .card__content {
+						max-height: 100%;
+						overflow-y: hidden;
+						grid-column-start: 2;
+						grid-column-end: 3;
+						grid-row: 1 / -1;
+						align-content: space-between;
+						@container card (max-width: 500px) {
+							// Do not display the excerpt when the card is smaller than 500px.
+							.card__excerpt {
+								display: none;
+							}
+						}
+						> .card__content-top {
+							.card__title + .card__date {
+								margin-top: var(--bswh--card--content--block-spacing, 12px);
+								display: block;
+							}
+						}
+						> .card__content-middle {
+							// Turning off the transform because it doesn't appear to go well with the row changing height.
+							// transform: translateY(-17%);
+						}
+						> .card__content-bottom {
+							align-self: end;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Card Style - Statistics.
+	&.is-style-statistics {
+		--bswh--card--aspect-ratio: 0;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		transition-property: box-shadow, border-radius, border, background;
+		transition-duration: var(--bswh--card--transition--speed);
+		transition-timing-function: cubic-bezier(.2,1,.3,1);
+		&:has(.card__link) {
+			--bswh--card--statistics-title--padding-top: 12px;
+		}
+		.wp-block-group[class] {
+			--wp--custom--spacing--gap: 12px;
+			padding: 0;
+		}
+		.wp-block-zach-card > .wp-block-group > .wp-block-group {
+			width: 100%;
+			@include mq-between('sm', 'lg') {
+				flex-flow: column;
+				align-items: start;
+			}
+		}
+
+		.card__inner {
+			display: block;
+			--bswh--card--aspect-ratio: unset;
+			container-type: inline-size;
+			@container card (min-width: 395px) {
+				--bswh--card--gap: 40px;
+			}
+			> .card__content {
+				background-color: transparent !important;
+				row-gap: var(--wp--preset--spacing--40, 20px);
+				> .card__content-top {
+					padding-block: 0 var(--bswh--card--statistics--padding-bottom, 0) !important;
+					transition-property: all;
+					transition-duration: var(--bswh--card--transition--speed);
+					transition-timing-function: cubic-bezier(.2,1,.3,1);
+					.wp-block-group {
+						> .wp-block-group {
+							--wp--custom--spacing--gap: 20px;
+							transition-property: all;
+							transition-duration: var(--bswh--card--transition--speed);
+							transition-timing-function: cubic-bezier(.2,1,.3,1);
+							padding-top: var(--bswh--card--statistics-title--padding-top) !important;
+
+							svg {
+								width: 100%;
+								max-width: 48px;
+								min-width: 48px;
+							}
+							.wp-block-heading.card__title {
+								&.is-long {
+									.spaced {
+										display: block;
+										&.shrink {
+											font-size: 80%;
+										}
+									}
+									&:not(:has(.spaced)) {
+										.number {
+											font-size: 80%;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				> .card__content-bottom {
+					.card__continue-reading {
+						&:not(:empty) {
+							max-width: 24px;
+							max-height: 24px;
+							text-indent: -9999px;
+							overflow: hidden;
+							--bswh--card--content--continue-reading--gap: 0 !important;
+						}
+					}
+				}
+			}
+		}
+
+		&:has(.card__link:hover, .card__link:focus) {
+			--bswh--card--background-color: var(--wp--preset--color--light-yellow);
+			--bswh--card--statistics-title--padding-top: 0;
+			--bswh--card--statistics--padding-bottom: 12px;
+			border: 1px solid var(--wp--preset--color--yellow, #ffb71b);
+			> .card__inner > .card__content {
+				> .card__content-top {
+					padding-block: 0;
+					.wp-block-group {
+						> .wp-block-group {
+							--wp--custom--spacing--gap: 8px;
+						}
+					}
+				}
+				> .card__content-bottom > .card__continue-reading {
+					background-color: var(--wp--preset--color--yellow);
+					&:after {
+						mask-size: 10px 7.857px;
+					}
+				}
+			}
+		}
+	}
+
+	// If the card has no image, we want the card content to fill the entire vertical space.
+	&.card__no-image {
+		--bswh--card--card-content--grid-row: 1/-1;
+	}
+
+	> .card__link {
+		z-index: 1;
+	}
+
+	// Default (vertical). Card inner is taking care of a lot of the layout and sizing.
+	> .card__inner {
+		// Rules.
+		@container card (min-width: #{$minimun}) {
+			container-type: size;
+			container-name: card__inner;
+		}
+		aspect-ratio: var(--bswh--card--aspect-ratio, auto);
+		display: grid;
+		flex-direction: column;
+		grid-template-columns: var(--bswh--card--inner-grid-columns, auto 50%);
+		// Hide the featured image when the card is not wide enough.
+		grid-template-rows: var(--bswh--card--inner--grid-template-rows, max-content auto);
+
+		row-gap: 0;
+		column-gap: 0;
+		height: 100%;
+		// 100% max-width was causing issues in Chrome with the aspect-ratio, so 100 container width is better.
+		max-width: 100cqw;
+		// Transition properties.
+		transition-property: grid-template-rows, grid-template-columns, aspect-ratio;
+		transition-duration: var(--bswh--card--transition--speed);
+		transition-timing-function: cubic-bezier(.2,1,.3,1);
+
+		// Grid Layout for Default (Vertical) card.
+		> * {
+			grid-column-start: 1;
+			grid-column-end: 3;
+			max-width: 100%;
+			padding-inline: var(--bswh--card--gap, 20px);
+			padding-block: 0;
+			margin: 0;
+		}
+
+		> .card__figure {
+			grid-row: 1 / 2;
+			padding-inline: 0;
+			flex-grow: 1;
+		}
+
+		> .card__content {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows:
+				min-content var(--bswh--card--element-reveal--row-height, 0fr)
+				max-content;
+			transition: var(--bswh--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+			align-content: var(--bswh--card--content-align-content, space-between);
+			padding-top: var(--bswh--card--gap, 20px);
+			padding-bottom: var(--bswh--card--pb, 20px);
+
+			> .card__content-top {
+				position: relative;
+				grid-row: 1 / 2;
+				padding-bottom: var(--bswh--card--content--block-spacing, 12px);
+				transition: var(--bswh--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+				// min-height: var(--bswh--card--title--row-height);
+				height: auto;
+			}
+
+			> .card__content-middle {	
+				grid-row: 2 / 3;
+				min-height: 0;
+				transition: var(--bswh--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+				padding-block-end: var(--bswh--card--element-reveal--padding-block, 0);
+				// The inner elements of the middle area take care of their own opacity because there is a situation where it needs to be changed.
+				> * {
+					transition: none;
+					opacity: var(--bswh--card--element-reveal--opacity, 0);
+				}
+			}
+
+			> .card__content-bottom {
+				grid-row: 3 / 4;
+				position: relative;
+			}
+		}
+
+		// Content Elements.
+		> .card__figure {
+			margin: 0;
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+
+			> * {
+				max-width: 100%;
+				width: 100%;
+				height: var(
+					--bswh--card--featured-media--height,
+					#{100cqh}
+				); // I think this needs to be formatted like this for SCSS to compile.
+				object-fit: cover;
+				object-position: center;
+				aspect-ratio: var(--bswh--card--featured-media--aspect-ratio);
+			}
+		}
+
+		.card__content *:last-child {
+			margin-block-end: 0;
+		}
+
+		.card__content {
+			background-color: var(--bswh--card--background-color, white);
+			.card__content-top {
+				.card__title {
+					margin-block: 0;
+					font-size: var(--wp--preset--font-size--large);
+				}
+			}
+
+			.card__content-middle {
+				display: flex;
+				flex-direction: column;
+				row-gap: var(--bswh--card--content--row-gap, 0);
+				&:empty {
+					padding: 0;
+				}
+			}
+			.card__date {
+				color: var(--wp--preset--color--dark-gray, #364248);
+				text-overflow: ellipsis;
+				font-size: var(--wp--preset--font-size--x-small);
+				font-style: normal;
+				font-weight: 600;
+				line-height: 1.6;
+			}
+
+			.card__excerpt {
+				color: var(--card--excerpt--color, var(--BSW-Text-Gray, #586f78));
+				font-size: var(--wp--preset--font-size--medium);
+				font-style: normal;
+				font-weight: 500;
+				line-height: 1.5;
+				p {
+					margin: 0;
+				}
+			}
+
+			.card__content-bottom {
+				// More link.
+				.card__continue-reading {
+					color: var(--bswh--card--content--continue-reading--color);
+					font-size: var(--wp--preset--font-size--medium);
+					font-weight: 700;
+					line-height: 1.6;
+					display: inline-flex;
+					transition: var(--bswh--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+					gap: var(--bswh--card--content--continue-reading--gap);
+					align-content: center;
+					align-items: center;
+					justify-items: center;
+					background-color: transparent;
+					border-radius: 12px;
+
+					&:after {
+						transition: var(--bswh--card--transition--speed) all cubic-bezier(.2,1,.3,1);
+						content: '';
+						display: block;
+						width: 24px;
+						height: 24px;
+						background-color: var(--bswh--card--content--continue-reading--color);
+						mask-image: var(--bswh--icon--arrow-right);
+						mask-size: 14px 10px;
+						mask-repeat: no-repeat;
+						mask-position: center;
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+	}
+
+	.has-16-9-aspect-ratio & {
+		.card__inner {
+			--bswh--card--aspect-ratio: 32/9;
+			--bswh--card--featured-media-aspect-ratio: 16/9;
+		}
+	}
+}
+
+// Card Style - Newsletter.
+.card.newsletter-card[class] {
+	background-color: white;
+	--bswh--card--content--continue-reading--gap: 4px;
+	.compass-card-header {
+		padding: 0;
+		width: 100%;
+		position: relative;
+		display: grid;
+		grid-template-areas: 'content';
+		> * {
+			grid-area: content;
+			margin: 0;
+			padding: 0;
+		}
+
+		p {
+			position: relative;
+			display: inline-block;
+			place-self: start end;
+			padding: 16px;
+			font-size: 16px;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+		img {
+			width: 260px;
+			aspect-ratio: 260/89.9;
+			height: auto;
+			max-width: calc(100% - 64px);
+			place-self: end start;
+			margin-left: 32px;
+			margin-top: 32px;
+			margin-bottom: 16px;
+		}
+		@container card (max-width: 315px) {
+			grid-template-areas:
+				'date'
+				'logo';
+			grid-template-rows: auto auto;
+			grid-template-columns: auto;
+			> p {
+				grid-area: date;
+				place-self: auto;
+				display: block;
+				width: 100%;
+			}
+			> img {
+				grid-area: logo;
+				place-self: auto;
+				margin: 16px;
+				max-width: calc(100% - 32px);
+			}
+		}
+	}
+
+	& > .card__inner {
+		display: flex !important;
+		flex-flow: column;
+		aspect-ratio: var(--bswh--card--newsletter--aspect-ratio, unset) !important;
+		> * {
+			padding-inline: 0;
+		}
+		& > .card__figure {
+			&.cool_1 {
+				@include cool_1;
+			}
+			&.cool_2 {
+				@include cool_2;
+			}
+			&.cool_3 {
+				@include cool_3;
+			}
+			&.warm_1 {
+				@include warm_1;
+			}
+			&.warm_2 {
+				@include warm_2;
+			}
+			&.warm_3 {
+				@include warm_3;
+			}
+			position: relative;
+			aspect-ratio: 440 / 277 !important;
+			flex: 1;
+
+			&::after {
+				content: '';
+				position: absolute;
+				border-top: 16px solid #364248;
+				border-right: 16px solid rgba(0, 0, 0, 0);
+				border-bottom: 16px solid transparent;
+				border-left: 16px solid #364248;
+				z-index: 1;
+				right: 0;
+				bottom: 0;
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 32px;
+				height: 32px;
+				background: white; /* Or use the background color of the parent */
+				clip-path: polygon(0 0, 100% 0, 0 100%);
+				pointer-events: none;
+				z-index: 1;
+			}
+			& > img {
+				height: calc(100% - 32px) !important;
+				max-width: calc(100% - 32px) !important;
+				box-shadow:
+					0 32px 0 0 var(--bswh--path--ribbon--color--1),
+					32px 0 0 0 var(--bswh--path--ribbon--color--2);
+			}
+		}
+		& > .card__content {
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+			grid-template-rows: 1fr max-content;
+			row-gap: 0;
+			flex: 1;
+			.card__content-top {
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+
+				.card__title {
+					font-size: 20px;
+					font-style: normal;
+					font-weight: 600;
+					line-height: 120%; /* 24px */
+					letter-spacing: -0.5px;
+				}
+
+				.card__excerpt {
+					text-overflow: ellipsis;
+					font-size: 16px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 160%; /* 25.6px */
+				}
+			}
+			.card__content-bottom {
+				padding: 20px;
+				border-top: 1px solid #ddd;
+			}
+		}
+	}
+	&:has(.card__link:hover, .card__link:focus) {
+		--bswh--card--content--continue-reading--gap: 14px;
+		--bswh--card--content--continue-reading--color: var(--wp--preset--color--dark-gray);
+	}
+}

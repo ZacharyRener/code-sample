@@ -1,0 +1,87 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zach/card",
+	"version": "0.1.0",
+	"title": "Card",
+	"textdomain": "zach",
+	"category": "zach-blocks",
+	"icon": "index-card",
+	"description": "A card with controls to render a post.",
+	"keywords": ["card"],
+	"supports": { "html": false, "align": false },
+	"usesContext": ["postId"],
+	"styles": [
+		{ "name": "vertical", "label": "Vertical", "isDefault": true },
+		{ "name": "horizontal", "label": "Horizontal" },
+		{ "name": "statistics", "label": "Statistics" },
+		{ "name": "newsletter", "label": "Newsletter" }
+	],
+	"attributes": {
+		"postId": {
+			"type": "number",
+			"default": 0
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
+		"showCategory": {
+			"type": "boolean",
+			"default": true
+		},
+		"showExcerpt": {
+			"type": "string",
+			"enum": ["show", "hide", "hover"],
+			"default": "show"
+		},
+		"showDate": {
+			"type": "string",
+			"enum": ["show", "hide", "hover"],
+			"default": "show"
+		},
+		"showAuthor": {
+			"type": "boolean",
+			"default": true
+		},
+		"showContinueReading": {
+			"type": "boolean",
+			"default": false
+		},
+		"fontSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"headingLineLimit": {
+			"type": "integer",
+			"default": 3
+		},
+		"excerptLineLimit": {
+			"type": "integer",
+			"default": 3
+		},
+		"readMoreMessage": {
+			"type": "string",
+			"default": "Read More"
+		},
+		"link": {
+			"type": "object"
+		},
+		"cardIsLink": {
+			"type": "boolean",
+			"default": true
+		},
+		"hoverStyle": {
+			"type": "string",
+			"default": "white"
+		}
+	},
+	"example": {},
+	"editorStyle": "file:./index.css",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "zach/blocks",
+	"description": "Custom blocks from Zach's codesample.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "0.7.2",
+		"wp-coding-standards/wpcs": "2.3.0",
+		"phpcompatibility/phpcompatibility-wp": "2.1.3",
+		"phpstan/phpstan": "1.8.5",
+		"szepeviktor/phpstan-wordpress": "1.1.2",
+		"php-stubs/wp-cli-stubs": "2.6.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Zach\\Plugin\\": "src",
+			"Zach\\Blocks\\": "./inc/classes/"
+		}
+	},
+	"scripts": {
+		"analyse": "phpstan analyse --memory-limit=1024M",
+		"format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+		"lint": "phpcs --standard=phpcs.xml.dist"
+	}
+}
