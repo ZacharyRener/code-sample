@@ -1,0 +1,118 @@
+@import './mixins.scss';
+@import './vars.scss';
+@import 'reset.scss';
+@import './global/icons.scss';
+
+.editor-styles-wrapper[class] {
+	.block-editor-block-list__layout.is-root-container[class] {
+		background: white;
+		--wp--custom--spacing--gap: var(--wp--preset--spacing--50);
+	}
+}
+.components-panel__body.page-style svg.components-panel__icon {
+	height: 25px;
+	width: 25px;
+}
+.cta-sizes-post-status-info {
+	padding-block: 6px;
+}
+
+.block-editor-inserter__menu.show-panel .block-editor-block-patterns-list__item {
+	height: unset !important;
+}
+
+// scale the preview window
+body.wp-admin {
+	// default values
+	--bswh-thumb-scale: 0.3;
+	--bswh-thumb-left: -115%;
+	--bswh-thumb-width: auto;
+	--bswh-thumb-max-w: 330%;
+
+	// some minor differences for the block hover preview window
+	.block-editor-inserter__preview {
+		--bswh-thumb-scale: 1;
+		--bswh-thumb-left: 0;
+		--bswh-thumb-width: 100%;
+		--bswh-thumb-max-w: 100%;
+		.components-disabled {
+			min-height: 240px !important;
+			background: white;
+		}
+	}
+	// main styling for controlling the preview window scale
+	.block-editor-block-preview__container .block-editor-block-preview__content {
+		transform: scale(1) !important;
+		.block-editor-iframe__container {
+			height: 210%;
+			iframe {
+				scale: var(--bswh-thumb-scale);
+				transform-origin: top;
+				max-width: var(--bswh-thumb-max-w);
+				left: var(--bswh-thumb-left);
+				width: var(--bswh-thumb-width);
+			}
+		}
+	}
+	.dataviews-view-grid .dataviews-view-grid__card {
+		max-width: 322px;
+	}
+	.block-editor-block-patterns-list__list-item {
+		max-width: 361px;
+	}
+	.panel-body-with-zr-logo {
+		h2.components-panel__body-title {
+			position: relative;
+		}	
+		&.components-panel__body>.components-panel__body-title {
+			background-size: 20px;
+			background-repeat: no-repeat;
+			background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 81' width='150' height='81'%3E%3Ctitle%3ENew Project%3C/title%3E%3Cdefs%3E%3Cimage width='151' height='81' id='img1' href='data:image/png;base64,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'/%3E%3C/defs%3E%3Cstyle%3E%3C/style%3E%3Cuse id='zr.' href='%23img1' x='0' y='0'/%3E%3C/svg%3E");
+			background-position: right;
+			background-position-x: calc( 100% - 50px);
+		}
+	}
+}
+
+// Adjust the link control in the sidebar so it isn't too wide.
+.zach-featured-post-control {
+	.block-editor-link-control[class] {
+		min-width: unset;
+		.block-editor-url-input[class] {
+			min-width: unset;
+			margin-inline: 0;
+		}
+		.block-editor-link-control__search-item.is-current {
+			padding: 0;
+		}
+
+		.block-editor-link-control__field {
+			margin-inline: 0;
+		}
+	}
+	.block-editor-link-control__search-item-top {
+		row-gap: 8px;
+		flex-wrap: wrap;
+		.block-editor-link-control__search-item-header {
+			// Have the link fill the width of the space, forcing the buttons to the next line.
+			min-width: 100%;
+		}
+		.components-button {
+			// We do not want folks editing the link and possibly breaking functionality.
+			&[aria-label='Edit link'] {
+				display: none;
+			}
+		}
+	}
+}
+
+.milestone-time-picker {
+	// This goes here instead of in the blocks editor.scss because the popover content is rendered outside of the Editor, so the block's css doesn't load.
+	fieldset:first-child {
+		display: none;
+	}
+}
+
+.components-panel__body.page-style {
+    display: none;
+}

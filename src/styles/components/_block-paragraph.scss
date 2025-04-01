@@ -1,0 +1,23 @@
+p {
+	// All paragraphs within the entry content.
+	.entry-content & {
+		// Handle the dropcap.
+		&.has-drop-cap {
+			&:first-letter {
+				float: left;
+				color: var(--bswh--post-content--drop-cap--color, var(--wp--preset--color--green));
+				font-size: 96px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 87px; /* 90.625% */
+				text-transform: uppercase;
+				padding-right: 8px;
+				margin: 0;
+			}
+		}
+		&.has-large-font-size,
+		&.has-x-large-font-size {
+			--bswh--block--paragraph--line-height: 1.6;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+body,
+html {
+	max-width: 100vw;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	*:focus-visible {
+		transition: 0s !important;
+		outline: var(--wp--preset--color--dark-blue) auto 1px;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+body.block-editor-page.wp-admin {
+	container-type: initial;
+}
+
+@import './_mixins.scss';
+@import './_vars.scss';
+@import './global/icons.scss';
+@import './global/block_post_content.scss';
+@import './components/';
+@import './global/animations.scss';

@@ -1,0 +1,39 @@
+.wp-block-cover[class] {
+	// Inner Half End.
+	&.cover-inner-half-end[class] {
+		@include mq-max('lg') {
+			padding-top: calc(318px + var(--wp--preset--spacing--70)) !important;
+		}
+		> .wp-block-cover__inner-container {
+			width: 100%;
+			@include mq('lg') {
+				min-width: min-content;
+				max-width: 50%;
+			}
+			> .wp-block-group {
+				display: flex;
+				gap: var(--wp--preset--spacing--40);
+				flex-direction: column;
+				align-items: stretch;
+				> :is(*, div) {
+					margin: 0;
+				}
+			}
+		}
+	}
+	// Custom inner container max width.
+	&.has-custom-inner-container-max-width {
+		> .wp-block-cover__inner-container {
+			@include mq('lg') {
+				min-width: min-content;
+				max-width: var(--inner-container--max-width);
+			}
+		}
+	}
+	// Reveal the top of the image on mobile by adding more top padding.
+	&.has-reveal-top-image-mobile {
+		@include mq-max('lg') {
+			padding-top: calc(318px + var(--wp--preset--spacing--70)) !important;
+		}
+	}
+}

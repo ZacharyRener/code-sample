@@ -1,0 +1,23 @@
+.zach-icon-dropdown-content {
+	.components-popover__content {
+		width: 240px;
+	}
+	.zach-icon-picker-list {
+		padding: 1px;
+		.zach-icon-picker-icon {
+			.components-button {
+				padding-block: 27px;
+				&:focus:not(:disabled) {
+					background-color: var(--wp--preset--color--light-yellow);
+				}
+				&.is-set {
+					background-color: var(--wp--preset--color--light-blue);
+				}
+				svg {
+					display: block;
+					fill: transparent;
+				}
+			}
+		}
+	}
+}

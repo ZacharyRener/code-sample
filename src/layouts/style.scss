@@ -1,0 +1,9 @@
+@import './styles/vars.scss';
+@import '../slider/slider.scss';
+
+.wp-block-zach-layouts,
+.card__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--block-gap, 20px);
+}

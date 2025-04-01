@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ruleset name="Sniffs for Zach's Blocks WordPress plugin">
+	<description>Sniffs for Zach's Blocks WordPress plugin</description>
+	<arg value="ps"/>
+	<arg name="extensions" value="php"/>
+	<config name="testVersion" value="8.0-"/>
+	<config name="text_domain" value="zach-blocks"/>
+	<config name="minimum_supported_wp_version" value="6.0"/>
+	<rule ref="PHPCompatibility"/>
+	<rule ref="WordPress-Core">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="WordPress.PHP.DisallowShortTernary"/>
+		<exclude name="WordPress.Files.FileName" />
+	</rule>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress.WP.I18n"/>
+	<rule ref="WordPress.Arrays.MultipleStatementAlignment">
+        <properties>
+            <property name="maxColumn" value="80"/>
+        </properties>
+    </rule>
+	<rule ref="Generic.Commenting">
+        <exclude name="Generic.Commenting.DocComment.MissingShort" />
+    </rule>
+	<file>.</file>
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+</ruleset>

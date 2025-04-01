@@ -1,0 +1,41 @@
+.wp-block-post-content {
+	// This is wrapped in a container with padding.
+	.single-padding-wrap &.has-global-padding {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// Top level blocks for the Article layout type templates, such as a Single Post.
+	&.article-layout {
+		// The base vertical spacing between blocks.
+		--wp--custom--spacing--gap: 16px;
+		&:not(.wp-block-heading) {
+			// Most blocks will have more spacing below them.
+			margin-bottom: calc(2 * var(--wp--custom--spacing--gap));
+		}
+	}
+
+	> *:not(.wp-block-gallery) {
+		background: var(--wp--preset--color--white);
+		body.post-template-default & {
+			background: transparent;
+		}
+	}
+
+	.is-layout-flow {
+		> * {
+			--wp--custom--spacing--gap: 16px;
+		}
+		.wp-block-media-text + * {
+			--wp--custom--spacing--gap: var(--bswh--spacing--md);
+		}
+	}
+}
+
+.entry-content {
+	background: var(--wp--preset--color--light-gray);
+}
+
+.wp-block-columns {
+    row-gap: 20px;
+}

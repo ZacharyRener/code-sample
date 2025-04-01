@@ -1,0 +1,78 @@
+// Global Alignments
+
+.alignleft {
+	float: left;
+	margin-right: var(--wp--custom--layout--block-spacing);
+}
+
+.alignright {
+	float: right;
+	margin-left: var(--wp--custom--layout--block-spacing);
+}
+
+.aligncenter {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+// Text Alignments
+.has-text-align-left {
+	text-align: left;
+}
+
+.has-text-align-right {
+	text-align: right;
+}
+
+.has-text-align-center {
+	text-align: center;
+}
+
+// Top Level Blocks.
+.wp-block-post-content {
+	> * {
+		margin-inline: auto;
+		width: min(calc(100% - var(--entry-gutters)), var(--wp--style--global--content-size));
+		@include mq('lg') {
+			width: 100%;
+		}
+
+		// Align Wide Blocks.
+		&.alignwide {
+			@include mq('lg') {
+				width: min(100%, var(--wp--style--global--wide-size));
+			}
+			width: 100%;
+		}
+		// Align Full Blocks
+		&.alignfull:not(.wp-block-template-part) {
+			width: 100%;
+		}
+		// Align Left Blocks.
+		&.alignleft {
+			margin-left: clamp(
+				calc(var(--entry-gutters) / 2),
+				calc((100% - var(--wp--style--global--content-size)) / 2),
+				100%
+			);
+			text-align: left;
+		}
+		// Align Right Blocks.
+		&.alignright {
+			margin-right: clamp(
+				calc(var(--entry-gutters) / 2),
+				calc((100% - var(--wp--style--global--content-size)) / 2),
+				100%
+			);
+			text-align: right;
+		}
+		// Align None Blocks.
+		&.alignnone {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	&.has-global-padding > .alignfull {
+		margin-inline: auto;
+	}
+}

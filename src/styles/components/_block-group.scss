@@ -1,0 +1,17 @@
+.wp-block-group[class] {
+	// Default group padding, excludes Row or Stack.
+	&:not(.is-layout-flex) {
+		padding: var(--wp--preset--spacing--70);
+	}
+
+	// Statistic Cards in a grid should have equal height excerpts.
+	&.is-layout-grid {
+		.card.is-style-statistics[class] .card__excerpt {
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			line-clamp: 3;
+		}
+	}
+}

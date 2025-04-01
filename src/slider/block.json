@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zach/slider",
+	"version": "0.2.0",
+	"title": "Slider",
+	"textdomain": "zach",
+	"category": "zach-blocks",
+	"icon": "slides",
+	"description": "Lightweight, CSS slider.",
+	"keywords": ["slider", "carousel", "scroll"],
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"anchor": true
+	},
+	"attributes": {
+		"layout": {
+			"type": "string",
+			"default": "horizontal"
+		},
+		"slideWidth": {
+			"type": "string"
+		},
+		"hasScrollbar": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"example": {},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./scrollbar.js"
+}

@@ -1,0 +1,122 @@
+@at-root {
+	body {
+		// Slider.
+		--bswh--slider--gap: var(--wp--preset--spacing--60, 24px);
+		--bswh--slider--margin-bottom: 0;
+		--bswh--slider--padding-top: var(--wp--preset--spacing--10);
+		// Slider scrollbars.
+		--bswh--slider--scrollbar--thumb-color: #000;
+		--bswh--slider--scrollbar--track-color: #e7e7e7;
+		--bswh--slider--scrollbar--track-height: 6px;
+		--bswh--slider--scrollbar--border-radius: 4px;
+		--bswh--slider--scrollbar--vertical-offset: 15px;
+		// Slider slides.
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 16/9;
+	}
+}
+
+#{if(&, '&','.zach-slider')} {
+	// Variables.
+	&.vertical {
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 9/16;
+	}
+
+	&.horizontal {
+		--bswh--slider--slide--width: 300px;
+		--bswh--slider--slide--aspect-ratio: 16/9;
+	}
+
+	// Rules.
+	display: flex;
+	position: relative;
+	overflow: auto;
+	align-items: stretch;
+	flex-wrap: nowrap;
+	gap: var(--bswh--slider--gap);
+	margin-bottom: var(--bswh--slider--margin-bottom);
+	padding-left: 0;
+	padding-top: var(--bswh--slider--padding-top);
+
+	&:not(.scrolling) {
+		scroll-snap-type: x mandatory;
+		scroll-snap-points-y: repeat(100%);
+		scroll-padding-inline: 0;
+		scroll-behavior: smooth;
+	}
+
+	// For Firefox.
+	scrollbar-width: thin;
+	scrollbar-color: var(--bswh--slider--scrollbar--thumb-color)
+		var(--bswh--slider--scrollbar--track-color);
+
+	&::-webkit-scrollbar {
+		height: var(--bswh--slider--scrollbar--track-height) !important;
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
+		background-color: transparent; /* or add it to the track */
+		margin-inline: 0;
+		-webkit-overflow-scrolling: auto;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--bswh--slider--scrollbar--track-color);
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
+		margin-inline: 0;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--bswh--slider--scrollbar--thumb-color);
+		border-radius: var(--bswh--slider--scrollbar--border-radius);
+	}
+
+	&::-webkit-scrollbar-track-piece:end {
+		margin-right: 0;
+		display: none;
+	}
+
+	&::-webkit-scrollbar-track-piece:start {
+		margin-left: 0;
+		display: none;
+	}
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	// When Javascript is taking over the scrollbars.
+	&.has-scrollbar,
+	.display-scrollbar & {
+		// When javascript has not taken over the scrollbars, provide some spacing between the bottom of the content and the top of the scrollbar.
+	}
+
+	// Slides.
+	> * {
+		scroll-snap-align: start;
+		flex-shrink: 0;
+		margin-bottom: var(--wp--preset--spacing--40);
+		// todo: set the max-width using space vars.
+		max-width: var(--bswh--slider--slide--max-width, calc(100vw - var(--wp--preset--spacing--40)));
+		width: var(--bswh--slider--slide--width);
+
+		.wp-block-embed__wrapper::before {
+			display: none;
+		}
+
+		.wp-block-embed iframe {
+			aspect-ratio: var(--bswh--slider--slide--aspect-ratio);
+			position: relative;
+			width: 100%;
+			height: auto;
+			max-height: none !important;
+			max-width: none !important;
+		}
+		&.card__wrapper {
+			width: 100% !important;
+			flex-flow: row;
+		}
+	}
+}

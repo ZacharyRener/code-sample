@@ -1,0 +1,44 @@
+.zach-slider[class][class] {
+	.block-list-appender {
+		position: relative;
+		.block-editor-default-block-appender {
+			height: 100%;
+			.block-editor-default-block-appender__content {
+				height: 100%;
+			}
+			.block-editor-inserter {
+				height: 100%;
+				width: 100%;
+				.block-editor-inserter__toggle.components-button {
+					height: 100%;
+					width: 100%;
+					display: flex;
+				}
+			}
+		}
+	}
+
+	.block-editor-inner-blocks {
+		max-width: 100%;
+	}
+	.block-editor-inner-blocks .block-editor-block-list__layout {
+		max-width: 100%;
+		display: flex;
+		gap: var(--wp--preset--spacing--400);
+
+		@import './slider.scss';
+	}
+
+	&.vertical .block-editor-inner-blocks .block-editor-block-list__layout {
+		> * {
+			flex-shrink: 0;
+			width: 300px;
+			// todo: set the max-width using space vars.
+			max-width: calc(100vw - 2rem);
+		}
+
+		.wp-block-embed iframe {
+			aspect-ratio: 9/16;
+		}
+	}
+}

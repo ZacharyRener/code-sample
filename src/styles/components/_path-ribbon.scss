@@ -1,0 +1,683 @@
+@keyframes top-horizontal-stripe {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes top-corner {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes vertical-stripe {
+	0% {
+		height: 0;
+		width: 0;
+	}
+	50% {
+		height: 0;
+		width: 0;
+	}
+	100% {
+		height: calc(100% - 90px);
+		width: 0;
+	}
+}
+
+@keyframes vertical-stripe-mobile {
+	0% {
+		height: 0;
+		width: 0;
+	}
+	50% {
+		height: 0;
+		width: 0;
+	}
+	100% {
+		height: calc(100% - 30px);
+		width: 0;
+	}
+}
+
+@keyframes bottom-corner {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+@keyframes bottom-horizontal-stripe {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 0;
+	}
+	100% {
+		width: 610px;
+	}
+}
+
+@keyframes bottom-horizontal-stripe-mobile {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 0;
+	}
+	100% {
+		width: 60px;
+	}
+}
+
+@keyframes bottom-horizontal-stripe-newsletter {
+	0% {
+		left: var(--starting-left, 0);
+	}
+	100% {
+		left: var(--ending-left, 0);
+	}
+}
+
+@keyframes vertical-stripe-newsletter {
+	from {
+		height: 0;
+	}
+	to {
+		height: 100%;
+	}
+}
+
+@keyframes top-horizontal-stripe-newsletter {
+	from {
+		width: var(--starting-width, 0%);
+	}
+	to {
+		width: var(--ending-width, 100%);
+	}
+}
+
+@at-root {
+	body {
+		--bswh--path--ribbon--animation--time: 0.2s;
+		--bswh--path--ribbon--animation--delay: 0.2s;
+		@include cool_1;
+	}
+}
+
+.ribbon_color_scheme_ {
+	&cool_1 {
+		@include cool_1;
+	}
+	&cool_2 {
+		@include cool_2;
+	}
+	&cool_3 {
+		@include cool_3;
+	}
+	&warm_1 {
+		@include warm_1;
+	}
+	&warm_2 {
+		@include warm_2;
+	}
+	&warm_3 {
+		@include warm_3;
+	}
+}
+
+/* path ribbon on homepage media/text block. */
+.wp-block-group:has(.path-ribbon-container):has(.wp-block-media-text) {
+	position: relative;
+	width: unset !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+	.path-ribbon-container {
+		width: 100%;
+		max-width: unset;
+		position: absolute;
+		left: 0;
+		height: 50%;
+		display: flex;
+		align-items: flex-start;
+		animation-name: top-horizontal-stripe;
+		animation-delay: var(--bswh--path--ribbon--animation--delay);
+		animation-duration: var(--bswh--path--ribbon--animation--time);
+		justify-content: flex-start;
+		width: 0;
+		animation-fill-mode: forwards;
+		@include mq-reduced-motion() {
+			animation: none;
+			width: 100%;
+		}
+		@include mq('xs') {
+			height: 100%;
+		}
+		.path-ribbon {
+			position: absolute;
+			width: calc(100% - 90px);
+			height: 100%;
+			@include mq('xs') {
+				width: calc(50% + 30px);
+				position: relative;
+			}
+
+			&::before {
+				// top horizontal stripe.
+				content: '';
+				clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 100%);
+				height: 30px;
+				width: 100%;
+				position: absolute;
+				background-color: var(--bswh--path--ribbon--color--1);
+				top: 0px;
+				opacity: 1;
+				z-index: 2;
+			}
+			&::after {
+				// top corner.
+				content: '';
+				top: 0px;
+				right: -30px;
+				border-top: 15px solid transparent;
+				border-right: 15px solid transparent;
+				border-bottom: 15px solid #364248;
+				border-left: 15px solid #364248;
+				animation-name: top-corner;
+				animation-duration: var(--bswh--path--ribbon--animation--time);
+				z-index: 1;
+				position: absolute;
+				opacity: 0;
+				animation-delay: var(--bswh--path--ribbon--animation--delay);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.wp-block-media-text {
+		max-width: 1440px;
+		gap: 0;
+		@include mq('xs') {
+			gap: 60px; // todo: clamp value.
+		}
+		h2 {
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		p {
+			margin-top: 0;
+		}
+	}
+	.wp-block-media-text__media {
+		// figure.
+		padding: 0;
+		height: unset;
+		position: relative;
+		@include mq('xs') {
+			padding-top: 30px;
+			height: 100%;
+		}
+		.figure__inner {
+			// vertical stripe.
+			position: absolute;
+			top: 30px;
+			width: 100%;
+			border-left: 30px solid var(--bswh--path--ribbon--color--2);
+			z-index: 1;
+			left: calc(100% - 90px);
+			height: 100%;
+			animation-name: vertical-stripe-mobile;
+			animation-duration: calc(var(--bswh--path--ribbon--animation--time) * 2);
+			height: 0;
+			width: 0;
+			animation-delay: var(--bswh--path--ribbon--animation--delay);
+			animation-fill-mode: forwards;
+			@include mq-reduced-motion() {
+				animation: none;
+				height: calc(100% - 30px);
+			}
+			@include mq('xs') {
+				left: calc(100% + 30px);
+				animation-name: vertical-stripe;
+				@include mq-reduced-motion() {
+					animation: none;
+					height: calc(100% - 90px);
+				}
+			}
+			&::before {
+				// bottom corner.
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: -30px;
+				bottom: -30px;
+				border-top: 15px solid #364248;
+				border-right: 15px solid #364248;
+				border-bottom: 15px solid transparent;
+				border-left: 15px solid transparent;
+				animation-name: bottom-corner;
+				animation-duration: calc(var(--bswh--path--ribbon--animation--time) * 2);
+				opacity: 0;
+				animation-delay: var(--bswh--path--ribbon--animation--delay);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					opacity: 1;
+				}
+			}
+			&::after {
+				// bottom horizontal stripe.
+				content: '';
+				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
+				background-color: var(--bswh--path--ribbon--color--3);
+				height: 30px;
+				position: absolute;
+				bottom: -30px;
+				left: 0;
+				width: 60px;
+				animation-name: bottom-horizontal-stripe-mobile;
+				max-width: 610px;
+				animation-duration: calc(var(--bswh--path--ribbon--animation--time) * 3);
+				width: 0;
+				animation-delay: var(--bswh--path--ribbon--animation--delay);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					width: 60px;
+				}
+				@include mq('xs') {
+					animation-name: bottom-horizontal-stripe;
+					@include mq-reduced-motion() {
+						animation: none;
+						width: 610px;
+					}
+				}
+			}
+		}
+		img {
+			height: calc(100% - 30px);
+			object-fit: cover;
+			margin-top: 30px;
+			@include mq('xs') {
+				clip-path: polygon(0% 0%, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0% 100%);
+			}
+		}
+	}
+	.wp-block-media-text__content {
+		padding: clamp(1.25rem, -0.25rem + 4vw, 3.75rem) !important; // 60 - 20px
+		position: relative;
+		z-index: 2;
+		& > *:last-child {
+			margin-bottom: 60px !important; // do not clamp.
+			@media (max-width: 600px) {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+}
+
+/* path ribbon on homepage media/text block -- EDITOR. */
+/* note: this is not an exact match of the front-end styles, but it is pretty close. */
+.block-editor-page .wp-block-group {
+	&:has(.wp-block-media-text.cool_1) {
+		@include cool_1;
+	}
+	&:has(.wp-block-media-text.cool_2) {
+		@include cool_2;
+	}
+	&:has(.wp-block-media-text.cool_3) {
+		@include cool_3;
+	}
+	&:has(.wp-block-media-text.warm_1) {
+		@include warm_1;
+	}
+	&:has(.wp-block-media-text.warm_2) {
+		@include warm_2;
+	}
+	&:has(.wp-block-media-text.warm_3) {
+		@include warm_3;
+	}
+	&:has(.wp-block-media-text.cool_1),
+	&:has(.wp-block-media-text.cool_2),
+	&:has(.wp-block-media-text.cool_3),
+	&:has(.wp-block-media-text.warm_1),
+	&:has(.wp-block-media-text.warm_2),
+	&:has(.wp-block-media-text.warm_3) {
+		.wp-block-media-text {
+			position: relative;
+			&::before {
+				// top stripe.
+				content: '';
+				height: 30px;
+				width: calc(50% + 30px);
+				position: absolute;
+				left: 0;
+				top: -30px;
+				background: var(--bswh--path--ribbon--color--1);
+				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
+				display: none;
+				@include mq('xs') {
+					display: block;
+				}
+			}
+			.wp-block-media-text__content {
+				position: relative;
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					height: calc(100% + 30px);
+					width: 100%;
+					border-left: 30px solid var(--bswh--path--ribbon--color--2);
+					z-index: 1;
+					left: -40px;
+					animation-name: vertical-stripe;
+					animation-duration: calc(var(--bswh--path--ribbon--animation--time) * 2);
+					display: none;
+					@include mq('xs') {
+						display: block;
+					}
+					@include mq-reduced-motion() {
+						animation: none;
+					}
+				}
+				&::after {
+					// bottom horizontal stripe.
+					content: '';
+					clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
+					background-color: var(--bswh--path--ribbon--color--3);
+					height: 30px;
+					position: absolute;
+					bottom: -45px;
+					left: -40px;
+					width: 100%;
+					max-width: 610px;
+					z-index: 1;
+					animation-name: bottom-horizontal-stripe;
+					animation-duration: calc(var(--bswh--path--ribbon--animation--time) * 3);
+					display: none;
+					@include mq('xs') {
+						display: block;
+					}
+					@include mq-reduced-motion() {
+						animation: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.single-post {
+	/* path ribbon on single posts. */
+	#featured-image-wrapper {
+		@include mq-max('lg') {
+			padding: 0;
+		}
+	}
+	#featured-image-wrapper .wp-block-group:has(.path-ribbon-container-outer) {
+		padding-left: 30px !important;
+		padding-right: 30px !important;
+		padding-top: 30px !important;
+		@include mq-max('lg') {
+			padding-top: 20px !important;
+		}
+	}
+
+	.path-ribbon-container-outer:has(.path-ribbon-container) {
+		position: absolute;
+		top: calc(var(--wp--preset--spacing--70) - 20px);
+		left: 0;
+		height: 30px;
+		width: 100% !important;
+		max-width: 100% !important;
+		@include mq('xs') {
+			top: 0;
+		}
+
+		.path-ribbon-container {
+			width: 100%;
+			height: 100%;
+			max-width: 1440px;
+			margin: 0 auto;
+			position: relative;
+			padding: 0 !important;
+		}
+		.path-ribbon {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			padding: 0 !important;
+			&::before {
+				// top stripe.
+				content: '';
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: calc(-100% + 60px);
+				background: var(--bswh--path--ribbon--color--1);
+				clip-path: polygon(0 0, calc(100% - 30px) 0%, 100% 100%, 0% 100%);
+				z-index: 1;
+			}
+			&::after {
+				// top left corner.
+				content: '';
+				position: absolute;
+				border-top: 15px solid transparent;
+				border-right: 15px solid transparent;
+				border-bottom: 15px solid #364248;
+				border-left: 15px solid #364248;
+				z-index: 1;
+				left: 30px;
+			}
+		}
+
+		& + .wp-block-post-featured-image {
+			// figure.
+			position: relative;
+			border-left: 30px solid var(--bswh--path--ribbon--color--2);
+			margin-bottom: 60px;
+			padding: 0 0 30px;
+			clip-path: polygon(
+				0 0,
+				calc(100% - 32px) 0%,
+				100% 32px,
+				200% 200%,
+				32px 100%,
+				0 calc(100% - 32px)
+			);
+
+			@include mq('lg') {
+				margin-top: 0;
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+				padding: 0px 30px 60px;
+				clip-path: polygon(0 0, 200% 0%, 200% 100%, 30px 100%, 0 calc(100% - 30px));
+			}
+			&::before {
+				// bottom left corner.
+				content: '';
+				position: absolute;
+				left: -30px;
+				bottom: 0px;
+				border-top: 15px solid #364248;
+				border-right: 15px solid #364248;
+				border-bottom: 15px solid transparent;
+				border-left: 15px solid transparent;
+			}
+			&::after {
+				// bottom stripe.
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 200%;
+				height: 30px;
+				background: var(--bswh--path--ribbon--color--3);
+			}
+			img {
+				@include mq('lg') {
+					clip-path: polygon(0 0, 100% 0%, 100% 100%, 32px 100%, 0 calc(100% - 32px));
+				}
+			}
+		}
+	}
+}
+/* path ribbon on single newsletter headings */
+
+.single-bswh-newsletter {
+	@media (min-width: 470px) {
+		.compass-header {
+			--horizontal-offset-past-image: calc((342px / 2) + var(--wp--preset--spacing--70, 80px));
+			container-type: inline-size;
+			container-name: compass-header;
+			overflow: hidden;
+			figure {
+				position: static;
+				// triangle.
+				&::before {
+					content: '';
+					position: absolute;
+					border-top: 15px solid #364248;
+					border-right: 15px solid transparent;
+					border-bottom: 15px solid transparent;
+					border-left: 15px solid #364248;
+					z-index: 1;
+					left: calc(50cqw + var(--horizontal-offset-past-image));
+					bottom: 10px;
+					opacity: 0;
+					animation-name: top-corner;
+					animation-delay: var(--bswh--path--ribbon--animation--delay);
+					animation-duration: var(--bswh--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						opacity: 1;
+					}
+				}
+				// bottom stripe.
+				&::after {
+					--starting-left: -100cqw;
+					--ending-left: 0;
+					content: '';
+					position: absolute;
+					bottom: 10px;
+					left: var(--starting-left);
+					height: 30px;
+					width: calc(50cqw + var(--horizontal-offset-past-image));
+					background: var(--bswh--path--ribbon--color--1);
+					animation-name: bottom-horizontal-stripe-newsletter;
+					animation-delay: var(--bswh--path--ribbon--animation--delay);
+					animation-duration: var(--bswh--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						left: 0;
+					}
+				}
+			}
+			.path-ribbon-container-outer {
+				position: absolute;
+				height: 64px;
+				top: 135px;
+				right: 0;
+				width: calc(50cqw - var(--horizontal-offset-past-image));
+				&.cool_1 {
+					@include cool_1;
+				}
+				&.cool_2 {
+					@include cool_2;
+				}
+				&.cool_3 {
+					@include cool_3;
+				}
+				&.warm_1 {
+					@include warm_1;
+				}
+				&.warm_2 {
+					@include warm_2;
+				}
+				&.warm_3 {
+					@include warm_3;
+				}
+			}
+			// vertical stripe.
+			.path-ribbon-vertical {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 0;
+				width: 30px;
+				background: var(--bswh--path--ribbon--color--2);
+				animation-name: vertical-stripe-newsletter;
+				animation-delay: var(--bswh--path--ribbon--animation--delay);
+				animation-duration: var(--bswh--path--ribbon--animation--time);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					height: 100%;
+				}
+				// triangle.
+				&::before {
+					content: '';
+					position: absolute;
+					border-top: 15px solid transparent;
+					border-right: 15px solid #364248;
+					border-bottom: 15px solid #364248;
+					border-left: 15px solid transparent;
+					z-index: 1;
+					right: 0;
+					top: -30px;
+					opacity: 0;
+					animation-name: top-corner;
+					animation-delay: var(--bswh--path--ribbon--animation--delay);
+					animation-duration: var(--bswh--path--ribbon--animation--time);
+					animation-fill-mode: forwards;
+					@include mq-reduced-motion() {
+						animation: none;
+						opacity: 1;
+					}
+				}
+			}
+			// top horizontal stripe.
+			.path-ribbon-horizontal {
+				--starting-width: 0px;
+				--ending-width: max(
+					90px,
+					calc(50cqw - var(--horizontal-offset-past-image) - (2 * var(--wp--preset--spacing--60)))
+				);
+				background: var(--bswh--path--ribbon--color--3);
+				z-index: 1;
+				position: absolute;
+				top: -30px;
+				left: 30px;
+				height: 30px;
+				width: 0;
+				clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0% 100%);
+				animation-name: top-horizontal-stripe-newsletter;
+				animation-delay: var(--bswh--path--ribbon--animation--delay);
+				animation-duration: var(--bswh--path--ribbon--animation--time);
+				animation-fill-mode: forwards;
+				@include mq-reduced-motion() {
+					animation: none;
+					width: var(--ending-width);
+				}
+			}
+		}
+	}
+}

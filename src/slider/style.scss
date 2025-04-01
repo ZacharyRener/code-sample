@@ -1,0 +1,66 @@
+.wp-block-zach-slider[class][class] {
+	position: relative;
+	overflow: hidden;
+
+	&.alignfull {
+		margin-left: var(--wp--preset--spacing--80);
+
+		.has-global-padding > &[class][class][class] {
+			margin-right: calc(var(--wp--style--root--padding-right) * -1);
+			margin-left: 0;
+
+			.zach-slider {
+				&::-webkit-scrollbar-track {
+					margin-right: var(--wp--style--root--padding-right);
+				}
+			}
+		}
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 8px;
+		right: 0;
+		left: unset !important;
+		width: 100px;
+		background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+	}
+
+	.zach-slider {
+		@import './slider.scss';
+	}
+
+	.scrollable {
+		margin: 0 auto;
+		width: 500px;
+		position: relative;
+		border: 1px solid gray;
+		overflow: hidden;
+		height: 300px;
+		text-align: right;
+	}
+
+	.scroller-container {
+		margin-top: var(--bswh--slider--scrollbar--vertical-offset);
+		position: relative;
+		height: var(--bswh--slider--scrollbar--track-height, 6px);
+		width: s 100%;
+		overflow: hidden;
+		border-radius: var(--bswh--slider--scrollbar--border-radius, 4px);
+		background: var(--bswh--slider--scrollbar--track-color, #e4e5e7);
+	}
+
+	.scroller {
+		background: var(--bswh--slider--scrollbar--thumb-color, #0a0a0a);
+		cursor: pointer;
+		position: absolute;
+		width: 10px;
+		height: var(--bswh--slider--scrollbar--track-height, 6px);
+		border-radius: var(--bswh--slider--scrollbar--border-radius, 4px);
+		top: 0px;
+		left: 3px;
+		transition: left 0.08s;
+	}
+}

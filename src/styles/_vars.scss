@@ -1,0 +1,50 @@
+body[class] {
+	--entry-gutters: var(--wp--custom--spacing--gap);
+
+	--card--term-list--item-hover: var(--wp--preset--color--black);
+	--card--link--headline-color-hover: var(--wp--preset--color--blue);
+
+	// Spacing.
+	// BSWH Synonyms for the WordPress presets.
+	--bswh--spacing--gap: var(--bswh--spacing--md);
+	--bswh--spacing--xs: var(--wp--preset--spacing--20);
+	--bswh--spacing--sm: var(--wp--preset--spacing--40);
+	--bswh--spacing--md: var(--wp--preset--spacing--50);
+	--bswh--spacing--lg: var(--wp--preset--spacing--60);
+	--bswh--spacing--xl: var(--wp--preset--spacing--70);
+	// WordPress Presets.
+	// Extra Small.
+	--wp--preset--spacing--20: 10px;
+	// Small.
+	--wp--preset--spacing--40: 10px;
+	@include mq('xs') {
+		--wp--preset--spacing--40: 16px;
+	}
+	@include mq('lg') {
+		--wp--preset--spacing--40: 20px;
+	}
+	// Medium.
+	--wp--preset--spacing--50: 20px;
+	@include mq('xs') {
+		--wp--preset--spacing--50: 30px;
+	}
+	@include mq('lg') {
+		--wp--preset--spacing--50: 40px;
+	}
+	// Large.
+	--wp--preset--spacing--60: 20px;
+	@include mq('xs') {
+		--wp--preset--spacing--60: 40px;
+	}
+	@include mq('lg') {
+		--wp--preset--spacing--60: 60px;
+	}
+	// Extra Large.
+	--wp--preset--spacing--70: 20px;
+	@include mq('xs') {
+		--wp--preset--spacing--70: 40px;
+	}
+	@include mq('lg') {
+		--wp--preset--spacing--70: 80px;
+	}
+}

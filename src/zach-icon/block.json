@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zach/zach-icon",
+	"version": "0.1.0",
+	"title": "Icon",
+	"textdomain": "zach",
+	"category": "zach-blocks",
+	"icon": "art",
+	"description": "Pick from a preset available ",
+	"keywords": ["zach", "icons", "clipart", "svg"],
+	"supports": {
+		"html": false,
+		"align": false,
+		"color": {
+			"background": true,
+			"heading": false,
+			"text": false
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": false
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		}
+	},
+	"attributes": {
+		"icon": {
+			"type": "string",
+			"default": "bedside"
+		},
+		"size": {
+			"type": "number",
+			"default": 40
+		},
+		"usePreferableColor": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"example": {},
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"editorScript": "file:./index.js"
+}

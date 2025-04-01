@@ -1,0 +1,402 @@
+// Import Gutenberg styles rather than enqueing the entire 'wp-components' style.
+@import '~@wordpress/base-styles/animations';
+@import '~@wordpress/base-styles/z-index';
+@import '~@wordpress/base-styles/mixins';
+@import '~@wordpress/base-styles/breakpoints';
+
+body:not(.wp-admin) {
+	// Class assigned to any element which will trigger the lightbox.
+	.zach-lightbox-clickable {
+		cursor: pointer;
+	}
+
+	.zach-lightbox {
+		// Variables
+		--bswh-lightbox--navigation--button--size: 40px;
+		--bswh-lightbox--frame--padding: var(--wp--preset--spacing--60, 60px);
+		--bswh-lightbox--frame--width-ideal: 1440px;
+		--bswh-lightbox--frame--height-ideal: 683px;
+		// Rules.
+		// Button.
+		button:not(.dot) {
+			display: inline-flex;
+			text-decoration: none;
+			font-family: inherit;
+			margin: 0;
+			border: 0;
+			cursor: pointer;
+			-webkit-appearance: none;
+			background: none;
+			align-items: center;
+			justify-content: center;
+			box-sizing: border-box;
+			padding: 8px;
+		}
+
+		// Content
+		.components-modal__content > div:last-child {
+			display: grid;
+			grid-template-areas:
+				'media'
+				'content';
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto;
+			grid-gap: calc(var(--bswh-lightbox--frame--padding) / 2) 0;
+			align-items: start;
+			max-height: calc(100% - var(--bswh-lightbox--frame--padding));
+			@include break-medium() {
+				max-height: 100%;
+				grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); /* Prevent row stretching */
+			}
+			> * {
+				max-height: 100%;
+			}
+			@include break-medium() {
+				gap: 0 calc(var(--bswh-lightbox--frame--padding) / 2);
+				grid-template-columns: 1fr clamp(8.75rem, 6.0714rem + 13.3929vw, 18.125rem); // Clamp to nicely size the content column. It could simply be 22.8%, but that gets too small.
+				align-items: center;
+				grid-template-areas: 'media content';
+			}
+		}
+		.media {
+			grid-area: media;
+			max-width: 1000px;
+			display: grid;
+			grid-template-areas: 'media';
+			grid-template-rows: 1fr;
+			> * {
+				grid-area: media;
+			}
+			overflow: hidden;
+			position: relative;
+			.media-items {
+				max-width: 100%;
+				width: 100%;
+				display: grid;
+				grid-auto-flow: column;
+				grid-template-columns: repeat(auto-fill, 100%);
+				grid-auto-columns: 100%;
+				grid-template-rows: 100%;
+				overflow-y: hidden;
+				overflow-x: auto;
+				pointer-events: none;
+				justify-content: start;
+				justify-items: center;
+				// The scrolling will be taken care of in javascript.
+				scroll-snap-stop: always;
+				scroll-snap-align: center;
+				scroll-snap-type: x mandatory;
+				&::-webkit-scrollbar {
+					display: none;
+				}
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+				> .media-item {
+					display: flex;
+					align-content: center;
+					align-items: center;
+					justify-content: center;
+					justify-items: center;
+					width: 100%;
+					max-width: 100%;
+					max-height: 100%;
+					height: 100%;
+					@include break-medium() {
+						max-height: 100%;
+					}
+					> * {
+						max-width: 100%;
+						width: auto;
+						object-fit: scale-down;
+						object-position: center center;
+						max-height: 45vh; // On smaller screens, do not make these tall or the modal with need to scroll vertically.
+						@include break-small() {
+							max-height: min(100%, 562px); // Whichever is smaller;
+						}
+					}
+					> iframe {
+						// The script will attempt to put an aspect-ratio variable that we can use.
+						aspect-ratio: var(--aspect-ratio, auto);
+						pointer-events: all; // Turn on pointer events so the player works.
+						width: 100%;
+						height: auto;
+					}
+				}
+			}
+		}
+		.content {
+			height: 100%;
+			grid-area: content;
+			display: grid;
+			grid-gap: calc(var(--bswh-lightbox--frame--padding) / 2);
+			grid-template-areas:
+				'navigation'
+				'caption';
+			@include break-small() {
+				grid-template-areas:
+					'caption'
+					'navigation';
+			}
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr var(--bswh-lightbox--navigation--button--size);
+			// Caption
+			.caption {
+				color: #000;
+				font-family: 'Sharp Sans';
+				font-size: var(--wp--preset--font-size--medium);
+				font-weight: 500;
+			}
+			// Left Right nav.
+			.navigation {
+				grid-area: navigation;
+				display: flex;
+				justify-content: space-between;
+				height: var(--bswh-lightbox--navigation--button--size);
+				button {
+					height: var(--bswh-lightbox--navigation--button--size);
+					appearance: none;
+					aspect-ratio: 1;
+					border-radius: 20px;
+					padding: 8px;
+					border: 1px solid var(--wp--preset--color--gray, #959593);
+					background: #fff;
+					display: inline-flex;
+					align-content: center;
+					align-items: center;
+					justify-content: center;
+					justify-items: center;
+					svg {
+						width: 11px;
+						height: 11px;
+					}
+					&:hover {
+						background-color: var(--wp--preset--color--light-yellow);
+						border-color: var(--wp--preset--color--yellow);
+					}
+				}
+			}
+		}
+
+		// Dots nav
+		.dots-nav {
+			grid-area: media;
+			display: flex;
+			justify-content: center;
+			gap: 18px;
+			place-self: end center;
+			margin-bottom: 20px;
+			position: relative;
+			z-index: 1;
+			.dot {
+				-webkit-appearance: none;
+				background: none;
+				aspect-ratio: 1;
+				border: 0;
+				width: 8px;
+				height: 8px;
+				padding: 0;
+				background-color: var(--wp--preset--color--light-gray, #eceded);
+				border-radius: 50%;
+				cursor: pointer;
+				&.active {
+					background-color: var(--wp--preset--color--yellow, #ffb71b);
+				}
+			}
+		}
+	}
+
+	// The scrim behind the modal window.
+	.components-modal__screen-overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(#000000, 0.35);
+		z-index: z-index('.components-modal__screen-overlay');
+		display: flex;
+		// This animates the appearance of the backdrop.
+		@include animation__fade-in();
+
+		&.is-animating-out {
+			// Note: it's important that the fade-out animation doesn't end after the
+			// modal frame's disappear animation, because the component will be removed
+			// from the DOM when that animation ends.
+			@include animation__fade-out($delay: 80ms);
+		}
+		// Gutenberg styles.
+		// The modal window element.
+		.components-modal__frame {
+			@include reset;
+			// Use the entire viewport on smaller screens.
+			margin: 40px 0 0 0;
+			width: 100%;
+			background: #ffffff;
+			border-radius: 0 0;
+			overflow: hidden;
+			// Have the content element fill the vertical space yet not overflow.
+			display: flex;
+			// Animate the modal frame/contents appearing on the page.
+			animation-name: components-modal__appear-animation;
+			animation-fill-mode: forwards;
+			animation-timing-function: cubic-bezier(0.29, 0, 0, 1);
+
+			@media not (prefers-reduced-motion) {
+				animation-duration: var(--modal-frame-animation-duration);
+			}
+
+			.components-modal__screen-overlay.is-animating-out & {
+				animation-name: components-modal__disappear-animation;
+				animation-timing-function: cubic-bezier(1, 0, 0.2, 1);
+			}
+
+			// Show a centered modal on bigger screens.
+			@include break-medium() {
+				border-radius: 0;
+				margin: auto;
+				width: var(--bswh-lightbox--frame--width-ideal);
+				min-width: 350px;
+				max-width: min(var(--bswh-lightbox--frame--width-ideal, 1440px), calc(100% - 80px));
+				max-height: min(var(--bswh-lightbox--frame--height-ideal, 683px), calc(100% - 80px));
+			}
+			// On browser windows, such as a laptop.
+			@media (max-height: 875px) {
+				width: auto;
+				aspect-ratio: 1400/623; // The correct aspect-ratio adjusted for the paddings and margins.
+			}
+		}
+
+		@keyframes components-modal__appear-animation {
+			from {
+				opacity: 0;
+				transform: scale(0.9);
+			}
+			to {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		// Note: this animation is also used in the animationend JS event listener.
+		// Make sure that the animation name is kept in sync across the two files.
+		@keyframes components-modal__disappear-animation {
+			from {
+				opacity: 1;
+				transform: scale(1);
+			}
+			to {
+				opacity: 0;
+				transform: scale(0.9);
+			}
+		}
+
+		// Fix header to the top so it is always there to provide context to the modal
+		// if the content needs to be scrolled (for example, on the keyboard shortcuts
+		// modal screen).
+		.components-modal__header {
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			z-index: z-index('.components-modal__header');
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			.components-modal__header-heading {
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+
+			h1 {
+				line-height: 1;
+				margin: 0;
+			}
+
+			.components-modal__content.has-scrolled-content:not(.hide-header) & {
+				border-bottom-color: var(--wp--preset--color--dark-gray, #364248);
+			}
+
+			& + p {
+				margin-top: 0;
+			}
+
+			button[aria-label='Close'] {
+				appearance: none;
+				margin: min(
+					10px,
+					calc(var(--bswh-lightbox--frame--padding) / 6)
+				); // Whatever is smaller - 10px or the frame padding divided by six (which should be 10px or less).
+				background-color: white;
+				border-radius: 50%;
+				padding: 8px;
+				border: 1px solid transparent;
+				background: #fff;
+				display: inline-flex;
+				align-content: center;
+				align-items: center;
+				justify-content: center;
+				justify-items: center;
+				&:hover {
+					background-color: var(--wp--preset--color--light-yellow);
+					border-color: var(--wp--preset--color--yellow);
+				}
+			}
+		}
+
+		.components-modal__header-heading-container {
+			align-items: center;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: row;
+			justify-content: left;
+		}
+
+		.components-modal__header-icon-container {
+			display: inline-block;
+
+			svg {
+				max-width: 36px;
+				max-height: 36px;
+				padding: 8px;
+			}
+		}
+
+		// Modal contents.
+		.components-modal__content {
+			flex: 1;
+			margin-top: calc(
+				min(10px, var(--bswh-lightbox--frame--padding) / 6) + 8px + 24px
+			); // Avoid clashing with the closing button.
+			@include break-medium() {
+				margin-top: max(
+					42px,
+					var(--bswh-lightbox--frame--padding)
+				); // Avoid clashing with the closing button.
+			}
+			// Small top padding required to avoid cutting off the visible outline when the first child element is focusable.
+			padding: 0 var(--bswh-lightbox--frame--padding) var(--bswh-lightbox--frame--padding);
+			overflow: auto;
+
+			&.hide-header {
+				margin-top: 0;
+				padding-top: 40px;
+			}
+
+			&.is-scrollable:focus-visible {
+				box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus)
+					var(--wp--preset--color--dark-gray, #364248);
+
+				// Windows High Contrast mode will show this outline, but not the box-shadow.
+				outline: 2px solid transparent;
+				outline-offset: -2px;
+			}
+		}
+	}
+	.wp-block-gallery + .wp-block-zach-timeline {
+		// todo: remove. extremely temporary.
+		display: none;
+	}
+}
